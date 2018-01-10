@@ -12,11 +12,15 @@ export default class Nav extends React.Component {
                 <div className="corpsePerspective">
                     <img className="corpse" src="/images/corpse.png" alt="corpse"/>
                 </div>
-                <p>tobias seymour &</p>
-                <p>lachlan kosaniukinnes</p>
-                <div><a onClick={this.props.showWorks}>works</a></div>
-                <div><a href="#">cv</a></div>
-                <div><a href="#">mail@tslki.com</a></div>
+                <div className="title">
+                    <p>Tobias Seymour &</p>
+                    <p>Lachlan Kosaniukinnes</p>
+                </div>
+                <div className="navLinks">
+                    <div><div className="dot"></div><a onClick={this.props.showWorks}>Works</a></div>
+                    <div><div className="dot"></div><a href="#">CV</a></div>
+                    <div><div className="dot"></div><a href="#">mail@tslki.com</a></div>
+                </div>
             </div>
         )
     }

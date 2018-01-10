@@ -15,15 +15,15 @@
 
 * {
     margin: 0;
-    font-family: arial;
-    font-style: italic;
-    font-size: 60px;
+    font-family: 'VT323', monospace;
+    font-size: 28px;
     /* font-weight: bold; */
     color: black;
 }
 
 body {
     overflow: hidden;
+    background-color: #545653;
 }
 
 p {
@@ -39,8 +39,13 @@ a:hover {
     z-index: -1;
     top: 200px;
     left: 50px;
-    /* transform: rotate(-30deg); */
+    height: 250px;
+    padding: 20px;
     filter: blur(0.5px);
+    border-top: 5px solid #B4B5B2;
+    border-left: 5px solid #838581;
+    border-right: 5px solid #2B2E2C;
+    border-bottom: 5px solid #252624;
 }
 
 .corpsePerspective {
@@ -52,10 +57,42 @@ a:hover {
 .corpse {
     width: 90px;
     height: 90px;
+    border-top: 5px solid #B4B5B2;
+    border-left: 5px solid #838581;
+    border-right: 5px solid #2B2E2C;
+    border-bottom: 5px solid #252624;
     /* padding: 5px;
     border: 1px solid black; */
     /* animation: spin 8s linear infinite; */
 }
+
+.title {
+    background-color: #D7D245;
+    border-bottom: 5px solid #B4B5B2;
+    border-right: 5px solid #838581;
+    border-left: 5px solid #2B2E2C;
+    border-top: 5px solid #252624;
+    margin-bottom: 20px;
+}
+
+.dot {
+    display: inline-block;
+    background-color: green;
+    width: 20px;
+    height: 20px;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-bottom: 5px solid #B4B5B2;
+    border-right: 5px solid #838581;
+    border-left: 5px solid #2B2E2C;
+    border-top: 5px solid #252624;
+    border-radius: 20px;
+    transform: rotate(-25deg);
+}
+
+/* .navLinks a {
+    color: #D7D245;
+} */
 
 .works {
     position: absolute;
