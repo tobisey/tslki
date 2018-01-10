@@ -11,10 +11,15 @@ export default class App extends React.Component {
         super(props);
         this.state = {};
         this.showWorks = this.showWorks.bind(this)
+        this.handleKeyDown = this.handleKeyDown.bind(this)
         this.showCarmonica = this.showCarmonica.bind(this)
         this.showPink = this.showPink.bind(this)
         this.showTwelve = this.showTwelve.bind(this)
         this.showRaitre = this.showRaitre.bind(this)
+    }
+
+    componentDidMount() {
+        window.addEventListener("keydown", this.handleKeyDown, true);
     }
 
     showWorks() {
@@ -30,6 +35,20 @@ export default class App extends React.Component {
             this.setState({
                 worksIsVisible: true
             })
+        }
+    }
+
+    handleKeyDown(e) {
+        if (e.keyCode === 27) {
+            if (this.state.worksIsVisible) {
+                setTimeout(() => {
+                    this.setState({
+                        worksIsVisible: false
+                    })
+                }, 1000)
+                var works = document.getElementsByClassName('works');
+                works[0].style.animation = 'slideOut 1s';
+            }
         }
     }
 

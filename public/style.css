@@ -31,7 +31,7 @@ p {
 }
 
 a:hover {
-    font-style: normal;
+    color: deeppink;
 }
 
 .nav {
@@ -86,7 +86,7 @@ a:hover {
     z-index: 5;
     display: flex;
     align-items: flex-end;
-    /* background-color: white; */
+    background-color: white;
     box-shadow: 8px 8px 50px black;
 }
 

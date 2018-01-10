@@ -10,7 +10,7 @@ export default class Pink extends React.Component {
         return (
             <div className="window pink">
                 <div className="smallXWrapper">
-                    <a className="smallX" onClick={this.props.showPink}>(Esc)</a>
+                    <a className="smallX" onClick={this.props.showPink}>(esc)</a>
                     <p className="smallTitle">// pink</p>
                 </div>
                 <video src="/videos/pink-web-edit.mp4" width="614px" height="460px" controls></video>

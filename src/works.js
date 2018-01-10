@@ -9,7 +9,7 @@ export default class Works extends React.Component {
     render() {
         return (
             <div className="works">
-                <div><a className="x" onClick={this.props.showWorks}>(x)</a></div>
+                <div><a className="x" onClick={this.props.showWorks}>(esc)</a></div>
                 <div className="scrollable">
                     <div><a href="#">the worst bruce nauman in scotland</a></div>
                     <div><a href="#">are we saying the lift is or isn't art?</a></div>
