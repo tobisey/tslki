@@ -10,8 +10,8 @@ export default class Raitre extends React.Component {
         return (
             <div className="window raitre">
                 <div className="smallXWrapper">
-                    <a className="smallX" onClick={this.props.showRaitre}>(esc)</a>
-                    <p className="smallTitle">// raitre</p>
+                    <a className="smallX" onClick={this.props.showRaitre}>Esc</a>
+                    <p className="smallTitle">Raitre</p>
                 </div>
                 <video src="/videos/raitre web edit.mp4" width="614px" height="460px" controls></video>
             </div>

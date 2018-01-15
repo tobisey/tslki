@@ -17,9 +17,9 @@ export default class Nav extends React.Component {
                     <p>Lachlan Kosaniukinnes</p>
                 </div>
                 <div className="navLinks">
-                    <div><div className="dot"></div><a onClick={this.props.showWorks}>Works</a></div>
-                    <div><div className="dot"></div><a href="#">CV</a></div>
-                    <div><div className="dot"></div><a href="#">mail@tslki.com</a></div>
+                    <div className="linkWrapper"><div className="dot"></div><a id="lkOne" onClick={this.props.showWorks}>Works</a></div>
+                    <div className="linkWrapper"><div className="dot" id="dTwo"></div><a id="lkTwo" href="#">CV</a></div>
+                    <div className="linkWrapper" id="lkThree"><div className="dot" id="dThree"></div><a href="#">mail@tslki.com</a></div>
                 </div>
             </div>
         )

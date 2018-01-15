@@ -10,8 +10,8 @@ export default class Twelve extends React.Component {
         return (
             <div className="window twelve">
                 <div className="smallXWrapper">
-                    <a className="smallX" onClick={this.props.showTwelve}>(esc)</a>
-                    <p className="smallTitle">// 12 are stolen</p>
+                    <a className="smallX" onClick={this.props.showTwelve}>Esc</a>
+                    <p className="smallTitle">12 Are Stolen</p>
                 </div>
                 <video src="/videos/12 are stolen.mp4" width="614px" height="460px" controls></video>
             </div>

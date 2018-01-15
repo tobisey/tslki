@@ -1,5 +1,6 @@
 import React from 'react';
-import Nav from './nav.js'
+import Nav from './nav.js';
+import Outfits from './outfits.js'
 import Works from './works.js'
 import Carmonica from './carmonica.js'
 import Pink from './pink.js'
@@ -107,6 +108,7 @@ export default class App extends React.Component {
                 <Nav
                     showWorks = {this.showWorks}
                 />
+                <Outfits />
                 {this.state.worksIsVisible && <Works
                     showWorks ={this.showWorks}
                     showCarmonica ={this.showCarmonica}
