@@ -12,7 +12,7 @@ export default class App extends React.Component {
         super(props);
         this.state = {};
         this.showWorks = this.showWorks.bind(this)
-        this.handleKeyDown = this.handleKeyDown.bind(this)
+        this.hideWorks = this.hideWorks.bind(this)
         this.showCarmonica = this.showCarmonica.bind(this)
         this.showPink = this.showPink.bind(this)
         this.showTwelve = this.showTwelve.bind(this)
@@ -20,18 +20,14 @@ export default class App extends React.Component {
     }
 
     componentDidMount() {
-        window.addEventListener("keydown", this.handleKeyDown, true);
+        // window.addEventListener("keydown", this.handleKeyDown, true);
     }
 
     showWorks() {
         if (this.state.worksIsVisible) {
-            setTimeout(() => {
-                this.setState({
-                    worksIsVisible: false
-                })
-            }, 1000)
-            var works = document.getElementsByClassName('works');
-            works[0].style.animation = 'slideOut 1s';
+            this.setState({
+                worksIsVisible: false
+            })
         } else {
             this.setState({
                 worksIsVisible: true
@@ -39,18 +35,10 @@ export default class App extends React.Component {
         }
     }
 
-    handleKeyDown(e) {
-        if (e.keyCode === 27) {
-            if (this.state.worksIsVisible) {
-                setTimeout(() => {
-                    this.setState({
-                        worksIsVisible: false
-                    })
-                }, 1000)
-                var works = document.getElementsByClassName('works');
-                works[0].style.animation = 'slideOut 1s';
-            }
-        }
+    hideWorks() {
+        this.setState({
+            worksIsVisible: false
+        })
     }
 
     showCarmonica() {
@@ -111,6 +99,7 @@ export default class App extends React.Component {
                 <Outfits />
                 {this.state.worksIsVisible && <Works
                     showWorks ={this.showWorks}
+                    hideWorks ={this.hideWorks}
                     showCarmonica ={this.showCarmonica}
                     showPink ={this.showPink}
                     showTwelve ={this.showTwelve}
