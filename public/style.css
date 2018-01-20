@@ -89,6 +89,10 @@ a:hover {
     filter: blur(0.5px);
 }
 
+.dotHighlighted {
+    background-color: green;
+}
+
 .outfits {
     position: absolute;
     /* background-color: hotpink; */
