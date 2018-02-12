@@ -1,5 +1,6 @@
 import React from 'react';
-import Nav from './nav.js';
+import { connect } from 'react-redux';
+import { defaults, toggleWorksMenu } from './actions.js';
 import Outfits from './outfits.js'
 import Works from './works.js'
 import Carmonica from './carmonica.js'
@@ -7,85 +8,33 @@ import Pink from './pink.js'
 import Twelve from './twelve.js'
 import Raitre from './raitre.js'
 
-export default class App extends React.Component {
+class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
-        this.showWorks = this.showWorks.bind(this)
-        this.hideWorks = this.hideWorks.bind(this)
-        this.showCarmonica = this.showCarmonica.bind(this)
-        this.showPink = this.showPink.bind(this)
-        this.showTwelve = this.showTwelve.bind(this)
-        this.showRaitre = this.showRaitre.bind(this)
+        this.navHandleKeyDown = this.navHandleKeyDown.bind(this)
+        this.worksLED = this.worksLED.bind(this)
     }
 
     componentDidMount() {
-        // window.addEventListener("keydown", this.handleKeyDown, true);
+        this.props.defaults();
+        window.addEventListener("keydown", this.navHandleKeyDown);
     }
 
-    showWorks() {
-        if (this.state.worksIsVisible) {
-            this.setState({
-                worksIsVisible: false
-            })
-        } else {
-            this.setState({
-                worksIsVisible: true
-            })
+    navHandleKeyDown(e) {
+        if (e.keyCode === 87) {
+            this.props.toggleWorksMenu(this.props.worksMenuVisible);
+            this.worksLED();
         }
     }
 
-    hideWorks() {
-        this.setState({
-            worksIsVisible: false
-        })
-    }
-
-    showCarmonica() {
-        if (this.state.carmonicaIsVisible) {
-            this.setState({
-                carmonicaIsVisible: false
-            })
+    worksLED() {
+        if (this.refs['worksDot'].classList.contains('dotHighlighted')) {
+            this.refs['worksDot'].classList.remove('dotHighlighted');
+            this.refs['worksSmallerDot'].classList.remove('smallerDotHighlighted');
         } else {
-            this.setState({
-                carmonicaIsVisible: true
-            })
-        }
-    }
-
-    showPink() {
-        if (this.state.pinkIsVisible) {
-            this.setState({
-                pinkIsVisible: false
-            })
-        } else {
-            this.setState({
-                pinkIsVisible: true
-            })
-        }
-    }
-
-    showTwelve() {
-        if (this.state.twelveIsVisible) {
-            this.setState({
-                twelveIsVisible: false
-            })
-        } else {
-            this.setState({
-                twelveIsVisible: true
-            })
-        }
-    }
-
-    showRaitre() {
-        if (this.state.raitreIsVisible) {
-            this.setState({
-                raitreIsVisible: false
-            })
-        } else {
-            this.setState({
-                raitreIsVisible: true
-            })
+            this.refs['worksDot'].classList.add('dotHighlighted');
+            this.refs['worksSmallerDot'].classList.add('smallerDotHighlighted');
         }
     }
 
@@ -93,31 +42,68 @@ export default class App extends React.Component {
 
         return (
             <div>
-                <Nav
-                    showWorks = {this.showWorks}
-                />
+            <div className="nav">
+                <div className="corpseWrapper">
+                    <img className="corpse" src="/images/corpse.png" alt="corpse"/>
+                </div>
+                <div className="title">
+                    <p>Tobias Seymour &</p>
+                    <p>Lachlan Kosaniukinnes</p>
+                </div>
+                <div className="navLinks">
+                    <div className="linkWrapper"><div className="dot" ref="worksDot"><div className="smallerDot" ref="worksSmallerDot"></div></div><a onClick={() => {this.props.toggleWorksMenu(this.props.worksMenuVisible); this.worksLED()}}>Works</a></div>
+                    <div className="linkWrapper"><div className="dot" ref="cvDot"><div className="smallerDot" ref="cvSmallerDot"></div></div><a onClick={() => this.cvHandleClick()}>CV</a></div>
+                    <div className="linkWrapper"><div className="dot" ref="emailDot"><div className="smallerDot" ref="emailSmallerDot"></div></div><a onClick={() => this.emailHandleClick()}>mail@tslki.com</a></div>
+                </div>
+            </div>
                 <Outfits />
-                {this.state.worksIsVisible && <Works
-                    showWorks ={this.showWorks}
-                    hideWorks ={this.hideWorks}
-                    showCarmonica ={this.showCarmonica}
-                    showPink ={this.showPink}
-                    showTwelve ={this.showTwelve}
-                    showRaitre ={this.showRaitre}
+                {this.props.worksMenuVisible && <Works
+                    worksLED ={this.worksLED}
                 />}
-                {this.state.carmonicaIsVisible && <Carmonica
-                    showCarmonica ={this.showCarmonica}
-                />}
-                {this.state.pinkIsVisible && <Pink
-                    showPink ={this.showPink}
-                />}
-                {this.state.twelveIsVisible && <Twelve
-                    showTwelve ={this.showTwelve}
-                />}
-                {this.state.raitreIsVisible && <Raitre
-                    showRaitre ={this.showRaitre}
-                />}
+                {this.props.worksVisible && this.props.worksVisible.map((work) => {
+                    if (work.name === 'carmonica' && work.visible) {
+                        return <Carmonica />
+                    }
+                })}
+                {this.props.worksVisible && this.props.worksVisible.map((work) => {
+                    if (work.name === 'pink' && work.visible) {
+                        return <Pink />
+                    }
+                })}
+                {this.props.worksVisible && this.props.worksVisible.map((work) => {
+                    if (work.name === 'twelve' && work.visible) {
+                        return <Twelve />
+                    }
+                })}
+                {this.props.worksVisible && this.props.worksVisible.map((work) => {
+                    if (work.name === 'raitre' && work.visible) {
+                        return <Raitre />
+                    }
+                })}
             </div>
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        worksMenuVisible: state.worksMenuVisible,
+        worksVisible: state.worksVisible && state.worksVisible,
+        topZIndex: state.topZIndex,
+        allZIndex: state.allZIndex
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        defaults() {
+            dispatch(defaults())
+        },
+
+        toggleWorksMenu(visible) {
+            dispatch(toggleWorksMenu(visible))
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
