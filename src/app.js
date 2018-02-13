@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { defaults, toggleWorksMenu } from './actions.js';
+import { defaults, toggleWorksMenu, closeTopWindow, toggleMouseDown, toggleDragging, setInitialCoords, setDragCoords } from './actions.js';
 import Outfits from './outfits.js'
 import Works from './works.js'
 import Carmonica from './carmonica.js'
@@ -14,6 +14,10 @@ class App extends React.Component {
         this.state = {};
         this.navHandleKeyDown = this.navHandleKeyDown.bind(this)
         this.worksLED = this.worksLED.bind(this)
+        this.handleMouseDown = this.handleMouseDown.bind(this)
+        this.handleMouseUp = this.handleMouseUp.bind(this)
+        this.handleDrag = this.handleDrag.bind(this)
+        this.handleMouseLeave = this.handleMouseLeave.bind(this)
     }
 
     componentDidMount() {
@@ -24,7 +28,10 @@ class App extends React.Component {
     navHandleKeyDown(e) {
         if (e.keyCode === 87) {
             this.props.toggleWorksMenu(this.props.worksMenuVisible);
-            this.worksLED();
+        }
+
+        if (e.keyCode === 27) {
+            this.props.closeTopWindow(this.props.worksMenuVisible);
         }
     }
 
@@ -35,6 +42,76 @@ class App extends React.Component {
         } else {
             this.refs['worksDot'].classList.add('dotHighlighted');
             this.refs['worksSmallerDot'].classList.add('smallerDotHighlighted');
+        }
+    }
+
+    // DRAGGING FUNCTIONALITY >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    handleMouseDown(e, component) {
+
+        var elem = document.getElementsByClassName(component);
+
+        var posX = elem[0].offsetLeft;
+        var posY = elem[0].offsetTop;
+
+        this.props.toggleDragging(true);
+
+        var coords = {
+            x: e.clientX - parseInt(posX),
+            y: e.clientY - parseInt(posY)
+        };
+
+        this.props.setInitialCoords(coords, component);
+
+        e.stopPropagation();
+        e.preventDefault();
+    }
+
+    handleDrag(e, component) {
+
+        if (!this.props.dragging) {
+            return
+        }
+
+        var oldLeft;
+        var oldTop;
+
+        this.props.worksVisible.map(work => {
+            if (work.name == component) {
+                oldLeft = work.x;
+                oldTop = work.y;
+            }
+        })
+
+        var newCoords = {
+            x: e.clientX - oldLeft,
+            y: e.clientY - oldTop
+        }
+
+        this.props.setDragCoords(newCoords, component);
+
+        e.stopPropagation();
+        e.preventDefault();
+    }
+
+    handleMouseUp(e) {
+
+        if (this.props.dragging) {
+            this.props.toggleDragging(false);
+
+            e.stopPropagation();
+            e.preventDefault();
+        }
+
+    }
+
+    handleMouseLeave(e) {
+        
+        if (this.props.dragging) {
+            this.props.toggleDragging(false);
+
+            e.stopPropagation();
+            e.preventDefault();
         }
     }
 
@@ -51,7 +128,7 @@ class App extends React.Component {
                     <p>Lachlan Kosaniukinnes</p>
                 </div>
                 <div className="navLinks">
-                    <div className="linkWrapper"><div className="dot" ref="worksDot"><div className="smallerDot" ref="worksSmallerDot"></div></div><a onClick={() => {this.props.toggleWorksMenu(this.props.worksMenuVisible); this.worksLED()}}>Works</a></div>
+                    <div className="linkWrapper"><div className="dot" ref="worksDot"><div className="smallerDot" ref="worksSmallerDot"></div></div><a onClick={() => this.props.toggleWorksMenu(this.props.worksMenuVisible)}>Works</a></div>
                     <div className="linkWrapper"><div className="dot" ref="cvDot"><div className="smallerDot" ref="cvSmallerDot"></div></div><a onClick={() => this.cvHandleClick()}>CV</a></div>
                     <div className="linkWrapper"><div className="dot" ref="emailDot"><div className="smallerDot" ref="emailSmallerDot"></div></div><a onClick={() => this.emailHandleClick()}>mail@tslki.com</a></div>
                 </div>
@@ -59,25 +136,49 @@ class App extends React.Component {
                 <Outfits />
                 {this.props.worksMenuVisible && <Works
                     worksLED ={this.worksLED}
+                    handleMouseDown = {this.handleMouseDown}
+                    handleMouseUp = {this.handleMouseUp}
+                    handleDrag = {this.handleDrag}
+                    handleMouseLeave = {this.handleMouseLeave}
                 />}
                 {this.props.worksVisible && this.props.worksVisible.map((work) => {
                     if (work.name === 'carmonica' && work.visible) {
-                        return <Carmonica />
+                        return <Carmonica ref="carmonica"
+                            handleMouseDown = {this.handleMouseDown}
+                            handleMouseUp = {this.handleMouseUp}
+                            handleDrag = {this.handleDrag}
+                            handleMouseLeave = {this.handleMouseLeave}
+                        />
                     }
                 })}
                 {this.props.worksVisible && this.props.worksVisible.map((work) => {
                     if (work.name === 'pink' && work.visible) {
-                        return <Pink />
+                        return <Pink ref="pink"
+                            handleMouseDown = {this.handleMouseDown}
+                            handleMouseUp = {this.handleMouseUp}
+                            handleDrag = {this.handleDrag}
+                            handleMouseLeave = {this.handleMouseLeave}
+                        />
                     }
                 })}
                 {this.props.worksVisible && this.props.worksVisible.map((work) => {
                     if (work.name === 'twelve' && work.visible) {
-                        return <Twelve />
+                        return <Twelve ref="twelve"
+                            handleMouseDown = {this.handleMouseDown}
+                            handleMouseUp = {this.handleMouseUp}
+                            handleDrag = {this.handleDrag}
+                            handleMouseLeave = {this.handleMouseLeave}
+                        />
                     }
                 })}
                 {this.props.worksVisible && this.props.worksVisible.map((work) => {
                     if (work.name === 'raitre' && work.visible) {
-                        return <Raitre />
+                        return <Raitre ref="raitre"
+                            handleMouseDown = {this.handleMouseDown}
+                            handleMouseUp = {this.handleMouseUp}
+                            handleDrag = {this.handleDrag}
+                            handleMouseLeave = {this.handleMouseLeave}
+                        />
                     }
                 })}
             </div>
@@ -90,7 +191,8 @@ const mapStateToProps = (state) => {
         worksMenuVisible: state.worksMenuVisible,
         worksVisible: state.worksVisible && state.worksVisible,
         topZIndex: state.topZIndex,
-        allZIndex: state.allZIndex
+        allZIndex: state.allZIndex,
+        dragging: state.dragging && state.dragging,
     }
 }
 
@@ -102,6 +204,22 @@ const mapDispatchToProps = (dispatch) => {
 
         toggleWorksMenu(visible) {
             dispatch(toggleWorksMenu(visible))
+        },
+
+        closeTopWindow(visible) {
+            dispatch(closeTopWindow(visible))
+        },
+
+        toggleDragging(what) {
+            dispatch(toggleDragging(what))
+        },
+
+        setInitialCoords(coords, component) {
+            dispatch(setInitialCoords(coords, component))
+        },
+
+        setDragCoords(coords, component) {
+            dispatch(setDragCoords(coords, component))
         }
     }
 }

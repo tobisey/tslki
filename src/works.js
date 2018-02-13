@@ -18,22 +18,25 @@ class Works extends React.Component {
     componentDidMount() {
         window.addEventListener("keydown", this.worksHandleKeyDown);
         this.setState({current: 1});
-        this.props.windowMounted('works')
+        this.props.windowMounted('works');
+        this.props.worksLED();
     }
 
     componentWillUnmount() {
         window.removeEventListener("keydown", this.worksHandleKeyDown);
         this.props.windowUnmounted('works');
+        this.props.worksLED();
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps)
         nextProps.allZIndex.map(component => {
             if (component.name === 'works') {
                 this.refs.works.style.zIndex = component.zIndex
             }
         });
     }
+
+
 
     worksHandleKeyDown(e) {
         if (e.keyCode === 40) {
@@ -93,12 +96,6 @@ class Works extends React.Component {
             }
 
         }
-
-        if (e.keyCode === 27) {
-            this.setState({current: 1});
-            this.props.toggleWorksMenu(this.props.worksMenuVisible);
-            this.props.worksLED();
-        }
     }
 
     worksHandleMouseEnter(x) {
@@ -135,7 +132,6 @@ class Works extends React.Component {
     closeWorks() {
         this.setState({current: 1});
         this.props.toggleWorksMenu(this.props.worksMenuVisible);
-        this.props.worksLED();
     }
 
     startBringingToFront(component) {
@@ -146,8 +142,24 @@ class Works extends React.Component {
 
     render() {
 
+        var left;
+        var top;
+
+        this.props.worksVisible.map(work => {
+            if (work.name == 'works') {
+                left = work.x2;
+                top = work.y2;
+            }
+        })
+
         return (
-            <div onClick={() => this.startBringingToFront('works')} ref="works" className="works">
+            <div style={{left: left + 'px', top: top + 'px'}}
+                 onMouseMove={(e) => this.props.handleDrag(e, 'works')}
+                 onMouseUp={(e) => this.props.handleMouseUp(e)}
+                 onMouseDown={(e) => {this.startBringingToFront('works'); this.props.handleMouseDown(e, 'works')}}
+                 onMouseLeave={(e) => this.props.handleMouseLeave(e)}
+                 ref="works" className="works">
+
                 <div className="esc"><a onClick={() => {this.closeWorks()}}>Esc</a></div>
                 <div className="scrollable" ref="scrollable" onMouseLeave={() => this.worksResumeCurrent()}>
 
@@ -286,7 +298,7 @@ class Works extends React.Component {
 const mapStateToProps = (state) => {
     return {
         worksMenuVisible: state.worksMenuVisible,
-        worksVisible: state.worksVisible && state.worksVisible,
+        worksVisible: state.worksVisible,
         topZIndex: state.topZIndex,
         allZIndex: state. allZIndex
     }

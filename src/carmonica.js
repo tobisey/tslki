@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { windowMounted, windowUnmounted, bringWindowToFront } from './actions.js';
+import { windowMounted, windowUnmounted, bringWindowToFront, toggleWork } from './actions.js';
 
 class Carmonica extends React.Component {
     constructor(props) {
@@ -20,7 +20,6 @@ class Carmonica extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps)
         nextProps.allZIndex.map(component => {
             if (component.name === 'carmonica') {
                 this.refs.carmonica.style.zIndex = component.zIndex
@@ -35,13 +34,30 @@ class Carmonica extends React.Component {
     }
 
     render() {
+
+        var left;
+        var top;
+
+        this.props.worksVisible.map(work => {
+            if (work.name == 'carmonica') {
+                left = work.x2;
+                top = work.y2;
+            }
+        })
+
         return (
-            <div onClick={() => this.startBringingToFront('carmonica')} className="window carmonica" ref="carmonica">
+            <div style={{left: left + 'px', top: top + 'px'}}
+                 onMouseMove={(e) => this.props.handleDrag(e, 'carmonica')}
+                 onMouseUp={(e) => this.props.handleMouseUp(e)}
+                 onMouseDown={(e) => {this.startBringingToFront('carmonica'); this.props.handleMouseDown(e, 'carmonica')}}
+                 onMouseLeave={(e) => this.props.handleMouseLeave(e)}
+                 className="window carmonica" ref="carmonica">
+
                 <div className="smallXWrapper">
-                    <a className="smallX" onClick={this.props.showCarmonica}>Esc</a>
+                    <a className="smallX" onClick={() => this.props.toggleWork('carmonica')}>Esc</a>
                     <p className="smallTitle">Carmonica Harmonicar</p>
                 </div>
-                <video src="/videos/carmonica.mp4" width="638px" height="384px" controls></video>
+                <video id='carmVid' src="/videos/carmonica.mp4" width="638px" height="384px" controls></video>
             </div>
         )
     }
@@ -50,7 +66,8 @@ class Carmonica extends React.Component {
 const mapStateToProps = (state) => {
     return {
         topZIndex: state.topZIndex,
-        allZIndex: state. allZIndex
+        allZIndex: state.allZIndex,
+        worksVisible: state.worksVisible
     }
 }
 
@@ -66,6 +83,10 @@ const mapDispatchToProps = (dispatch) => {
 
         bringWindowToFront(component) {
             dispatch(bringWindowToFront(component))
+        },
+
+        toggleWork(work) {
+            dispatch(toggleWork(work))
         }
      }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { windowMounted, windowUnmounted, bringWindowToFront } from './actions.js';
+import { windowMounted, windowUnmounted, bringWindowToFront, toggleWork } from './actions.js';
 
 
 class Pink extends React.Component {
@@ -21,7 +21,6 @@ class Pink extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps)
         nextProps.allZIndex.map(component => {
             if (component.name === 'pink') {
                 this.refs.pink.style.zIndex = component.zIndex
@@ -36,10 +35,27 @@ class Pink extends React.Component {
     }
 
     render() {
+
+        var left;
+        var top;
+
+        this.props.worksVisible.map(work => {
+            if (work.name == 'pink') {
+                left = work.x2;
+                top = work.y2;
+            }
+        })
+
         return (
-            <div onClick={() => this.startBringingToFront('pink')} className="window pink" ref="pink">
+            <div style={{left: left + 'px', top: top + 'px'}}
+                 onMouseMove={(e) => this.props.handleDrag(e, 'pink')}
+                 onMouseUp={(e) => this.props.handleMouseUp(e)}
+                 onMouseDown={(e) => {this.startBringingToFront('pink'); this.props.handleMouseDown(e, 'pink')}}
+                 onMouseLeave={(e) => this.props.handleMouseLeave(e)}
+                 className="window pink" ref="pink">
+
                 <div className="smallXWrapper">
-                    <a className="smallX" onClick={this.props.showPink}>Esc</a>
+                    <a className="smallX" onClick={() => this.props.toggleWork('pink')}>Esc</a>
                     <p className="smallTitle">Pink</p>
                 </div>
                 <video src="/videos/pink-web-edit.mp4" width="614px" height="460px" controls></video>
@@ -51,7 +67,9 @@ class Pink extends React.Component {
 const mapStateToProps = (state) => {
     return {
         topZIndex: state.topZIndex,
-        allZIndex: state. allZIndex
+        allZIndex: state. allZIndex,
+        dragging: state.dragging,
+        worksVisible: state.worksVisible
     }
 }
 
@@ -67,6 +85,10 @@ const mapDispatchToProps = (dispatch) => {
 
         bringWindowToFront(component) {
             dispatch(bringWindowToFront(component))
+        },
+
+        toggleWork(work) {
+            dispatch(toggleWork(work))
         }
     }
 }

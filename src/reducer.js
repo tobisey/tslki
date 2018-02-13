@@ -6,7 +6,8 @@ export default function reducer (state = {}, action) {
             selectedOutfit: action.selectedOutfit,
             worksVisible: action.worksVisible,
             topZIndex: action.topZIndex,
-            allZIndex: action.allZIndex
+            allZIndex: action.allZIndex,
+            dragging: action.dragging,
         })
     }
 
@@ -93,9 +94,69 @@ export default function reducer (state = {}, action) {
         })
     }
 
+    if (action.type == 'CLOSE_TOP_WINDOW') {
+        var topWindow;
+        state.allZIndex.map(component => {
+            if (component.zIndex === state.topZIndex) {
+                topWindow = component.name
+            }
+            return component
+        })
+        if (topWindow === 'works') {
+            state = Object.assign({}, state, {
+                worksMenuVisible: action.worksMenuVisible
+            })
+        } else {
+            state = Object.assign({}, state, {
+                worksVisible: state.worksVisible.map(work => {
+                    if (work.name === topWindow) {
+                        return Object.assign({}, work, {
+                            visible: !work.visible
+                        })
+                    }
+                    return work
+                })
+            })
+        }
+    }
+
     if (action.type == 'CHANGE_SELECTED_OUTFIT') {
         state = Object.assign({}, state, {
             selectedOutfit: action.selectedOutfit
+        })
+    }
+
+    if (action.type == 'TOGGLE_DRAGGING') {
+        state = Object.assign({}, state, {
+            dragging: action.what
+        })
+    }
+
+    if (action.type == 'SET_INITIAL_COORDS') {
+        state = Object.assign({}, state, {
+            worksVisible: state.worksVisible.map(work => {
+                if (action.component == work.name) {
+                    return Object.assign({}, work, {
+                        x: action.coords.x,
+                        y: action.coords.y,
+                    })
+                }
+                return work
+            })
+        })
+    }
+
+    if (action.type == 'SET_DRAG_COORDS') {
+        state = Object.assign({}, state, {
+            worksVisible: state.worksVisible.map(work => {
+                if (action.component == work.name) {
+                    return Object.assign({}, work, {
+                        x2: action.coords.x,
+                        y2: action.coords.y,
+                    })
+                }
+                return work
+            })
         })
     }
 
