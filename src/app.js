@@ -106,7 +106,7 @@ class App extends React.Component {
     }
 
     handleMouseLeave(e) {
-        
+
         if (this.props.dragging) {
             this.props.toggleDragging(false);
 
