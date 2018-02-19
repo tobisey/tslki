@@ -4,6 +4,13 @@ import { defaults, toggleWorksMenu, closeTopWindow, toggleMouseDown, toggleDragg
 import Outfits from './outfits.js'
 import Works from './works.js'
 import Carmonica from './carmonica.js'
+import Parallels from './parallels.js'
+import Ef1 from './ef1.js'
+import Ef2 from './ef2.js'
+import Ef3 from './ef3.js'
+import Ef4 from './ef4.js'
+import Ef5 from './ef5.js'
+import Ef6 from './ef6.js'
 import Pink from './pink.js'
 import Twelve from './twelve.js'
 import Raitre from './raitre.js'
@@ -144,6 +151,76 @@ class App extends React.Component {
                 {this.props.worksVisible && this.props.worksVisible.map((work) => {
                     if (work.name === 'carmonica' && work.visible) {
                         return <Carmonica ref="carmonica"
+                            handleMouseDown = {this.handleMouseDown}
+                            handleMouseUp = {this.handleMouseUp}
+                            handleDrag = {this.handleDrag}
+                            handleMouseLeave = {this.handleMouseLeave}
+                        />
+                    }
+                })}
+                {this.props.worksVisible && this.props.worksVisible.map((work) => {
+                    if (work.name === 'parallels' && work.visible) {
+                        return <Parallels ref="parallels"
+                            handleMouseDown = {this.handleMouseDown}
+                            handleMouseUp = {this.handleMouseUp}
+                            handleDrag = {this.handleDrag}
+                            handleMouseLeave = {this.handleMouseLeave}
+                        />
+                    }
+                })}
+                {this.props.worksVisible && this.props.worksVisible.map((work) => {
+                    if (work.name === 'ef1' && work.visible) {
+                        return <Ef1 ref="ef1"
+                            handleMouseDown = {this.handleMouseDown}
+                            handleMouseUp = {this.handleMouseUp}
+                            handleDrag = {this.handleDrag}
+                            handleMouseLeave = {this.handleMouseLeave}
+                        />
+                    }
+                })}
+                {this.props.worksVisible && this.props.worksVisible.map((work) => {
+                    if (work.name === 'ef2' && work.visible) {
+                        return <Ef2 ref="ef2"
+                            handleMouseDown = {this.handleMouseDown}
+                            handleMouseUp = {this.handleMouseUp}
+                            handleDrag = {this.handleDrag}
+                            handleMouseLeave = {this.handleMouseLeave}
+                        />
+                    }
+                })}
+                {this.props.worksVisible && this.props.worksVisible.map((work) => {
+                    if (work.name === 'ef3' && work.visible) {
+                        return <Ef3 ref="ef3"
+                            handleMouseDown = {this.handleMouseDown}
+                            handleMouseUp = {this.handleMouseUp}
+                            handleDrag = {this.handleDrag}
+                            handleMouseLeave = {this.handleMouseLeave}
+                        />
+                    }
+                })}
+                {this.props.worksVisible && this.props.worksVisible.map((work) => {
+                    if (work.name === 'ef4' && work.visible) {
+                        return <Ef4 ref="ef4"
+                            handleMouseDown = {this.handleMouseDown}
+                            handleMouseUp = {this.handleMouseUp}
+                            handleDrag = {this.handleDrag}
+                            handleMouseLeave = {this.handleMouseLeave}
+                        />
+                    }
+                })}
+                {this.props.worksVisible && this.props.worksVisible.map((work) => {
+                    if (work.name === 'ef5' && work.visible) {
+                        return <Ef5 ref="ef5"
+                            handleMouseDown = {this.handleMouseDown}
+                            handleMouseUp = {this.handleMouseUp}
+                            handleDrag = {this.handleDrag}
+                            handleMouseLeave = {this.handleMouseLeave}
+                        />
+                    }
+                })}
+                {this.props.worksVisible && this.props.worksVisible.map((work) => {
+                    if (work.name === 'ef6' && work.visible) {
+                        return <Ef6 ref="ef6"
                             handleMouseDown = {this.handleMouseDown}
                             handleMouseUp = {this.handleMouseUp}
                             handleDrag = {this.handleDrag}

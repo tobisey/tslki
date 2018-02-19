@@ -334,6 +334,102 @@ a:hover {
 
 
 
+/* PARALLELS 8============================================D ~~~ */
+
+.parallels {
+    justify-content: space-between;
+    align-items: flex-start;
+    /* width: 1180px; */
+    height: 420px;
+    padding: 10px 10px;
+    top: 10vh;
+    left: 15vw;
+}
+
+.paraVidWrap {
+    height: 312px;
+    margin-top: 45px;
+    border-bottom: 5px solid #B4B5B2;
+    border-right: 5px solid #838581;
+    border-left: 5px solid #2B2E2C;
+    border-top: 5px solid #252624;
+}
+
+.paraTitle {
+    position: absolute;
+    font-size: 18px;
+    margin-top: 3px;
+    padding: 0 5px;
+    right: 25px;
+    background-color: #D7D245;
+    border-bottom: 5px solid #B4B5B2;
+    border-right: 5px solid #838581;
+    border-left: 5px solid #2B2E2C;
+    border-top: 5px solid #252624;
+}
+
+
+
+/* EDITED FILM 1 8============================================D ~~~ */
+
+.ef1 {
+    height: 461px;
+    top: 10vh;
+    left: 15vw;
+}
+
+
+
+/* EDITED FILM 2 8============================================D ~~~ */
+
+.ef2 {
+    height: 444px;
+    top: 10vh;
+    left: 15vw;
+}
+
+
+
+/* EDITED FILM 3 8============================================D ~~~ */
+
+.ef3 {
+    height: 360px;
+    top: 10vh;
+    left: 15vw;
+}
+
+
+
+/* EDITED FILM 4 8============================================D ~~~ */
+
+.ef4 {
+    height: 344px;
+    top: 10vh;
+    left: 15vw;
+}
+
+
+
+/* EDITED FILM 5 8============================================D ~~~ */
+
+.ef5 {
+    height: 442px;
+    top: 10vh;
+    left: 15vw;
+}
+
+
+
+/* EDITED FILM 6 8============================================D ~~~ */
+
+.ef6 {
+    height: 432px;
+    top: 10vh;
+    left: 15vw;
+}
+
+
+
 /* PINK 8============================================D ~~~ */
 
 .pink {
