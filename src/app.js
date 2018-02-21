@@ -59,12 +59,12 @@ class App extends React.Component {
         var elem = document.getElementsByClassName(component);
 
         if (component == 'works') {
-            var posX = elem[0].offsetLeft;
             var posY = elem[0].offsetTop - 100;
         } else {
-            var posX = elem[0].offsetLeft;
             var posY = elem[0].offsetTop;
         }
+
+        var posX = elem[0].offsetLeft;
 
         this.props.toggleDragging(true);
 
