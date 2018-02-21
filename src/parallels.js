@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { windowMounted, windowUnmounted, bringWindowToFront, toggleWork } from './actions.js';
+import { windowMounted, windowUnmounted, bringWindowToFront, toggleWork, rr, stopRr, playing, paused, stopped, ff, stopFf, resetVid } from './actions.js';
 
 class Parallels extends React.Component {
     constructor(props) {
@@ -12,11 +12,16 @@ class Parallels extends React.Component {
         this.props.windowMounted('parallels');
         setTimeout(() => {
             this.refs.parallels.style.zIndex = this.props.topZIndex;
-        }, 1)
+        }, 1);
+        var vid = document.getElementsByClassName('vid')[0];
+        vid.ontimeupdate = () => {
+            this.refs.time.innerHTML = ((vid.currentTime / vid.duration) * 100).toFixed(2) + '%';
+        }
     }
 
     componentWillUnmount() {
         this.props.windowUnmounted('parallels');
+        this.props.resetVid('parallels');
     }
 
     componentWillReceiveProps(nextProps) {
@@ -30,6 +35,43 @@ class Parallels extends React.Component {
     startBringingToFront(component) {
         if (this.refs.parallels.style.zIndex != this.props.topZIndex) {
             this.props.bringWindowToFront(component);
+        }
+    }
+
+    rrVids() {
+        if (this.props.worksVisible[2].playing || this.props.worksVisible[2].paused) {
+            this.refs.paraVidOne.currentTime -= 5;
+            this.refs.paraVidTwo.currentTime -= 5;
+            setTimeout(() => {
+                this.props.stopRr('parallels');
+            }, 200)
+        }
+    }
+
+    playVids() {
+        this.refs.paraVidOne.play();
+        this.refs.paraVidTwo.play();
+    }
+
+    pauseVids() {
+        this.refs.paraVidOne.pause();
+        this.refs.paraVidTwo.pause();
+    }
+
+    stopVids() {
+        this.refs.paraVidOne.currentTime = 0;
+        this.refs.paraVidTwo.currentTime = 0;
+        this.refs.paraVidOne.pause();
+        this.refs.paraVidTwo.pause();
+    }
+
+    ffVids() {
+        if (this.props.worksVisible[2].playing || this.props.worksVisible[2].paused) {
+            this.refs.paraVidOne.currentTime += 5;
+            this.refs.paraVidTwo.currentTime += 5;
+            setTimeout(() => {
+                this.props.stopFf('parallels');
+            }, 200)
         }
     }
 
@@ -51,24 +93,99 @@ class Parallels extends React.Component {
                  onMouseUp={(e) => this.props.handleMouseUp(e)}
                  onMouseDown={(e) => {this.startBringingToFront('parallels'); this.props.handleMouseDown(e, 'parallels')}}
                  onMouseLeave={(e) => this.props.handleMouseLeave(e)}
-                 className="window parallels" ref="parallels">
+                 className="parallels" ref="parallels">
 
-                <div className="smallXWrapper">
-                    <a className="paraX" onClick={() => this.props.toggleWork('parallels')}>Esc</a>
-                    <p className="paraTitle">Parallels</p>
+                <div className="escWrapper">
+                    <a className="windowEsc" onClick={() => this.props.toggleWork('parallels')}>Esc</a>
+                    <p className="windowTitle">Parallels</p>
                 </div>
-                <div className="paraVidsWrapper">
-                <div className="paraVidWrap" ref="paraVidOne">
-                    <video className='paraVid' src="/videos/para-one.mp4" width="574px" height="312px" controls></video>
+                <div className="paraVids">
+                    <div className="paraVidWrap">
+                        <video className="vid" ref='paraVidOne' src="/videos/para-one.mp4" width="574px" height="312px" loop></video>
+                    </div>
+                    <div className="paraVidWrap">
+                        <video ref='paraVidTwo' src="/videos/para-two.mp4" width="574px" height="312px" loop></video>
+                    </div>
                 </div>
-                <div className="paraVidWrap" ref="paraVidTwo">
-                    <video className='paraVid' src="/videos/para-two.mp4" width="574px" height="312px" controls></video>
-                </div>
-                </div>
-                <div className="controlsRow">
-                    <div className="controlsOption" ref="shades"><a onClick={() => {this.props.changeSelectedOutfit('shades'); this.highlightSelectedOutfitButton('shades')}}>Glasses</a></div>
-                    <div className="controlsOption" ref="speedo"><a onClick={() => {this.props.changeSelectedOutfit('speedo'); this.highlightSelectedOutfitButton('speedo')}}>Speedo</a></div>
-                    <div className="controlsOption on" ref="lowEnd"><a onClick={() => {this.props.changeSelectedOutfit('lowEnd'); this.highlightSelectedOutfitButton('lowEnd')}}>LowEnd</a></div>
+                <div className="videoControls">
+
+                    <div className="buttons">
+                        {this.props.worksVisible && this.props.worksVisible.map(work => {
+                            if (work.name === 'parallels' && work.rr === false) {
+                                return <div className="videoControlsOption" ref="rr"
+                                            onClick={() => {this.rrVids(); this.props.rr('parallels')}}>
+                                            <div className="rrIcon"></div>
+                                            <div className="rrIcon"></div>
+                                       </div>
+                            } else if (work.name === 'parallels' && work.rr) {
+                                return <div className="videoControlsOption videoControlSelected" ref="rr">
+                                            <div className="rrIcon rring"></div>
+                                            <div className="rrIcon rring"></div>
+                                       </div>
+                            }
+                        })}
+
+                        {this.props.worksVisible && this.props.worksVisible.map(work => {
+                            if (work.name === 'parallels' && work.playing === false) {
+                                return <div className="videoControlsOption" ref="play"
+                                            onClick={() => {this.playVids(); this.props.playing('parallels')}}>
+                                            <div className="playIcon"></div>
+                                       </div>
+                            } else if (work.name === 'parallels' && work.playing) {
+                                return <div className="videoControlsOption videoControlSelected" ref="play">
+                                            <div className="playIcon playing"></div>
+                                       </div>
+                            }
+                        })}
+
+                        {this.props.worksVisible && this.props.worksVisible.map(work => {
+                            if (work.name === 'parallels' && work.paused === false) {
+                                return <div className="videoControlsOption" ref="pause"
+                                            onClick={() => {this.pauseVids(); this.props.paused('parallels')}}>
+                                            <div className="pauseIcon"></div>
+                                            <div className="pauseIcon"></div>
+                                       </div>
+                            } else if (work.name === 'parallels' && work.paused) {
+                                return <div className="videoControlsOption videoControlSelected" ref="pause">
+                                            <div className="pauseIcon pausedStopped"></div>
+                                            <div className="pauseIcon pausedStopped"></div>
+                                       </div>
+                            }
+                        })}
+
+                        {this.props.worksVisible && this.props.worksVisible.map(work => {
+                            if (work.name === 'parallels' && work.stopped === false) {
+                                return <div className="videoControlsOption" ref="stop"
+                                            onClick={() => {this.stopVids(); this.props.stopped('parallels')}}>
+                                            <div className="stopIcon"></div>
+                                       </div>
+                            } else if (work.name === 'parallels' && work.stopped) {
+                                return <div className="videoControlsOption videoControlSelected" ref="stop">
+                                            <div className="stopIcon pausedStopped"></div>
+                                       </div>
+                            }
+                        })}
+
+                        {this.props.worksVisible && this.props.worksVisible.map(work => {
+                            if (work.name === 'parallels' && work.ff === false) {
+                                return <div className="videoControlsOption" ref="ff"
+                                            onClick={() => {this.ffVids(); this.props.ff('parallels')}}>
+                                            <div className="ffIcon"></div>
+                                            <div className="ffIcon"></div>
+                                       </div>
+                            } else if (work.name === 'parallels' && work.ff) {
+                                return <div className="videoControlsOption videoControlSelected" ref="ff">
+                                            <div className="ffIcon ffing"></div>
+                                            <div className="ffIcon ffing"></div>
+                                       </div>
+                            }
+                        })}
+                    </div>
+
+                    <div className="timeWrap">
+                        <p className="time" ref="time">0.00%</p>
+                    </div>
+
                 </div>
             </div>
         )
@@ -99,6 +216,38 @@ const mapDispatchToProps = (dispatch) => {
 
         toggleWork(work) {
             dispatch(toggleWork(work))
+        },
+
+        rr(component) {
+            dispatch(rr(component))
+        },
+
+        stopRr(component) {
+            dispatch(stopRr(component))
+        },
+
+        playing(component) {
+            dispatch(playing(component))
+        },
+
+        paused(component) {
+            dispatch(paused(component))
+        },
+
+        stopped(component) {
+            dispatch(stopped(component))
+        },
+
+        ff(component) {
+            dispatch(ff(component))
+        },
+
+        stopFf(component) {
+            dispatch(stopFf(component))
+        },
+
+        resetVid(component) {
+            dispatch(resetVid(component))
         }
      }
 }

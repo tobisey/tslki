@@ -53,11 +53,93 @@ class Carmonica extends React.Component {
                  onMouseLeave={(e) => this.props.handleMouseLeave(e)}
                  className="window carmonica" ref="carmonica">
 
-                <div className="smallXWrapper">
-                    <a className="smallX" onClick={() => this.props.toggleWork('carmonica')}>Esc</a>
-                    <p className="smallTitle">Carmonica Harmonicar</p>
+                <div className="escWrapper">
+                    <a className="windowEsc" onClick={() => this.props.toggleWork('carmonica')}>Esc</a>
+                    <p className="windowTitle">Carmonica Harmonicar</p>
                 </div>
-                <video id='carmVid' src="/videos/carmonica.mp4" width="638px" height="384px" controls></video>
+
+                <video className='carmVid' src="/videos/carmonica.mp4" width="638px" height="384px"></video>
+
+                <div className="videoControls">
+
+                <div className="buttons">
+                    {this.props.worksVisible && this.props.worksVisible.map(work => {
+                        if (work.name === 'pink' && work.rr === false) {
+                            return <div className="videoControlsOption" ref="rr"
+                                        onClick={() => {this.rrVids(); this.props.rr('pink')}}>
+                                        <div className="rrIcon"></div>
+                                        <div className="rrIcon"></div>
+                                   </div>
+                        } else if (work.name === 'pink' && work.rr) {
+                            return <div className="videoControlsOption videoControlSelected" ref="rr">
+                                        <div className="rrIcon rring"></div>
+                                        <div className="rrIcon rring"></div>
+                                   </div>
+                        }
+                    })}
+
+                    {this.props.worksVisible && this.props.worksVisible.map(work => {
+                        if (work.name === 'pink' && work.playing === false) {
+                            return <div className="videoControlsOption" ref="play"
+                                        onClick={() => {this.playVids(); this.props.playing('pink')}}>
+                                        <div className="playIcon"></div>
+                                   </div>
+                        } else if (work.name === 'pink' && work.playing) {
+                            return <div className="videoControlsOption videoControlSelected" ref="play">
+                                        <div className="playIcon playing"></div>
+                                   </div>
+                        }
+                    })}
+
+                    {this.props.worksVisible && this.props.worksVisible.map(work => {
+                        if (work.name === 'pink' && work.paused === false) {
+                            return <div className="videoControlsOption" ref="pause"
+                                        onClick={() => {this.pauseVids(); this.props.paused('pink')}}>
+                                        <div className="pauseIcon"></div>
+                                        <div className="pauseIcon"></div>
+                                   </div>
+                        } else if (work.name === 'pink' && work.paused) {
+                            return <div className="videoControlsOption videoControlSelected" ref="pause">
+                                        <div className="pauseIcon pausedStopped"></div>
+                                        <div className="pauseIcon pausedStopped"></div>
+                                   </div>
+                        }
+                    })}
+
+                    {this.props.worksVisible && this.props.worksVisible.map(work => {
+                        if (work.name === 'pink' && work.stopped === false) {
+                            return <div className="videoControlsOption" ref="stop"
+                                        onClick={() => {this.stopVids(); this.props.stopped('pink')}}>
+                                        <div className="stopIcon"></div>
+                                   </div>
+                        } else if (work.name === 'pink' && work.stopped) {
+                            return <div className="videoControlsOption videoControlSelected" ref="stop">
+                                        <div className="stopIcon pausedStopped"></div>
+                                   </div>
+                        }
+                    })}
+
+                    {this.props.worksVisible && this.props.worksVisible.map(work => {
+                        if (work.name === 'pink' && work.ff === false) {
+                            return <div className="videoControlsOption" ref="ff"
+                                        onClick={() => {this.ffVids(); this.props.ff('pink')}}>
+                                        <div className="ffIcon"></div>
+                                        <div className="ffIcon"></div>
+                                   </div>
+                        } else if (work.name === 'pink' && work.ff) {
+                            return <div className="videoControlsOption videoControlSelected" ref="ff">
+                                        <div className="ffIcon ffing"></div>
+                                        <div className="ffIcon ffing"></div>
+                                   </div>
+                        }
+                    })}
+                </div>
+
+                    <div className="timeWrap">
+                        <p className="time" ref="time">0.00%</p>
+                    </div>
+
+                </div>
             </div>
         )
     }
