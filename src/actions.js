@@ -7,7 +7,7 @@ export function defaults() {
         dragCoords: null,
         worksVisible: [
             {name: 'works', x: 800, y: 40, x2: 800, y2: 40},
-            {id: 3, name: 'carmonica', visible: false, x: 200, y:170, x2: 200, y2: 170},
+            {id: 3, name: 'carmonica', visible: false, x: 200, y:170, x2: 200, y2: 170, rr: false, playing: false, paused: false, stopped: false, ff: false},
             {id: 6, name: 'parallels', visible: false, x: 200, y:170, x2: 200, y2: 170, rr: false, playing: false, paused: false, stopped: false, ff: false},
             {id: 7, name: 'ef1', visible: false, x: 200, y:170, x2: 200, y2: 170},
             {id: 7, name: 'ef2', visible: false, x: 220, y:190, x2: 220, y2: 190},
@@ -16,8 +16,8 @@ export function defaults() {
             {id: 7, name: 'ef5', visible: false, x: 280, y:250, x2: 280, y2: 250},
             {id: 7, name: 'ef6', visible: false, x: 300, y:270, x2: 300, y2: 270},
             {id: 9, name: 'pink', visible: false, x: 400, y: 300, x2: 400, y2: 300, rr: false, playing: false, paused: false, stopped: false, ff: false},
-            {id: 11, name: 'twelve', visible: false, x: 600, y: 500, x2: 600, y2: 500},
-            {id: 13, name: 'raitre', visible: false, x: 100, y: 680, x2: 100, y2: 680}
+            {id: 11, name: 'twelve', visible: false, x: 600, y: 500, x2: 600, y2: 500, rr: false, playing: false, paused: false, stopped: false, ff: false},
+            {id: 13, name: 'raitre', visible: false, x: 100, y: 380, x2: 100, y2: 380, rr: false, playing: false, paused: false, stopped: false, ff: false}
         ],
         topZIndex: 10,
         allZIndex: [

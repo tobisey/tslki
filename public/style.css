@@ -341,9 +341,7 @@ a:hover {
 /* CARMONICA 8============================================D ~~~ */
 
 .carmonica {
-    height: 524px;
-    top: 10vh;
-    left: 15vw;
+    height: 496px;
 }
 
 .carmVid {
@@ -599,7 +597,6 @@ a:hover {
 /* PINK 8============================================D ~~~ */
 
 .pink {
-    /* width: 624px; */
     height: 600px;
     top: 15vh;
     left: 35vw;
@@ -617,17 +614,25 @@ a:hover {
 /* TWELVE 8============================================D ~~~ */
 
 .twelve {
-    height: 460px;
-    top: 16vh;
-    left: 24vw;
+    height: 600px;
 }
 
-
+.twelveVid {
+    border-bottom: 5px solid #B4B5B2;
+    border-right: 5px solid #838581;
+    border-left: 5px solid #2B2E2C;
+    border-top: 5px solid #252624;
+}
 
 /* RAITRE 8============================================D ~~~ */
 
 .raitre {
-    height: 460px;
-    top: 18vh;
-    left: 29vw;
+    height: 600px;
+}
+
+.raitreVid {
+    border-bottom: 5px solid #B4B5B2;
+    border-right: 5px solid #838581;
+    border-left: 5px solid #2B2E2C;
+    border-top: 5px solid #252624;
 }

@@ -16,7 +16,9 @@ class Pink extends React.Component {
         }, 1)
         var vid = document.getElementsByClassName('pinkVid')[0];
         vid.ontimeupdate = () => {
-            this.refs.time.innerHTML = ((vid.currentTime / vid.duration) * 100).toFixed(2) + '%';
+            if (this.refs.time) {
+                this.refs.time.innerHTML = ((vid.currentTime / vid.duration) * 100).toFixed(2) + '%';
+            }
             if (vid.currentTime === vid.duration) {
                 setTimeout(() => {
                     this.stopVids();
@@ -197,7 +199,6 @@ const mapStateToProps = (state) => {
     return {
         topZIndex: state.topZIndex,
         allZIndex: state. allZIndex,
-        dragging: state.dragging,
         worksVisible: state.worksVisible
     }
 }
