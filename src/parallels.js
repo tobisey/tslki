@@ -13,10 +13,6 @@ class Parallels extends React.Component {
         setTimeout(() => {
             this.refs.parallels.style.zIndex = this.props.topZIndex;
         }, 1);
-        // var vid = document.getElementsByClassName('vid')[0];
-        // vid.ontimeupdate = () => {
-        //     this.refs.time.innerHTML = ((vid.currentTime / vid.duration) * 100).toFixed(2) + '%';
-        // }
     }
 
     componentWillUnmount() {
@@ -39,13 +35,17 @@ class Parallels extends React.Component {
     }
 
     rrVids() {
-        if (this.props.worksVisible[2].playing || this.props.worksVisible[2].paused) {
-            this.refs.paraVidOne.currentTime -= 5;
-            this.refs.paraVidTwo.currentTime -= 5;
-            setTimeout(() => {
-                this.props.stopRr('parallels');
-            }, 200)
-        }
+        this.props.worksVisible.map(work => {
+            if (work.name == 'parallels') {
+                if (work.playing || work.paused) {
+                    this.refs.paraVidOne.currentTime -= 5;
+                    this.refs.paraVidTwo.currentTime -= 5;
+                    setTimeout(() => {
+                        this.props.stopRr('parallels');
+                    }, 200)
+                }
+            }
+        })
     }
 
     playVids() {
@@ -66,13 +66,17 @@ class Parallels extends React.Component {
     }
 
     ffVids() {
-        if (this.props.worksVisible[2].playing || this.props.worksVisible[2].paused) {
-            this.refs.paraVidOne.currentTime += 5;
-            this.refs.paraVidTwo.currentTime += 5;
-            setTimeout(() => {
-                this.props.stopFf('parallels');
-            }, 200)
-        }
+        this.props.worksVisible.map(work => {
+            if (work.name == 'parallels') {
+                if (work.playing || work.paused) {
+                    this.refs.paraVidOne.currentTime += 5;
+                    this.refs.paraVidTwo.currentTime += 5;
+                    setTimeout(() => {
+                        this.props.stopRr('parallels');
+                    }, 200)
+                }
+            }
+        })
     }
 
     render() {

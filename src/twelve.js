@@ -47,13 +47,16 @@ class Twelve extends React.Component {
     }
 
     rrVids() {
-        if (this.props.worksVisible[10].playing || this.props.worksVisible[10].paused) {
-            this.refs.twelveVid.currentTime -= 5;
-            this.refs.twelveVid.currentTime -= 5;
-            setTimeout(() => {
-                this.props.stopRr('twelve');
-            }, 200)
-        }
+        this.props.worksVisible.map(work => {
+            if (work.name == 'twelve') {
+                if (work.playing || work.paused) {
+                    this.refs.twelveVid.currentTime -= 5;
+                    setTimeout(() => {
+                        this.props.stopRr('twelve');
+                    }, 200)
+                }
+            }
+        })
     }
 
     playVids() {
@@ -74,13 +77,16 @@ class Twelve extends React.Component {
     }
 
     ffVids() {
-        if (this.props.worksVisible[10].playing || this.props.worksVisible[10].paused) {
-            this.refs.twelveVid.currentTime += 5;
-            this.refs.twelveVid.currentTime += 5;
-            setTimeout(() => {
-                this.props.stopFf('twelve');
-            }, 200)
-        }
+        this.props.worksVisible.map(work => {
+            if (work.name == 'twelve') {
+                if (work.playing || work.paused) {
+                    this.refs.twelveVid.currentTime += 5;
+                    setTimeout(() => {
+                        this.props.stopRr('twelve');
+                    }, 200)
+                }
+            }
+        })
     }
 
     render() {

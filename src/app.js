@@ -14,6 +14,7 @@ import Ef6 from './ef6.js'
 import Pink from './pink.js'
 import Twelve from './twelve.js'
 import Raitre from './raitre.js'
+import EditedFilms from './editedFilms.js'
 
 class App extends React.Component {
     constructor(props) {
@@ -166,6 +167,16 @@ class App extends React.Component {
                 {this.props.worksVisible && this.props.worksVisible.map((work) => {
                     if (work.name === 'parallels' && work.visible) {
                         return <Parallels ref="parallels"
+                            handleMouseDown = {this.handleMouseDown}
+                            handleMouseUp = {this.handleMouseUp}
+                            handleDrag = {this.handleDrag}
+                            handleMouseLeave = {this.handleMouseLeave}
+                        />
+                    }
+                })}
+                {this.props.worksVisible && this.props.worksVisible.map((work) => {
+                    if (work.name === 'editedFilms' && work.visible) {
+                        return <EditedFilms ref="editedFilms"
                             handleMouseDown = {this.handleMouseDown}
                             handleMouseUp = {this.handleMouseUp}
                             handleDrag = {this.handleDrag}

@@ -47,13 +47,16 @@ class Carmonica extends React.Component {
     }
 
     rrVids() {
-        if (this.props.worksVisible[1].playing || this.props.worksVisible[1].paused) {
-            this.refs.carmVid.currentTime -= 5;
-            this.refs.carmVid.currentTime -= 5;
-            setTimeout(() => {
-                this.props.stopRr('carmonica');
-            }, 200)
-        }
+        this.props.worksVisible.map(work => {
+            if (work.name == 'carmonica') {
+                if (work.playing || work.paused) {
+                    this.refs.carmVid.currentTime -= 5;
+                    setTimeout(() => {
+                        this.props.stopRr('carmonica');
+                    }, 200)
+                }
+            }
+        })
     }
 
     playVids() {
@@ -74,13 +77,16 @@ class Carmonica extends React.Component {
     }
 
     ffVids() {
-        if (this.props.worksVisible[1].playing || this.props.worksVisible[1].paused) {
-            this.refs.carmVid.currentTime += 5;
-            this.refs.carmVid.currentTime += 5;
-            setTimeout(() => {
-                this.props.stopFf('carmonica');
-            }, 200)
-        }
+        this.props.worksVisible.map(work => {
+            if (work.name == 'carmonica') {
+                if (work.playing || work.paused) {
+                    this.refs.carmVid.currentTime += 5;
+                    setTimeout(() => {
+                        this.props.stopRr('carmonica');
+                    }, 200)
+                }
+            }
+        })
     }
 
     render() {

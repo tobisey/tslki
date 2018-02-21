@@ -48,13 +48,16 @@ class Pink extends React.Component {
     }
 
     rrVids() {
-        if (this.props.worksVisible[9].playing || this.props.worksVisible[9].paused) {
-            this.refs.pinkVid.currentTime -= 5;
-            this.refs.pinkVid.currentTime -= 5;
-            setTimeout(() => {
-                this.props.stopRr('pink');
-            }, 200)
-        }
+        this.props.worksVisible.map(work => {
+            if (work.name == 'pink') {
+                if (work.playing || work.paused) {
+                    this.refs.pinkVid.currentTime += 5;
+                    setTimeout(() => {
+                        this.props.stopRr('pink');
+                    }, 200)
+                }
+            }
+        })
     }
 
     playVids() {
@@ -75,13 +78,16 @@ class Pink extends React.Component {
     }
 
     ffVids() {
-        if (this.props.worksVisible[9].playing || this.props.worksVisible[9].paused) {
-            this.refs.pinkVid.currentTime += 5;
-            this.refs.pinkVid.currentTime += 5;
-            setTimeout(() => {
-                this.props.stopFf('pink');
-            }, 200)
-        }
+        this.props.worksVisible.map(work => {
+            if (work.name == 'pink') {
+                if (work.playing || work.paused) {
+                    this.refs.pinkVid.currentTime += 5;
+                    setTimeout(() => {
+                        this.props.stopRr('pink');
+                    }, 200)
+                }
+            }
+        })
     }
 
     render() {

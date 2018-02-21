@@ -47,13 +47,16 @@ class Raitre extends React.Component {
     }
 
     rrVids() {
-        if (this.props.worksVisible[11].playing || this.props.worksVisible[11].paused) {
-            this.refs.raitreVid.currentTime -= 5;
-            this.refs.raitreVid.currentTime -= 5;
-            setTimeout(() => {
-                this.props.stopRr('raitre');
-            }, 200)
-        }
+        this.props.worksVisible.map(work => {
+            if (work.name == 'raitre') {
+                if (work.playing || work.paused) {
+                    this.refs.raitreVid.currentTime -= 5;
+                    setTimeout(() => {
+                        this.props.stopRr('raitre');
+                    }, 200)
+                }
+            }
+        })
     }
 
     playVids() {
@@ -74,13 +77,16 @@ class Raitre extends React.Component {
     }
 
     ffVids() {
-        if (this.props.worksVisible[11].playing || this.props.worksVisible[11].paused) {
-            this.refs.raitreVid.currentTime += 5;
-            this.refs.raitreVid.currentTime += 5;
-            setTimeout(() => {
-                this.props.stopFf('raitre');
-            }, 200)
-        }
+        this.props.worksVisible.map(work => {
+            if (work.name == 'raitre') {
+                if (work.playing || work.paused) {
+                    this.refs.raitreVid.currentTime += 5;
+                    setTimeout(() => {
+                        this.props.stopRr('raitre');
+                    }, 200)
+                }
+            }
+        })
     }
 
     render() {
