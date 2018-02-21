@@ -22,10 +22,8 @@ class App extends React.Component {
         this.navHandleKeyDown = this.navHandleKeyDown.bind(this)
         this.worksLED = this.worksLED.bind(this)
         this.handleMouseDown = this.handleMouseDown.bind(this)
-        this.handleMouseDownWorks = this.handleMouseDownWorks.bind(this)
         this.handleMouseUp = this.handleMouseUp.bind(this)
         this.handleDrag = this.handleDrag.bind(this)
-        this.handleDragWorks = this.handleDragWorks.bind(this)
         this.handleMouseLeave = this.handleMouseLeave.bind(this)
     }
 
@@ -60,8 +58,13 @@ class App extends React.Component {
 
         var elem = document.getElementsByClassName(component);
 
-        var posX = elem[0].offsetLeft;
-        var posY = elem[0].offsetTop;
+        if (component == 'works') {
+            var posX = elem[0].offsetLeft;
+            var posY = elem[0].offsetTop - 100;
+        } else {
+            var posX = elem[0].offsetLeft;
+            var posY = elem[0].offsetTop;
+        }
 
         this.props.toggleDragging(true);
 
@@ -98,53 +101,6 @@ class App extends React.Component {
         }
 
         this.props.setDragCoords(newCoords, component);
-
-        e.stopPropagation();
-        e.preventDefault();
-    }
-
-    handleMouseDownWorks(e) {
-        var elem = document.getElementsByClassName('escWorksWrapper');
-        var posX = elem[0].parentNode.offsetLeft - 20;
-        var posY = elem[0].parentNode.offsetTop - 110;
-
-        console.log(posX, posY);
-
-        this.props.toggleDragging(true);
-
-        var coords = {
-            x: e.clientX - parseInt(posX),
-            y: e.clientY - parseInt(posY)
-        };
-
-        this.props.setInitialCoords(coords, 'works');
-
-        e.stopPropagation();
-        e.preventDefault();
-    }
-
-    handleDragWorks(e) {
-
-        if (!this.props.dragging) {
-            return
-        }
-
-        var oldLeft;
-        var oldTop;
-
-        this.props.worksVisible.map(work => {
-            if (work.name == 'works') {
-                oldLeft = work.x;
-                oldTop = work.y;
-            }
-        })
-
-        var newCoords = {
-            x: (e.clientX += 20) - oldLeft,
-            y: (e.clientY += 10) - oldTop
-        }
-
-        this.props.setDragCoords(newCoords, 'works');
 
         e.stopPropagation();
         e.preventDefault();
@@ -192,9 +148,9 @@ class App extends React.Component {
                 <Outfits />
                 {this.props.worksMenuVisible && <Works
                     worksLED ={this.worksLED}
-                    handleMouseDownWorks = {this.handleMouseDownWorks}
+                    handleMouseDown = {this.handleMouseDown}
                     handleMouseUp = {this.handleMouseUp}
-                    handleDragWorks = {this.handleDragWorks}
+                    handleDrag = {this.handleDrag}
                     handleMouseLeave = {this.handleMouseLeave}
                 />}
                 {this.props.worksVisible && this.props.worksVisible.map((work) => {
