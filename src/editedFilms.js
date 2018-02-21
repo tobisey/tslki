@@ -6,7 +6,8 @@ class EditedFilms extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            filmCounter: 1
+            filmCounter: 1,
+            filmChanging: false
         };
     }
 
@@ -83,7 +84,7 @@ class EditedFilms extends React.Component {
         })
     }
 
-    changeFilm(val) {
+    changeFilm(val, ref) {
         if ((this.state.filmCounter + val) < 1) {
             this.setState({
                 filmCounter: this.state.filmTotal
@@ -97,6 +98,14 @@ class EditedFilms extends React.Component {
                 filmCounter: this.state.filmCounter += val
             })
         }
+    }
+
+    handleMouseDown(ref) {
+        this.refs[ref].classList.add('videoControlSelected')
+    }
+
+    handleMouseUp(ref) {
+        this.refs[ref].classList.remove('videoControlSelected')
     }
 
     render() {
@@ -203,13 +212,32 @@ class EditedFilms extends React.Component {
                                    </div>
                         }
                     })}
-                    <h1 onClick={() => this.changeFilm(1)}>next</h1>
-                    <h1 onClick={() => this.changeFilm(-1)}>prev</h1>
+
                 </div>
 
+                <div className="ediScreenWrap">
+
+                    <div ref="prev" className="videoControlsOption"
+                         onClick={() => this.changeFilm(-1)}
+                         onMouseDown={() => this.handleMouseDown('prev')}
+                         onMouseUp={() => this.handleMouseUp('prev')}>
+                         <h1>{'<-'}</h1>
+                    </div>
+
+                    <div ref="next" className="videoControlsOption"
+                         onClick={() => this.changeFilm(1)}
+                         onMouseDown={() => this.handleMouseDown('next')}
+                         onMouseUp={() => this.handleMouseUp('next')}>
+                         <h1>{'->'}</h1>
+                    </div>
+
+                    <div className="filmNoWrap">
+                        <p className="time" ref="filmNo">{this.state.filmCounter}</p>
+                    </div>
                     <div className="timeWrap">
                         <p className="time" ref="time">0.00%</p>
                     </div>
+                </div>
 
                 </div>
             </div>
