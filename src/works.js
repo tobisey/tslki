@@ -158,7 +158,7 @@ class Works extends React.Component {
                  ref="works" className="works">
 
                 <div className="escWorksWrapper"
-                    onMouseDown={(e) => this.props.handleMouseDown(e, 'works')}
+                    onMouseDown={(e) => {this.props.handleMouseDown(e, 'works'); this.startBringingToFront('works')}}
                     onMouseMove={(e) => this.props.handleDrag(e, 'works')}
                     onMouseUp={(e) => this.props.handleMouseUp(e)}
                     onMouseLeave={(e) => this.props.handleMouseLeave(e)}>
