@@ -160,5 +160,185 @@ export default function reducer (state = {}, action) {
         })
     }
 
+    if (action.type == 'RR') {
+        state = Object.assign({}, state, {
+            worksVisible: state.worksVisible.map(work => {
+                if (action.component == work.name) {
+                    if (work.playing) {
+                        return Object.assign({}, work, {
+                            rr: true,
+                            playing: true,
+                            paused: false,
+                            stopped: false,
+                            ff: false
+                        })
+                    }
+                    if (work.paused) {
+                        return Object.assign({}, work, {
+                            rr: true,
+                            playing: false,
+                            paused: true,
+                            stopped: false,
+                            ff: false
+                        })
+                    }
+                }
+                return work
+            })
+        })
+    }
+
+    if (action.type == 'STOP_RR') {
+        state = Object.assign({}, state, {
+            worksVisible: state.worksVisible.map(work => {
+                if (action.component == work.name) {
+                    if (work.playing) {
+                        return Object.assign({}, work, {
+                            rr: false,
+                            playing: true,
+                            paused: false,
+                            stopped: false,
+                            ff: false
+                        })
+                    }
+                    if (work.paused) {
+                        return Object.assign({}, work, {
+                            rr: false,
+                            playing: false,
+                            paused: true,
+                            stopped: false,
+                            ff: false
+                        })
+                    }
+                }
+                return work
+            })
+        })
+    }
+
+    if (action.type == 'PLAYING') {
+        state = Object.assign({}, state, {
+            worksVisible: state.worksVisible.map(work => {
+                if (action.component == work.name) {
+                    return Object.assign({}, work, {
+                        rr: false,
+                        playing: true,
+                        paused: false,
+                        stopped: false,
+                        ff: false
+                    })
+                }
+                return work
+            })
+        })
+    }
+
+    if (action.type == 'PAUSED') {
+        state = Object.assign({}, state, {
+            worksVisible: state.worksVisible.map(work => {
+                if (action.component == work.name) {
+                    return Object.assign({}, work, {
+                        rr: false,
+                        playing: false,
+                        paused: true,
+                        stopped: false,
+                        ff: false
+                    })
+                }
+                return work
+            })
+        })
+    }
+
+    if (action.type == 'STOPPED') {
+        state = Object.assign({}, state, {
+            worksVisible: state.worksVisible.map(work => {
+                if (action.component == work.name) {
+                    return Object.assign({}, work, {
+                        rr: false,
+                        playing: false,
+                        paused: false,
+                        stopped: true,
+                        ff: false
+                    })
+                }
+                return work
+            })
+        })
+    }
+
+    if (action.type == 'FF') {
+        state = Object.assign({}, state, {
+            worksVisible: state.worksVisible.map(work => {
+                if (action.component == work.name) {
+                    if (work.playing) {
+                        return Object.assign({}, work, {
+                            rr: false,
+                            playing: true,
+                            paused: false,
+                            stopped: false,
+                            ff: true
+                        })
+                    }
+                    if (work.paused) {
+                        return Object.assign({}, work, {
+                            rr: false,
+                            playing: false,
+                            paused: true,
+                            stopped: false,
+                            ff: true
+                        })
+                    }
+                }
+                return work
+            })
+        })
+    }
+
+    if (action.type == 'STOP_FF') {
+        state = Object.assign({}, state, {
+            worksVisible: state.worksVisible.map(work => {
+                if (action.component == work.name) {
+                    if (work.playing) {
+                        return Object.assign({}, work, {
+                            rr: false,
+                            playing: true,
+                            paused: false,
+                            stopped: false,
+                            ff: false
+                        })
+                    }
+                    if (work.paused) {
+                        return Object.assign({}, work, {
+                            rr: false,
+                            playing: false,
+                            paused: true,
+                            stopped: false,
+                            ff: false
+                        })
+                    }
+                }
+                return work
+            })
+        })
+    }
+
+    if (action.type == 'RESET_VID') {
+        state = Object.assign({}, state, {
+            worksVisible: state.worksVisible.map(work => {
+                if (action.component == work.name) {
+                    return Object.assign({}, work, {
+                        rr: false,
+                        playing: false,
+                        paused: false,
+                        stopped: false,
+                        ff: false
+                    })
+                }
+                return work
+            })
+        })
+    }
+
     return state
 }

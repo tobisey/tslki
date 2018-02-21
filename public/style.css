@@ -274,8 +274,9 @@ a:hover {
 .window {
     position: absolute;
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
     background-color: #545653;
+    padding: 10px;
     border-top: 5px solid #B4B5B2;
     border-left: 5px solid #838581;
     border-right: 5px solid #2B2E2C;
@@ -327,9 +328,16 @@ a:hover {
 /* CARMONICA 8============================================D ~~~ */
 
 .carmonica {
-    height: 370px;
+    height: 524px;
     top: 10vh;
     left: 15vw;
+}
+
+.carmVid {
+    border-bottom: 5px solid #B4B5B2;
+    border-right: 5px solid #838581;
+    border-left: 5px solid #2B2E2C;
+    border-top: 5px solid #252624;
 }
 
 
@@ -337,35 +345,180 @@ a:hover {
 /* PARALLELS 8============================================D ~~~ */
 
 .parallels {
-    justify-content: space-between;
-    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    /* align-items: flex-end; */
+    position: absolute;
+    background-color: #545653;
+    border-top: 5px solid #B4B5B2;
+    border-left: 5px solid #838581;
+    border-right: 5px solid #2B2E2C;
+    border-bottom: 5px solid #252624;
+    box-shadow: 8px 8px 50px black;
     /* width: 1180px; */
-    height: 420px;
+    height: 440px;
     padding: 10px 10px;
     top: 10vh;
     left: 15vw;
 }
 
-.paraVidWrap {
-    height: 312px;
-    margin-top: 45px;
+.escWrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 50px;
+}
+
+.windowEsc {
+    text-decoration: none;
+    font-style: normal;
+    width: 40px;
+    margin-top: 3px;
+    margin-bottom: 15px;
+    padding: 0 5px;
+    background-color: #545653;
+    border-top: 3px solid #B4B5B2;
+    border-left: 3px solid #838581;
+    border-right: 3px solid #2B2E2C;
+    border-bottom: 3px solid #252624;
+    border-radius: 3px;
+}
+
+.windowTitle {
+    position: absolute;
+    font-size: 24px;
+    margin-top: 3px;
+    padding: 0 5px;
+    right: 15px;
+    background-color: #D7D245;
     border-bottom: 5px solid #B4B5B2;
     border-right: 5px solid #838581;
     border-left: 5px solid #2B2E2C;
     border-top: 5px solid #252624;
 }
 
-.paraTitle {
-    position: absolute;
-    font-size: 18px;
-    margin-top: 3px;
-    padding: 0 5px;
-    right: 25px;
-    background-color: #D7D245;
+.paraVids {
+    display: flex;
+}
+
+.paraVidWrap {
+    height: 312px;
+    /* margin-top: 45px; */
     border-bottom: 5px solid #B4B5B2;
     border-right: 5px solid #838581;
     border-left: 5px solid #2B2E2C;
     border-top: 5px solid #252624;
+}
+
+.videoControls {
+    display: flex;
+    justify-content: space-between;
+    align-self: flex-start;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.buttons {
+    display: flex;
+}
+
+.videoControlsOption {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    margin: 5px;
+    background-color: #7E8080;
+    border-top: 3px solid #B4B5B2;
+    border-left: 3px solid #B4B5B2;
+    border-right: 3px solid #2B2E2C;
+    border-bottom: 3px solid #252624;
+    border-radius: 5px;
+}
+
+.rrIcon {
+    width: 0;
+	height: 0;
+	border-top: 10px solid transparent;
+	border-right: 10px solid #455963;
+	border-bottom: 10px solid transparent;
+}
+
+.rring {
+    border-right: 10px solid #86A866;
+}
+
+.playIcon {
+    width: 0;
+	height: 0;
+	border-top: 10px solid transparent;
+	border-left: 20px solid #455963;
+	border-bottom: 10px solid transparent;
+}
+
+.playing {
+    border-left: 20px solid #86A866;
+}
+
+.pauseIcon {
+    display: inline-block;
+    width: 6px;
+    height: 17px;
+    background-color: #455963;
+}
+
+.pauseIcon:first-of-type {
+    margin-right: 5px;
+}
+
+.stopIcon {
+    width: 17px;
+    height: 17px;
+    background-color: #455963;
+}
+
+.pausedStopped {
+    background-color: #86A866;
+}
+
+.ffIcon {
+    width: 0;
+	height: 0;
+	border-top: 10px solid transparent;
+	border-left: 10px solid #455963;
+	border-bottom: 10px solid transparent;
+}
+
+.ffing {
+    border-left: 10px solid #86A866;
+}
+
+.videoControlSelected {
+    background-color: #4C514D;
+    border-bottom: 3px solid #B4B5B2;
+    border-right: 3px solid #838581;
+    border-left: 3px solid #2B2E2C;
+    border-top: 3px solid #252624;
+}
+
+.timeWrap {
+    display: flex;
+    justify-content: flex-end;
+    width: 90px;
+    height: 30px;
+    margin-left: 40px;
+    background-color: black;
+    border-bottom: 5px solid #B4B5B2;
+    border-right: 5px solid #838581;
+    border-left: 5px solid #2B2E2C;
+    border-top: 5px solid #252624;
+}
+
+.time {
+    color: green;
+    margin-right: 5px;
 }
 
 
@@ -433,9 +586,17 @@ a:hover {
 /* PINK 8============================================D ~~~ */
 
 .pink {
-    height: 460px;
+    /* width: 624px; */
+    height: 600px;
     top: 15vh;
     left: 35vw;
+}
+
+.pinkVid {
+    border-bottom: 5px solid #B4B5B2;
+    border-right: 5px solid #838581;
+    border-left: 5px solid #2B2E2C;
+    border-top: 5px solid #252624;
 }
 
 
