@@ -154,13 +154,19 @@ class Works extends React.Component {
 
         return (
             <div style={{left: left + 'px', top: top + 'px'}}
-                 onMouseMove={(e) => this.props.handleDrag(e, 'works')}
-                 onMouseUp={(e) => this.props.handleMouseUp(e)}
-                 onMouseDown={(e) => {this.startBringingToFront('works'); this.props.handleMouseDown(e, 'works')}}
-                 onMouseLeave={(e) => this.props.handleMouseLeave(e)}
+                 onMouseDown={(e) => this.startBringingToFront('works')}
                  ref="works" className="works">
 
-                <div className="esc"><a onClick={() => {this.closeWorks()}}>Esc</a></div>
+                <div className="escWorksWrapper"
+                    onMouseDown={(e) => this.props.handleMouseDownWorks(e)}
+                    onMouseMove={(e) => this.props.handleDragWorks(e)}
+                    onMouseUp={(e) => this.props.handleMouseUp(e)}
+                    onMouseLeave={(e) => this.props.handleMouseLeave(e)}>
+                    <div className="esc">
+                        <a className="escButton" onClick={() => {this.closeWorks()}}>Esc</a>
+                    </div>
+                </div>
+
                 <div className="scrollable" ref="scrollable" onMouseLeave={() => this.worksResumeCurrent()}>
 
                     <div className="linkWrapper highlighted" ref="1"

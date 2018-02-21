@@ -57,8 +57,8 @@ class Carmonica extends React.Component {
                     <a className="windowEsc" onClick={() => this.props.toggleWork('carmonica')}>Esc</a>
                     <p className="windowTitle">Carmonica Harmonicar</p>
                 </div>
-                
-                <video className='carmVid' src="/videos/carmonica.mp4" width="638px" height="384px"></video>
+
+                <video className='carmVid' src="/videos/carmonica.mp4" width="629px" height="353px"></video>
 
                 <div className="videoControls">
 

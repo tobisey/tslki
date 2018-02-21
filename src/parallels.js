@@ -13,10 +13,10 @@ class Parallels extends React.Component {
         setTimeout(() => {
             this.refs.parallels.style.zIndex = this.props.topZIndex;
         }, 1);
-        var vid = document.getElementsByClassName('vid')[0];
-        vid.ontimeupdate = () => {
-            this.refs.time.innerHTML = ((vid.currentTime / vid.duration) * 100).toFixed(2) + '%';
-        }
+        // var vid = document.getElementsByClassName('vid')[0];
+        // vid.ontimeupdate = () => {
+        //     this.refs.time.innerHTML = ((vid.currentTime / vid.duration) * 100).toFixed(2) + '%';
+        // }
     }
 
     componentWillUnmount() {
@@ -101,10 +101,10 @@ class Parallels extends React.Component {
                 </div>
                 <div className="paraVids">
                     <div className="paraVidWrap">
-                        <video className="vid" ref='paraVidOne' src="/videos/para-one.mp4" width="574px" height="312px" loop></video>
+                        <video className="vid" ref='paraVidOne' src="/videos/para-one.mp4" width="547px" height="312px" loop></video>
                     </div>
                     <div className="paraVidWrap">
-                        <video ref='paraVidTwo' src="/videos/para-two.mp4" width="574px" height="312px" loop></video>
+                        <video ref='paraVidTwo' src="/videos/para-two.mp4" width="547px" height="312px" loop></video>
                     </div>
                 </div>
                 <div className="videoControls">
@@ -183,7 +183,7 @@ class Parallels extends React.Component {
                     </div>
 
                     <div className="timeWrap">
-                        <p className="time" ref="time">0.00%</p>
+                        <p className="time" ref="time">&#8734;</p>
                     </div>
 
                 </div>

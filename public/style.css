@@ -252,10 +252,20 @@ a:hover {
     color: black;
 }
 
+.escWorksWrapper {
+    width: 510px;
+    height: 57px;
+    /* background-color: deeppink; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 .esc {
     text-decoration: none;
     font-style: normal;
     width: 40px;
+    height: 30px;
     margin-top: 15px;
     margin-bottom: 15px;
     padding: 0 5px;
@@ -267,7 +277,10 @@ a:hover {
     border-radius: 3px;
 }
 
-
+.esc a {
+    height: 30px;
+    width: 40px;
+}
 
 /* VARIOUS WORKS 8============================================D ~~~ */
 

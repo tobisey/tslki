@@ -22,8 +22,10 @@ class App extends React.Component {
         this.navHandleKeyDown = this.navHandleKeyDown.bind(this)
         this.worksLED = this.worksLED.bind(this)
         this.handleMouseDown = this.handleMouseDown.bind(this)
+        this.handleMouseDownWorks = this.handleMouseDownWorks.bind(this)
         this.handleMouseUp = this.handleMouseUp.bind(this)
         this.handleDrag = this.handleDrag.bind(this)
+        this.handleDragWorks = this.handleDragWorks.bind(this)
         this.handleMouseLeave = this.handleMouseLeave.bind(this)
     }
 
@@ -101,6 +103,53 @@ class App extends React.Component {
         e.preventDefault();
     }
 
+    handleMouseDownWorks(e) {
+        var elem = document.getElementsByClassName('escWorksWrapper');
+        var posX = elem[0].parentNode.offsetLeft - 20;
+        var posY = elem[0].parentNode.offsetTop - 110;
+
+        console.log(posX, posY);
+
+        this.props.toggleDragging(true);
+
+        var coords = {
+            x: e.clientX - parseInt(posX),
+            y: e.clientY - parseInt(posY)
+        };
+
+        this.props.setInitialCoords(coords, 'works');
+
+        e.stopPropagation();
+        e.preventDefault();
+    }
+
+    handleDragWorks(e) {
+
+        if (!this.props.dragging) {
+            return
+        }
+
+        var oldLeft;
+        var oldTop;
+
+        this.props.worksVisible.map(work => {
+            if (work.name == 'works') {
+                oldLeft = work.x;
+                oldTop = work.y;
+            }
+        })
+
+        var newCoords = {
+            x: (e.clientX += 20) - oldLeft,
+            y: (e.clientY += 10) - oldTop
+        }
+
+        this.props.setDragCoords(newCoords, 'works');
+
+        e.stopPropagation();
+        e.preventDefault();
+    }
+
     handleMouseUp(e) {
 
         if (this.props.dragging) {
@@ -143,9 +192,9 @@ class App extends React.Component {
                 <Outfits />
                 {this.props.worksMenuVisible && <Works
                     worksLED ={this.worksLED}
-                    handleMouseDown = {this.handleMouseDown}
+                    handleMouseDownWorks = {this.handleMouseDownWorks}
                     handleMouseUp = {this.handleMouseUp}
-                    handleDrag = {this.handleDrag}
+                    handleDragWorks = {this.handleDragWorks}
                     handleMouseLeave = {this.handleMouseLeave}
                 />}
                 {this.props.worksVisible && this.props.worksVisible.map((work) => {
