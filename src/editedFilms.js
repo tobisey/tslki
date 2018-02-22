@@ -101,11 +101,13 @@ class EditedFilms extends React.Component {
     }
 
     handleMouseDown(ref) {
-        this.refs[ref].classList.add('videoControlSelected')
+        this.refs[ref].classList.add('videoControlSelected');
+        this.refs[`${ref}Text`].classList.add('ediButDown');
     }
 
     handleMouseUp(ref) {
-        this.refs[ref].classList.remove('videoControlSelected')
+        this.refs[ref].classList.remove('videoControlSelected');
+        this.refs[`${ref}Text`].classList.remove('ediButDown');
     }
 
     render() {
@@ -217,18 +219,18 @@ class EditedFilms extends React.Component {
 
                 <div className="ediScreenWrap">
 
-                    <div ref="prev" className="videoControlsOption"
+                    <div ref="prev" className="ediBut videoControlsOption"
                          onClick={() => this.changeFilm(-1)}
                          onMouseDown={() => this.handleMouseDown('prev')}
                          onMouseUp={() => this.handleMouseUp('prev')}>
-                         <h1>{'<-'}</h1>
+                         <h1 className="ediButUp" ref="prevText">LEFT</h1>
                     </div>
 
-                    <div ref="next" className="videoControlsOption"
+                    <div ref="next" className="ediBut videoControlsOption"
                          onClick={() => this.changeFilm(1)}
                          onMouseDown={() => this.handleMouseDown('next')}
                          onMouseUp={() => this.handleMouseUp('next')}>
-                         <h1>{'->'}</h1>
+                         <h1 className="ediButUp" ref="nextText">RIGHT</h1>
                     </div>
 
                     <div className="filmNoWrap">

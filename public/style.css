@@ -584,6 +584,18 @@ a:hover {
     justify-content: flex-end;
 }
 
+.ediBut {
+    width: 65px;
+}
+
+.ediButUp {
+    color: #455963;
+}
+
+.ediButDown {
+    color: #86A866;
+}
+
 /* PINK 8============================================D ~~~ */
 
 .pink {
