@@ -270,18 +270,18 @@ class Works extends React.Component {
                     })}
 
                     {this.props.worksVisible && this.props.worksVisible.map(work => {
-                        if (work.name === 'break' && work.visible === false) {
+                        if (work.name === 'breakWork' && work.visible === false) {
                             return <div className="linkWrapper" ref="10"
                                         onMouseEnter={() => this.worksHandleMouseEnter(10)}
                                         onMouseLeave={() => this.worksHandleMouseLeave(10)}
-                                        onClick={() => {this.props.toggleWork('break'); this.worksCheckToHighlight(10)}}>
+                                        onClick={() => {this.props.toggleWork('breakWork'); this.worksCheckToHighlight(10)}}>
                                         <a>Break</a>
                                     </div>
-                        } else if (work.name === 'break' && work.visible) {
+                        } else if (work.name === 'breakWork' && work.visible) {
                             return <div className="linkWrapper open" ref="10"
                                         onMouseEnter={() => this.worksHandleMouseEnter(10)}
                                         onMouseLeave={() => this.worksHandleMouseLeave(10)}
-                                        onClick={() => {this.props.toggleWork('break'); this.worksCheckToHighlight(10)}}>
+                                        onClick={() => {this.props.toggleWork('breakWork'); this.worksCheckToHighlight(10)}}>
                                         <a>Break</a>
                                     </div>
                         }

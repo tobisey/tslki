@@ -186,8 +186,8 @@ class App extends React.Component {
                     }
                 })}
                 {this.props.worksVisible && this.props.worksVisible.map((work) => {
-                    if (work.name === 'break' && work.visible) {
-                        return <Break ref="break"
+                    if (work.name === 'breakWork' && work.visible) {
+                        return <Break ref="breakWork"
                             handleMouseDown = {this.handleMouseDown}
                             handleMouseUp = {this.handleMouseUp}
                             handleDrag = {this.handleDrag}

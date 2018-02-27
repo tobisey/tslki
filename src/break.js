@@ -9,20 +9,20 @@ class Break extends React.Component {
     }
 
     componentDidMount() {
-        this.props.windowMounted('break');
+        this.props.windowMounted('breakWork');
         setTimeout(() => {
-            this.refs.breakRef.style.zIndex = this.props.topZIndex;
+            this.refs.breakWork.style.zIndex = this.props.topZIndex;
         }, 1)
         var vid = document.getElementsByClassName('breakVid')[0];
         vid.play();
     }
 
     componentWillUnmount() {
-        this.props.windowUnmounted('break');
+        this.props.windowUnmounted('breakWork');
     }
 
     startBringingToFront(component) {
-        if (this.refs.breakRef.style.zIndex != this.props.topZIndex) {
+        if (this.refs.breakWork.style.zIndex != this.props.topZIndex) {
             this.props.bringWindowToFront(component);
         }
     }
@@ -33,7 +33,7 @@ class Break extends React.Component {
         var top;
 
         this.props.worksVisible.map(work => {
-            if (work.name == 'break') {
+            if (work.name == 'breakWork') {
                 left = work.x2;
                 top = work.y2;
             }
@@ -41,14 +41,14 @@ class Break extends React.Component {
 
         return (
             <div style={{left: left + 'px', top: top + 'px'}}
-                 onMouseMove={(e) => this.props.handleDrag(e, 'break')}
+                 onMouseMove={(e) => this.props.handleDrag(e, 'breakWork')}
                  onMouseUp={(e) => this.props.handleMouseUp(e)}
-                 onMouseDown={(e) => {this.startBringingToFront('break'); this.props.handleMouseDown(e, 'break')}}
+                 onMouseDown={(e) => {this.startBringingToFront('breakWork'); this.props.handleMouseDown(e, 'breakWork')}}
                  onMouseLeave={(e) => this.props.handleMouseLeave(e)}
-                 className="window break" ref="breakRef">
+                 className="window breakWork" ref="breakWork">
 
                 <div className="escWrapper">
-                    <a className="windowEsc" onClick={() => this.props.toggleWork('break')}>Esc</a>
+                    <a className="windowEsc" onClick={() => this.props.toggleWork('breakWork')}>Esc</a>
                     <p className="windowTitle">Break</p>
                 </div>
 
