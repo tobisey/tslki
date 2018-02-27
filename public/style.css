@@ -638,3 +638,17 @@ a:hover {
     border-left: 5px solid #2B2E2C;
     border-top: 5px solid #252624;
 }
+
+/* BREAK 8============================================D ~~~ */
+
+.break {
+    height: 550px;
+    width: 870px;
+}
+
+.breakVid {
+    border-bottom: 5px solid #B4B5B2;
+    border-right: 5px solid #838581;
+    border-left: 5px solid #2B2E2C;
+    border-top: 5px solid #252624;
+}

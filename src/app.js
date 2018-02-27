@@ -12,6 +12,7 @@ import Ef4 from './ef4.js'
 import Ef5 from './ef5.js'
 import Ef6 from './ef6.js'
 import Pink from './pink.js'
+import Break from './break.js'
 import Twelve from './twelve.js'
 import Raitre from './raitre.js'
 import EditedFilms from './editedFilms.js'
@@ -185,58 +186,8 @@ class App extends React.Component {
                     }
                 })}
                 {this.props.worksVisible && this.props.worksVisible.map((work) => {
-                    if (work.name === 'ef1' && work.visible) {
-                        return <Ef1 ref="ef1"
-                            handleMouseDown = {this.handleMouseDown}
-                            handleMouseUp = {this.handleMouseUp}
-                            handleDrag = {this.handleDrag}
-                            handleMouseLeave = {this.handleMouseLeave}
-                        />
-                    }
-                })}
-                {this.props.worksVisible && this.props.worksVisible.map((work) => {
-                    if (work.name === 'ef2' && work.visible) {
-                        return <Ef2 ref="ef2"
-                            handleMouseDown = {this.handleMouseDown}
-                            handleMouseUp = {this.handleMouseUp}
-                            handleDrag = {this.handleDrag}
-                            handleMouseLeave = {this.handleMouseLeave}
-                        />
-                    }
-                })}
-                {this.props.worksVisible && this.props.worksVisible.map((work) => {
-                    if (work.name === 'ef3' && work.visible) {
-                        return <Ef3 ref="ef3"
-                            handleMouseDown = {this.handleMouseDown}
-                            handleMouseUp = {this.handleMouseUp}
-                            handleDrag = {this.handleDrag}
-                            handleMouseLeave = {this.handleMouseLeave}
-                        />
-                    }
-                })}
-                {this.props.worksVisible && this.props.worksVisible.map((work) => {
-                    if (work.name === 'ef4' && work.visible) {
-                        return <Ef4 ref="ef4"
-                            handleMouseDown = {this.handleMouseDown}
-                            handleMouseUp = {this.handleMouseUp}
-                            handleDrag = {this.handleDrag}
-                            handleMouseLeave = {this.handleMouseLeave}
-                        />
-                    }
-                })}
-                {this.props.worksVisible && this.props.worksVisible.map((work) => {
-                    if (work.name === 'ef5' && work.visible) {
-                        return <Ef5 ref="ef5"
-                            handleMouseDown = {this.handleMouseDown}
-                            handleMouseUp = {this.handleMouseUp}
-                            handleDrag = {this.handleDrag}
-                            handleMouseLeave = {this.handleMouseLeave}
-                        />
-                    }
-                })}
-                {this.props.worksVisible && this.props.worksVisible.map((work) => {
-                    if (work.name === 'ef6' && work.visible) {
-                        return <Ef6 ref="ef6"
+                    if (work.name === 'break' && work.visible) {
+                        return <Break ref="break"
                             handleMouseDown = {this.handleMouseDown}
                             handleMouseUp = {this.handleMouseUp}
                             handleDrag = {this.handleDrag}
