@@ -167,11 +167,23 @@ class Works extends React.Component {
 
                 <div className="scrollable" ref="scrollable" onMouseLeave={() => this.worksResumeCurrent()}>
 
-                    <div className="linkWrapper highlighted" ref="1"
-                        onMouseEnter={() => this.worksHandleMouseEnter(1)}
-                        onMouseLeave={() => this.worksHandleMouseLeave(1)}>
-                        <a href="#">The Worst Bruce Nauman in Scotland</a>
-                    </div>
+                    {this.props.worksVisible && this.props.worksVisible.map(work => {
+                        if (work.name === 'bruce' && work.visible === false) {
+                            return <div className="linkWrapper" ref="1"
+                                        onMouseEnter={() => this.worksHandleMouseEnter(1)}
+                                        onMouseLeave={() => this.worksHandleMouseLeave(1)}
+                                        onClick={() => {this.props.toggleWork('bruce'); this.worksCheckToHighlight(1)}}>
+                                        <a>The Worst Bruce Nauman in Scotland</a>
+                                    </div>
+                        } else if (work.name === 'bruce' && work.visible) {
+                            return <div className="linkWrapper open" ref="1"
+                                        onMouseEnter={() => this.worksHandleMouseEnter(1)}
+                                        onMouseLeave={() => this.worksHandleMouseLeave(1)}
+                                        onClick={() => {this.props.toggleWork('bruce'); this.worksCheckToHighlight(1)}}>
+                                        <a>The Worst Bruce Nauman in Scotland</a>
+                                    </div>
+                        }
+                    })}
 
                     {this.props.worksVisible && this.props.worksVisible.map(work => {
                         if (work.name === 'lift' && work.visible === false) {

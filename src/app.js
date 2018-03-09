@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { defaults, toggleWorksMenu, closeTopWindow, toggleMouseDown, toggleDragging, setInitialCoords, setDragCoords } from './actions.js';
 import Outfits from './outfits.js'
 import Works from './works.js'
+import Bruce from './bruce.js'
 import Lift from './lift.js'
 import Carmonica from './carmonica.js'
 import Font from './font.js'
@@ -152,6 +153,16 @@ class App extends React.Component {
                     handleDrag = {this.handleDrag}
                     handleMouseLeave = {this.handleMouseLeave}
                 />}
+                {this.props.worksVisible && this.props.worksVisible.map((work) => {
+                    if (work.name === 'bruce' && work.visible) {
+                        return <Bruce ref="bruce"
+                            handleMouseDown = {this.handleMouseDown}
+                            handleMouseUp = {this.handleMouseUp}
+                            handleDrag = {this.handleDrag}
+                            handleMouseLeave = {this.handleMouseLeave}
+                        />
+                    }
+                })}
                 {this.props.worksVisible && this.props.worksVisible.map((work) => {
                     if (work.name === 'lift' && work.visible) {
                         return <Lift ref="lift"

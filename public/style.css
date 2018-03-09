@@ -344,6 +344,78 @@ a:hover {
 }
 
 
+/* BRUCE 8============================================D ~~~ */
+
+.bruce {
+    width: 610px;
+    height: 550px;
+}
+
+.bruceScrollWrap {
+    height: 400px;
+    /* width: 600px; */
+    overflow: hidden;
+    overflow-x: scroll;
+    border-bottom: 5px solid #B4B5B2;
+    border-right: 5px solid #838581;
+    border-left: 5px solid #2B2E2C;
+    border-top: 5px solid #252624;
+}
+
+.bruceImageWrapper {
+    position: relative;
+    display: flex;
+}
+
+.bruceImage {
+    height: 400px;
+}
+
+.sliderWrapper {
+    display: flex;
+    align-items: center;
+    width: 300px;
+    height: 50px;
+    margin: 20px 0px 10px 0px;
+}
+
+.gap {
+    width: 100%;
+    height: 4px;
+    background-color: black;
+    border-bottom: 3px solid #B4B5B2;
+    border-right: 3px solid #838581;
+    border-left: 3px solid #2B2E2C;
+    border-top: 3px solid #252624;
+}
+
+.slider {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: absolute;
+    height: 25px;
+    width: 50px;
+    left: 15px;
+    background-color: #b40c0c;
+    border-top: 4px solid #e76666;
+    border-left: 4px solid #d24343;
+    border-right: 4px solid #700404;
+    border-bottom: 4px solid #4b0404;
+}
+
+.line {
+    height: 90%;
+    width: 2px;
+    margin: 1px 2px 0px 2px;
+    background-color: #700404;
+}
+
+.line:last-of-type {
+    margin-right: 4px;
+}
+
+
 
 /* LIFT 8============================================D ~~~ */
 
