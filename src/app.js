@@ -3,19 +3,16 @@ import { connect } from 'react-redux';
 import { defaults, toggleWorksMenu, closeTopWindow, toggleMouseDown, toggleDragging, setInitialCoords, setDragCoords } from './actions.js';
 import Outfits from './outfits.js'
 import Works from './works.js'
+import Lift from './lift.js'
 import Carmonica from './carmonica.js'
+import Font from './font.js'
 import Parallels from './parallels.js'
-import Ef1 from './ef1.js'
-import Ef2 from './ef2.js'
-import Ef3 from './ef3.js'
-import Ef4 from './ef4.js'
-import Ef5 from './ef5.js'
-import Ef6 from './ef6.js'
 import Pink from './pink.js'
 import Break from './break.js'
 import Twelve from './twelve.js'
 import Raitre from './raitre.js'
 import EditedFilms from './editedFilms.js'
+import Pillows from './pillows.js'
 
 class App extends React.Component {
     constructor(props) {
@@ -139,7 +136,7 @@ class App extends React.Component {
                 </div>
                 <div className="title">
                     <p>Tobias Seymour &</p>
-                    <p>Lachlan Kosaniukinnes</p>
+                    <p>Lachlan KosaniukInnes</p>
                 </div>
                 <div className="navLinks">
                     <div className="linkWrapper"><div className="dot" ref="worksDot"><div className="smallerDot" ref="worksSmallerDot"></div></div><a onClick={() => this.props.toggleWorksMenu(this.props.worksMenuVisible)}>Works</a></div>
@@ -156,8 +153,28 @@ class App extends React.Component {
                     handleMouseLeave = {this.handleMouseLeave}
                 />}
                 {this.props.worksVisible && this.props.worksVisible.map((work) => {
+                    if (work.name === 'lift' && work.visible) {
+                        return <Lift ref="lift"
+                            handleMouseDown = {this.handleMouseDown}
+                            handleMouseUp = {this.handleMouseUp}
+                            handleDrag = {this.handleDrag}
+                            handleMouseLeave = {this.handleMouseLeave}
+                        />
+                    }
+                })}
+                {this.props.worksVisible && this.props.worksVisible.map((work) => {
                     if (work.name === 'carmonica' && work.visible) {
                         return <Carmonica ref="carmonica"
+                            handleMouseDown = {this.handleMouseDown}
+                            handleMouseUp = {this.handleMouseUp}
+                            handleDrag = {this.handleDrag}
+                            handleMouseLeave = {this.handleMouseLeave}
+                        />
+                    }
+                })}
+                {this.props.worksVisible && this.props.worksVisible.map((work) => {
+                    if (work.name === 'font' && work.visible) {
+                        return <Font ref="font"
                             handleMouseDown = {this.handleMouseDown}
                             handleMouseUp = {this.handleMouseUp}
                             handleDrag = {this.handleDrag}
@@ -178,6 +195,16 @@ class App extends React.Component {
                 {this.props.worksVisible && this.props.worksVisible.map((work) => {
                     if (work.name === 'editedFilms' && work.visible) {
                         return <EditedFilms ref="editedFilms"
+                            handleMouseDown = {this.handleMouseDown}
+                            handleMouseUp = {this.handleMouseUp}
+                            handleDrag = {this.handleDrag}
+                            handleMouseLeave = {this.handleMouseLeave}
+                        />
+                    }
+                })}
+                {this.props.worksVisible && this.props.worksVisible.map((work) => {
+                    if (work.name === 'pillows' && work.visible) {
+                        return <Pillows ref="pillows"
                             handleMouseDown = {this.handleMouseDown}
                             handleMouseUp = {this.handleMouseUp}
                             handleDrag = {this.handleDrag}

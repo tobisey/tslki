@@ -269,14 +269,14 @@ class EditedFilms extends React.Component {
                          onClick={() => this.changeFilm(-1)}
                          onMouseDown={() => this.handleMouseDown('prev')}
                          onMouseUp={() => this.handleMouseUp('prev')}>
-                         <h1 className="ediButUp" ref="prevText">LEFT</h1>
+                         <h1 className="ediButUp" ref="prevText">PREV</h1>
                     </div>
 
                     <div ref="next" className="ediBut videoControlsOption"
                          onClick={() => this.changeFilm(1)}
                          onMouseDown={() => this.handleMouseDown('next')}
                          onMouseUp={() => this.handleMouseUp('next')}>
-                         <h1 className="ediButUp" ref="nextText">RIGHT</h1>
+                         <h1 className="ediButUp" ref="nextText">NEXT</h1>
                     </div>
 
                     <div className="filmNoWrap">
