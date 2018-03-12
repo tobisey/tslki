@@ -7,12 +7,17 @@ class Bruce extends React.Component {
         super(props);
         this.state = {
             imageLoadCounter: 0,
-            sliding: false
+            sliding: false,
+            pos: 0,
+            counter: 0,
+            sliding: false,
+            forward: false,
+            backwards: false
         };
-        this.handleMouseDownSlide = this.handleMouseDownSlide.bind(this);
-        // this.handleMouseUpSlide = this.handleMouseUpSlide.bind(this);
-        // this.handleMouseLeaveSlide = this.handleMouseLeaveSlide.bind(this);
-        // this.handleSlide = this.handleSlide.bind(this);
+        this.prevImage = this.prevImage.bind(this)
+        this.prevImageFrame = this.prevImageFrame.bind(this)
+        this.nextImage = this.nextImage.bind(this)
+        this.nextImageFrame = this.nextImageFrame.bind(this)
     }
 
     componentDidMount() {
@@ -44,52 +49,66 @@ class Bruce extends React.Component {
         })
     }
 
-    handleMouseDownSlide(e) {
-        console.log('clientx', e.clientX);
-        var posX = document.getElementsByClassName('slider')[0].getBoundingClientRect().x;
-        var cX = e.clientX
-        console.log('posx', posX);
-        e.stopPropagation();
-
-        this.setState({sliding: true}, () => {
-            this.setState({
-                x: cX - posX
-            }, () => {
-                console.log('statex', this.state.x);
-            });
-        })
-    }
-
-    handleMouseUpSlide(e) {
-        e.stopPropagation();
-        this.setState({
-            sliding: false
-        })
-    }
-
-    handleMouseLeaveSlide(e) {
-        e.stopPropagation();
-        this.setState({
-            sliding: false
-        })
-    }
-
-    handleSlide(e) {
-        e.stopPropagation();
-        e.preventDefault();
+    prevImage() {
         if (!this.state.sliding) {
-            return;
+            this.setState({
+                sliding: true,
+                backwards: true
+            }, () => {
+                this.prevImageFrame()
+            })
         }
-        if (e.clientX - document.getElementsByClassName('bruce')[0].getBoundingClientRect().x > 265) {
-            console.log('227');
-            return;
-        }
-        if (e.clientX - document.getElementsByClassName('bruce')[0].getBoundingClientRect().x < 54) {
-            console.log('15');
-            return;
-        }
-        this.refs.slider.style.left = (e.clientX - document.getElementsByClassName('bruce')[0].getBoundingClientRect().x) - this.state.x + 'px';
     }
+
+    prevImageFrame() {
+        if (this.state.counter < 602 && this.state.pos <= -5) {
+            console.log(this.state.pos, this.state.counter);
+            this.setState({
+                pos: this.state.pos += 5,
+                counter: this.state.counter += 5
+            }, () => {
+                window.requestAnimationFrame(this.prevImageFrame)
+            })
+        } else {
+            this.setState({
+                counter: 0,
+                sliding: false,
+                backwards: false
+            })
+            return;
+        }
+    }
+
+    nextImage() {
+        if (!this.state.sliding) {
+            this.setState({
+                sliding: true,
+                forward: true
+            }, () => {
+                this.nextImageFrame()
+            })
+        }
+    }
+
+    nextImageFrame() {
+        if (this.state.counter < 602 && this.state.pos >= -1205) {
+            console.log(this.state.pos, this.state.counter);
+            this.setState({
+                pos: this.state.pos -= 5,
+                counter: this.state.counter += 5
+            }, () => {
+                window.requestAnimationFrame(this.nextImageFrame)
+            })
+        } else {
+            this.setState({
+                counter: 0,
+                sliding: false,
+                forward: false
+            })
+            return;
+        }
+    }
+
 
     render() {
 
@@ -117,23 +136,41 @@ class Bruce extends React.Component {
                 </div>
 
                 <div className="bruceScrollWrap">
-                    <div className="bruceImageWrapper" ref="bruceImageWrapper">
-                        <img className="bruceImage" onLoad={() => this.imageOnLoad()} src="images/nauman1.jpg" alt="bruce"/>
+                    <div style={{left: this.state.pos + 'px'}} className="bruceImageWrapper" ref="bruceImageWrapper">
                         <img className="bruceImage" onLoad={() => this.imageOnLoad()} src="images/nauman2.jpg" alt="bruce"/>
+                        <img className="bruceImage" onLoad={() => this.imageOnLoad()} src="images/nauman1.jpg" alt="bruce"/>
+                        <div className="toiletWrapper">
+                            <img className="bruceImage" onLoad={() => this.imageOnLoad()} src="images/toilet_t.jpg" alt="bruce"/>
+                            <img className="bruceImage" onLoad={() => this.imageOnLoad()} src="images/toilet_l.jpg" alt="bruce"/>
+                        </div>
                     </div>
                 </div>
 
-                <div className="sliderWrapper" ref="sliderWrapper">
-                    <div className="gap"></div>
-                    <div className="slider" ref="slider"
-                        onMouseDown={(e) => this.handleMouseDownSlide(e)}
-                        onMouseUp={(e) => this.handleMouseUpSlide(e)}
-                        onMouseMove={(e) => this.handleSlide(e)}
-                        >
-                        <div className="line"></div>
-                        <div className="line"></div>
-                        <div className="line"></div>
-                    </div>
+
+                <div className="bruceControlWrap">
+                    {!this.state.backwards &&
+                        <div className="videoControlsOption" onClick={() => this.prevImage()}>
+                            <div className="playIcon" id="previous"></div>
+                        </div>
+                    }
+
+                    {this.state.backwards &&
+                        <div className="videoControlsOption videoControlSelected">
+                            <div className="playIcon playing" id="previous"></div>
+                        </div>
+                    }
+
+                    {!this.state.forward &&
+                        <div className="videoControlsOption" onClick={() => this.nextImage()}>
+                            <div className="playIcon"></div>
+                        </div>
+                    }
+
+                    {this.state.forward &&
+                        <div className="videoControlsOption videoControlSelected">
+                            <div className="playIcon playing"></div>
+                        </div>
+                    }
                 </div>
 
             </div>
