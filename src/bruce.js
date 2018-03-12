@@ -10,9 +10,9 @@ class Bruce extends React.Component {
             sliding: false
         };
         this.handleMouseDownSlide = this.handleMouseDownSlide.bind(this);
-        this.handleMouseUpSlide = this.handleMouseUpSlide.bind(this);
-        this.handleMouseLeaveSlide = this.handleMouseLeaveSlide.bind(this);
-        this.handleSlide = this.handleSlide.bind(this);
+        // this.handleMouseUpSlide = this.handleMouseUpSlide.bind(this);
+        // this.handleMouseLeaveSlide = this.handleMouseLeaveSlide.bind(this);
+        // this.handleSlide = this.handleSlide.bind(this);
     }
 
     componentDidMount() {
@@ -76,14 +76,15 @@ class Bruce extends React.Component {
 
     handleSlide(e) {
         e.stopPropagation();
+        e.preventDefault();
         if (!this.state.sliding) {
             return;
         }
-        if (e.clientX - document.getElementsByClassName('bruce')[0].getBoundingClientRect().x > 242) {
+        if (e.clientX - document.getElementsByClassName('bruce')[0].getBoundingClientRect().x > 265) {
             console.log('227');
             return;
         }
-        if (e.clientX - document.getElementsByClassName('bruce')[0].getBoundingClientRect().x < 58) {
+        if (e.clientX - document.getElementsByClassName('bruce')[0].getBoundingClientRect().x < 54) {
             console.log('15');
             return;
         }
@@ -127,7 +128,6 @@ class Bruce extends React.Component {
                     <div className="slider" ref="slider"
                         onMouseDown={(e) => this.handleMouseDownSlide(e)}
                         onMouseUp={(e) => this.handleMouseUpSlide(e)}
-                        onMouseLeave={(e) => this.handleMouseLeaveSlide(e)}
                         onMouseMove={(e) => this.handleSlide(e)}
                         >
                         <div className="line"></div>
