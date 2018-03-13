@@ -226,7 +226,6 @@ a:hover {
     border-right: 5px solid #838581;
     border-left: 5px solid #2B2E2C;
     border-top: 5px solid #252624;
-<<<<<<< HEAD
 }
 
 .scrollable a {
@@ -246,27 +245,6 @@ a:hover {
     color: black;
 }
 
-=======
-}
-
-.scrollable a {
-    color: green;
-    margin-left: 10px;
-}
-
-.scrollable::-webkit-scrollbar {
-    display: none;
-}
-
-.open {
-    background-color: #D7D245;
-}
-
-.open a {
-    color: black;
-}
-
->>>>>>> 6aef721e07406ec1749ac227308116dbdc9606bc
 .highlighted {
     background-color: green;
 }
@@ -317,14 +295,9 @@ a:hover {
 .window {
     position: absolute;
     display: flex;
-<<<<<<< HEAD
-    align-items: flex-end;
-    background-color: #545653;
-=======
     flex-direction: column;
     background-color: #545653;
     padding: 10px;
->>>>>>> 6aef721e07406ec1749ac227308116dbdc9606bc
     border-top: 5px solid #B4B5B2;
     border-left: 5px solid #838581;
     border-right: 5px solid #2B2E2C;
@@ -498,20 +471,6 @@ a:hover {
     left: 15vw;
 }
 
-<<<<<<< HEAD
-
-
-/* PARALLELS 8============================================D ~~~ */
-
-.parallels {
-    justify-content: space-between;
-    align-items: flex-start;
-    /* width: 1180px; */
-    height: 420px;
-    padding: 10px 10px;
-    top: 10vh;
-    left: 15vw;
-=======
 .escWrapper {
     display: flex;
     justify-content: space-between;
@@ -549,31 +508,17 @@ a:hover {
 
 .paraVids {
     display: flex;
->>>>>>> 6aef721e07406ec1749ac227308116dbdc9606bc
 }
 
 .paraVidWrap {
     height: 312px;
-<<<<<<< HEAD
-    margin-top: 45px;
-=======
     /* margin-top: 45px; */
->>>>>>> 6aef721e07406ec1749ac227308116dbdc9606bc
     border-bottom: 5px solid #B4B5B2;
     border-right: 5px solid #838581;
     border-left: 5px solid #2B2E2C;
     border-top: 5px solid #252624;
 }
 
-<<<<<<< HEAD
-.paraTitle {
-    position: absolute;
-    font-size: 18px;
-    margin-top: 3px;
-    padding: 0 5px;
-    right: 25px;
-    background-color: #D7D245;
-=======
 .videoControls {
     display: flex;
     justify-content: space-between;
@@ -673,21 +618,17 @@ a:hover {
     height: 30px;
     margin-left: 8px;
     background-color: black;
->>>>>>> 6aef721e07406ec1749ac227308116dbdc9606bc
     border-bottom: 5px solid #B4B5B2;
     border-right: 5px solid #838581;
     border-left: 5px solid #2B2E2C;
     border-top: 5px solid #252624;
 }
 
-<<<<<<< HEAD
-=======
 .time {
     color: green;
     margin-right: 5px;
 }
 
->>>>>>> 6aef721e07406ec1749ac227308116dbdc9606bc
 
 
 /* EDITED FILMS 8============================================D ~~~ */
@@ -766,18 +707,12 @@ a:hover {
     left: 35vw;
 }
 
-<<<<<<< HEAD
-
-
-/* TWELVE 8============================================D ~~~ */
-=======
 .pinkVid {
     border-bottom: 5px solid #B4B5B2;
     border-right: 5px solid #838581;
     border-left: 5px solid #2B2E2C;
     border-top: 5px solid #252624;
 }
->>>>>>> 6aef721e07406ec1749ac227308116dbdc9606bc
 
 
 
