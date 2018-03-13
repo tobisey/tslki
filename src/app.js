@@ -11,6 +11,7 @@ import Parallels from './parallels.js'
 import Pink from './pink.js'
 import Break from './break.js'
 import Twelve from './twelve.js'
+import Rhythm2 from './rhythm2.js'
 import Raitre from './raitre.js'
 import EditedFilms from './editedFilms.js'
 import Pillows from './pillows.js'
@@ -246,6 +247,16 @@ class App extends React.Component {
                 {this.props.worksVisible && this.props.worksVisible.map((work) => {
                     if (work.name === 'twelve' && work.visible) {
                         return <Twelve ref="twelve"
+                            handleMouseDown = {this.handleMouseDown}
+                            handleMouseUp = {this.handleMouseUp}
+                            handleDrag = {this.handleDrag}
+                            handleMouseLeave = {this.handleMouseLeave}
+                        />
+                    }
+                })}
+                {this.props.worksVisible && this.props.worksVisible.map((work) => {
+                    if (work.name === 'rhythm2' && work.visible) {
+                        return <Rhythm2 ref="rhythm2"
                             handleMouseDown = {this.handleMouseDown}
                             handleMouseUp = {this.handleMouseUp}
                             handleDrag = {this.handleDrag}

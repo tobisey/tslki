@@ -51,7 +51,7 @@ class Pink extends React.Component {
         this.props.worksVisible.map(work => {
             if (work.name == 'pink') {
                 if (work.playing || work.paused) {
-                    this.refs.pinkVid.currentTime += 5;
+                    this.refs.pinkVid.currentTime -= 5;
                     setTimeout(() => {
                         this.props.stopRr('pink');
                     }, 200)

@@ -755,3 +755,17 @@ a:hover {
     border-left: 5px solid #2B2E2C;
     border-top: 5px solid #252624;
 }
+
+/* RHYTHM2 8============================================D ~~~ */
+
+.rhythm2 {
+    height: 610px;
+    width: 846px;
+}
+
+.rhythm2Vid {
+    border-bottom: 5px solid #B4B5B2;
+    border-right: 5px solid #838581;
+    border-left: 5px solid #2B2E2C;
+    border-top: 5px solid #252624;
+}

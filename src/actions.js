@@ -17,6 +17,7 @@ export function defaults() {
             {id: 9, name: 'pink', visible: false, x: 400, y: 300, x2: 400, y2: 300, rr: false, playing: false, paused: false, stopped: false, ff: false},
             {id: 10, name: 'breakWork', visible: false, x: 320, y: 90, x2: 320, y2: 90},
             {id: 11, name: 'twelve', visible: false, x: 600, y: 500, x2: 600, y2: 500, rr: false, playing: false, paused: false, stopped: false, ff: false},
+            {id: 12, name: 'rhythm2', visible: false, x: 130, y: 310, x2: 130, y2: 310, rr: false, playing: false, paused: false, stopped: false, ff: false},
             {id: 13, name: 'raitre', visible: false, x: 100, y: 380, x2: 100, y2: 380, rr: false, playing: false, paused: false, stopped: false, ff: false}
         ],
         topZIndex: 10,
@@ -32,7 +33,8 @@ export function defaults() {
             {name: 'pink', zIndex: null},
             {name: 'twelve', zIndex: null},
             {name: 'raitre', zIndex: null},
-            {name: 'breakWork', zIndex: null},
+            {name: 'rhythm2', zIndex: null},
+            {name: 'breakWork', zIndex: null}
         ]
     };
 }
