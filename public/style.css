@@ -274,10 +274,20 @@ a:hover {
     color: black;
 }
 
+.escWorksWrapper {
+    width: 510px;
+    height: 57px;
+    /* background-color: deeppink; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 .esc {
     text-decoration: none;
     font-style: normal;
     width: 40px;
+    height: 30px;
     margin-top: 15px;
     margin-bottom: 15px;
     padding: 0 5px;
@@ -289,7 +299,17 @@ a:hover {
     border-radius: 3px;
 }
 
+.escDown {
+    border-bottom: 3px solid #B4B5B2;
+    border-right: 3px solid #838581;
+    border-left: 3px solid #2B2E2C;
+    border-top: 3px solid #252624;
+}
 
+.esc a {
+    height: 30px;
+    width: 40px;
+}
 
 /* VARIOUS WORKS 8============================================D ~~~ */
 
@@ -351,16 +371,103 @@ a:hover {
 }
 
 
+/* BRUCE 8============================================D ~~~ */
+
+.bruce {
+    width: 610px;
+    height: 550px;
+}
+
+.bruceScrollWrap {
+    height: 400px;
+    /* width: 600px; */
+    overflow: hidden;
+    overflow-x: scroll;
+    border-bottom: 5px solid #B4B5B2;
+    border-right: 5px solid #838581;
+    border-left: 5px solid #2B2E2C;
+    border-top: 5px solid #252624;
+}
+
+.bruceImageWrapper {
+    position: relative;
+    display: flex;
+    width: 1816px;
+    /* transition: all 2s; */
+}
+
+.toiletWrapper {
+    display: flex;
+    justify-content: center;
+    height: 400px;
+    width: 608px;
+    background-color: black;
+}
+
+.toiletWrapper img {
+    margin: 0px 30px;
+}
+
+.bruceImage {
+    height: 400px;
+}
+
+.bruceControlWrap {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 80px;
+}
+
+#previous {
+    transform: rotate(180deg);
+}
+
+
+
+/* LIFT 8============================================D ~~~ */
+
+.lift {
+    width: 630px;
+    /* height: 900px; */
+}
+
+.liftImageWrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.liftImage {
+    width: 300px;
+    height: 450px;
+    border-bottom: 5px solid #B4B5B2;
+    border-right: 5px solid #838581;
+    border-left: 5px solid #2B2E2C;
+    border-top: 5px solid #252624;
+}
+
+
 
 /* CARMONICA 8============================================D ~~~ */
 
 .carmonica {
-    height: 524px;
-    top: 10vh;
-    left: 15vw;
+    height: 496px;
 }
 
 .carmVid {
+    border-bottom: 5px solid #B4B5B2;
+    border-right: 5px solid #838581;
+    border-left: 5px solid #2B2E2C;
+    border-top: 5px solid #252624;
+}
+
+
+
+/* FONT 8============================================D ~~~ */
+
+.fontImage {
+    width: 600px;
     border-bottom: 5px solid #B4B5B2;
     border-right: 5px solid #838581;
     border-left: 5px solid #2B2E2C;
@@ -563,7 +670,7 @@ a:hover {
     justify-content: flex-end;
     width: 90px;
     height: 30px;
-    margin-left: 40px;
+    margin-left: 8px;
     background-color: black;
 >>>>>>> 6aef721e07406ec1749ac227308116dbdc9606bc
     border-bottom: 5px solid #B4B5B2;
@@ -582,70 +689,77 @@ a:hover {
 >>>>>>> 6aef721e07406ec1749ac227308116dbdc9606bc
 
 
-/* EDITED FILM 1 8============================================D ~~~ */
+/* EDITED FILMS 8============================================D ~~~ */
 
-.ef1 {
-    height: 461px;
-    top: 10vh;
-    left: 15vw;
+.editedFilms {
+    height: 580px;
+    width: 700px;
 }
 
-
-
-/* EDITED FILM 2 8============================================D ~~~ */
-
-.ef2 {
-    height: 444px;
-    top: 10vh;
-    left: 15vw;
+.editedVidWindow {
+    background-color: #000;
+    border-bottom: 5px solid #B4B5B2;
+    border-right: 5px solid #838581;
+    border-left: 5px solid #2B2E2C;
+    border-top: 5px solid #252624;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 450px;
+    width: 690px;
 }
 
-
-
-/* EDITED FILM 3 8============================================D ~~~ */
-
-.ef3 {
-    height: 360px;
-    top: 10vh;
-    left: 15vw;
+.editedVidWindow video {
+    max-width: 95%;
+    max-height: 95%;
 }
 
-
-
-/* EDITED FILM 4 8============================================D ~~~ */
-
-.ef4 {
-    height: 344px;
-    top: 10vh;
-    left: 15vw;
+.filmNoWrap {
+    display: flex;
+    justify-content: flex-end;
+    width: 30px;
+    height: 30px;
+    margin-left: 8px;
+    background-color: black;
+    border-bottom: 5px solid #B4B5B2;
+    border-right: 5px solid #838581;
+    border-left: 5px solid #2B2E2C;
+    border-top: 5px solid #252624;
 }
 
-
-
-/* EDITED FILM 5 8============================================D ~~~ */
-
-.ef5 {
-    height: 442px;
-    top: 10vh;
-    left: 15vw;
+.ediScreenWrap {
+    display: flex;
+    justify-content: flex-end;
 }
 
-
-
-/* EDITED FILM 6 8============================================D ~~~ */
-
-.ef6 {
-    height: 432px;
-    top: 10vh;
-    left: 15vw;
+.ediBut {
+    width: 65px;
 }
+
+.ediButUp {
+    color: #455963;
+}
+
+.ediButDown {
+    color: #86A866;
+}
+
+/* PILLOWS 8============================================D ~~~ */
+
+.pillowsImage {
+    width: 650px;
+    border-bottom: 5px solid #B4B5B2;
+    border-right: 5px solid #838581;
+    border-left: 5px solid #2B2E2C;
+    border-top: 5px solid #252624;
+}
+
 
 
 
 /* PINK 8============================================D ~~~ */
 
 .pink {
-    /* width: 624px; */
     height: 600px;
     top: 15vh;
     left: 35vw;
@@ -669,17 +783,39 @@ a:hover {
 /* TWELVE 8============================================D ~~~ */
 
 .twelve {
-    height: 460px;
-    top: 16vh;
-    left: 24vw;
+    height: 600px;
 }
 
-
+.twelveVid {
+    border-bottom: 5px solid #B4B5B2;
+    border-right: 5px solid #838581;
+    border-left: 5px solid #2B2E2C;
+    border-top: 5px solid #252624;
+}
 
 /* RAITRE 8============================================D ~~~ */
 
 .raitre {
-    height: 460px;
-    top: 18vh;
-    left: 29vw;
+    height: 600px;
+}
+
+.raitreVid {
+    border-bottom: 5px solid #B4B5B2;
+    border-right: 5px solid #838581;
+    border-left: 5px solid #2B2E2C;
+    border-top: 5px solid #252624;
+}
+
+/* BREAK 8============================================D ~~~ */
+
+.breakWork {
+    height: 550px;
+    width: 870px;
+}
+
+.breakVid {
+    border-bottom: 5px solid #B4B5B2;
+    border-right: 5px solid #838581;
+    border-left: 5px solid #2B2E2C;
+    border-top: 5px solid #252624;
 }

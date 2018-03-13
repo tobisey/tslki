@@ -16,7 +16,9 @@ class Pink extends React.Component {
         }, 1)
         var vid = document.getElementsByClassName('pinkVid')[0];
         vid.ontimeupdate = () => {
-            this.refs.time.innerHTML = ((vid.currentTime / vid.duration) * 100).toFixed(2) + '%';
+            if (this.refs.time) {
+                this.refs.time.innerHTML = ((vid.currentTime / vid.duration) * 100).toFixed(2) + '%';
+            }
             if (vid.currentTime === vid.duration) {
                 setTimeout(() => {
                     this.stopVids();
@@ -46,13 +48,16 @@ class Pink extends React.Component {
     }
 
     rrVids() {
-        if (this.props.worksVisible[9].playing || this.props.worksVisible[9].paused) {
-            this.refs.pinkVid.currentTime -= 5;
-            this.refs.pinkVid.currentTime -= 5;
-            setTimeout(() => {
-                this.props.stopRr('pink');
-            }, 200)
-        }
+        this.props.worksVisible.map(work => {
+            if (work.name == 'pink') {
+                if (work.playing || work.paused) {
+                    this.refs.pinkVid.currentTime += 5;
+                    setTimeout(() => {
+                        this.props.stopRr('pink');
+                    }, 200)
+                }
+            }
+        })
     }
 
     playVids() {
@@ -73,13 +78,16 @@ class Pink extends React.Component {
     }
 
     ffVids() {
-        if (this.props.worksVisible[9].playing || this.props.worksVisible[9].paused) {
-            this.refs.pinkVid.currentTime += 5;
-            this.refs.pinkVid.currentTime += 5;
-            setTimeout(() => {
-                this.props.stopFf('pink');
-            }, 200)
-        }
+        this.props.worksVisible.map(work => {
+            if (work.name == 'pink') {
+                if (work.playing || work.paused) {
+                    this.refs.pinkVid.currentTime += 5;
+                    setTimeout(() => {
+                        this.props.stopRr('pink');
+                    }, 200)
+                }
+            }
+        })
     }
 
     render() {
@@ -197,7 +205,6 @@ const mapStateToProps = (state) => {
     return {
         topZIndex: state.topZIndex,
         allZIndex: state. allZIndex,
-        dragging: state.dragging,
         worksVisible: state.worksVisible
     }
 }
