@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     font-family: 'VT323', monospace;
@@ -547,10 +548,10 @@ a:hover {
 
 .rrIcon {
     width: 0;
-	height: 0;
-	border-top: 10px solid transparent;
-	border-right: 10px solid #455963;
-	border-bottom: 10px solid transparent;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-right: 10px solid #455963;
+    border-bottom: 10px solid transparent;
 }
 
 .rring {
@@ -559,10 +560,10 @@ a:hover {
 
 .playIcon {
     width: 0;
-	height: 0;
-	border-top: 10px solid transparent;
-	border-left: 20px solid #455963;
-	border-bottom: 10px solid transparent;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-left: 20px solid #455963;
+    border-bottom: 10px solid transparent;
 }
 
 .playing {
@@ -592,10 +593,10 @@ a:hover {
 
 .ffIcon {
     width: 0;
-	height: 0;
-	border-top: 10px solid transparent;
-	border-left: 10px solid #455963;
-	border-bottom: 10px solid transparent;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-left: 10px solid #455963;
+    border-bottom: 10px solid transparent;
 }
 
 .ffing {
