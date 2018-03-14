@@ -6,6 +6,7 @@ import Works from './works.js'
 import Bruce from './bruce.js'
 import Lift from './lift.js'
 import Carmonica from './carmonica.js'
+import NotStatic from './notStatic.js'
 import Font from './font.js'
 import Parallels from './parallels.js'
 import Pink from './pink.js'
@@ -177,6 +178,16 @@ class App extends React.Component {
                 {this.props.worksVisible && this.props.worksVisible.map((work) => {
                     if (work.name === 'carmonica' && work.visible) {
                         return <Carmonica ref="carmonica"
+                            handleMouseDown = {this.handleMouseDown}
+                            handleMouseUp = {this.handleMouseUp}
+                            handleDrag = {this.handleDrag}
+                            handleMouseLeave = {this.handleMouseLeave}
+                        />
+                    }
+                })}
+                {this.props.worksVisible && this.props.worksVisible.map((work) => {
+                    if (work.name === 'notStatic' && work.visible) {
+                        return <NotStatic ref="notStatic"
                             handleMouseDown = {this.handleMouseDown}
                             handleMouseUp = {this.handleMouseUp}
                             handleDrag = {this.handleDrag}

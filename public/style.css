@@ -769,3 +769,51 @@ a:hover {
     border-left: 5px solid #2B2E2C;
     border-top: 5px solid #252624;
 }
+
+/* NOT STATIC 8============================================D ~~~ */
+
+.notStatic {
+    width: 700px;
+    height: 728px;
+}
+
+.notStaticScrollWrap {
+    height: 600px;
+    overflow: hidden;
+    overflow-x: scroll;
+    border-bottom: 5px solid #B4B5B2;
+    border-right: 5px solid #838581;
+    border-left: 5px solid #2B2E2C;
+    border-top: 5px solid #252624;
+}
+
+.notStaticImageWrapper {
+    position: relative;
+    display: flex;
+    width: 2760px;
+}
+
+.notStaticImageWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 589px;
+    width: 690px;
+    background-color: black;
+}
+
+.notStaticImage {
+    max-height: 589px;
+    max-width: 690px;
+}
+
+.notStaticControlWrap {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 80px;
+}
+
+#previous {
+    transform: rotate(180deg);
+}

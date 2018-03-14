@@ -37,18 +37,6 @@ class Bruce extends React.Component {
         }
     }
 
-    imageOnLoad() {
-        this.setState({ imageLoadCounter: this.state.imageLoadCounter += 1}, () => {
-            if (this.state.imageLoadCounter === 2) {
-                this.setState({
-                    widthToScroll: document.getElementsByClassName('bruceImageWrapper')[0].scrollWidth - 600
-                }, () => {
-                    console.log(this.state.widthToScroll);
-                })
-            }
-        })
-    }
-
     prevImage() {
         if (!this.state.sliding) {
             this.setState({
@@ -137,11 +125,11 @@ class Bruce extends React.Component {
 
                 <div className="bruceScrollWrap">
                     <div style={{left: this.state.pos + 'px'}} className="bruceImageWrapper" ref="bruceImageWrapper">
-                        <img className="bruceImage" onLoad={() => this.imageOnLoad()} src="images/nauman2.jpg" alt="bruce"/>
-                        <img className="bruceImage" onLoad={() => this.imageOnLoad()} src="images/nauman1.jpg" alt="bruce"/>
+                        <img className="bruceImage" src="images/nauman2.jpg" alt="bruce"/>
+                        <img className="bruceImage" src="images/nauman1.jpg" alt="bruce"/>
                         <div className="toiletWrapper">
-                            <img className="bruceImage" onLoad={() => this.imageOnLoad()} src="images/toilet_t.jpg" alt="bruce"/>
-                            <img className="bruceImage" onLoad={() => this.imageOnLoad()} src="images/toilet_l.jpg" alt="bruce"/>
+                            <img className="bruceImage" src="images/toilet_t.jpg" alt="bruce"/>
+                            <img className="bruceImage" src="images/toilet_l.jpg" alt="bruce"/>
                         </div>
                     </div>
                 </div>

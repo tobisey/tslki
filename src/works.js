@@ -221,11 +221,23 @@ class Works extends React.Component {
                         }
                     })}
 
-                    <div className="linkWrapper" ref="4"
-                        onMouseEnter={() => this.worksHandleMouseEnter(4)}
-                        onMouseLeave={() => this.worksHandleMouseLeave(4)}>
-                        <a href="#">Not Static</a>
-                    </div>
+                    {this.props.worksVisible && this.props.worksVisible.map(work => {
+                        if (work.name === 'notStatic' && work.visible === false) {
+                            return <div className="linkWrapper" ref="4"
+                                        onMouseEnter={() => this.worksHandleMouseEnter(4)}
+                                        onMouseLeave={() => this.worksHandleMouseLeave(4)}
+                                        onClick={() => {this.props.toggleWork('notStatic'); this.worksCheckToHighlight(4)}}>
+                                        <a>Not Static</a>
+                                    </div>
+                        } else if (work.name === 'notStatic' && work.visible) {
+                            return <div className="linkWrapper open" ref="4"
+                                        onMouseEnter={() => this.worksHandleMouseEnter(4)}
+                                        onMouseLeave={() => this.worksHandleMouseLeave(4)}
+                                        onClick={() => {this.props.toggleWork('notStatic'); this.worksCheckToHighlight(4)}}>
+                                        <a>Not Static</a>
+                                    </div>
+                        }
+                    })}
 
                     {this.props.worksVisible && this.props.worksVisible.map(work => {
                         if (work.name === 'font' && work.visible === false) {
