@@ -132,9 +132,9 @@ class Works extends React.Component {
         this.props.toggleWorksMenu(this.props.worksMenuVisible);
     }
 
-    startBringingToFront(component) {
-        if (this.refs.works.style.zIndex != this.props.topZIndex) {
-            this.props.bringWindowToFront(component);
+    startBringingToFront() {
+        if (this.refs.works.style.zIndex !== this.props.topZIndex) {
+            this.props.bringWindowToFront('works');
         }
     }
 

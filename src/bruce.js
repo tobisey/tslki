@@ -31,9 +31,10 @@ class Bruce extends React.Component {
         this.props.windowUnmounted('bruce');
     }
 
-    startBringingToFront(component) {
+    startBringingToFront() {
         if (this.refs.bruce.style.zIndex != this.props.topZIndex) {
-            this.props.bringWindowToFront(component);
+            console.log('fucking melt');
+            this.props.bringWindowToFront('bruce');
         }
     }
 
@@ -114,7 +115,7 @@ class Bruce extends React.Component {
             <div style={{left: left + 'px', top: top + 'px'}}
                  onMouseMove={(e) => this.props.handleDrag(e, 'bruce')}
                  onMouseUp={(e) => this.props.handleMouseUp(e)}
-                 onMouseDown={(e) => {this.startBringingToFront('bruce'); this.props.handleMouseDown(e, 'bruce')}}
+                 onMouseDown={(e) => {this.startBringingToFront(); this.props.handleMouseDown(e, 'bruce')}}
                  onMouseLeave={(e) => this.props.handleMouseLeave(e)}
                  className="window bruce" ref="bruce">
 
