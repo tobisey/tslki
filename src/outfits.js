@@ -57,6 +57,14 @@ class Outfits extends React.Component {
         this.props.logInTerminal(`outfits > ${outfit} ~ selected`);
     }
 
+    outfitClick(who) {
+        if (who == 'one') {
+            this.props.logInTerminal(`artist > tobi - aka boaby`);
+        } else {
+            this.props.logInTerminal(`artist > lachlan - aka sacklan`);
+        }
+    }
+
     render() {
 
         const { selectedOutfit } = this.props
@@ -66,8 +74,8 @@ class Outfits extends React.Component {
 
         return (
             <div className="outfits">
-                <div className="outfitsImageWrap" ref="outfitOne" style={{backgroundImage: "url(" + outfitBackgroundOne + ")"}}></div>
-                <div className="outfitsImageWrap" ref="outfitTwo" style={{backgroundImage: "url(" + outfitBackgroundTwo + ")"}}></div>
+                <div onClick={() => this.outfitClick('one')} className="outfitsImageWrap" ref="outfitOne" style={{backgroundImage: "url(" + outfitBackgroundOne + ")"}}></div>
+                <div onClick={() => this.outfitClick('two')} className="outfitsImageWrap" ref="outfitTwo" style={{backgroundImage: "url(" + outfitBackgroundTwo + ")"}}></div>
 
                 <div className="controls">
                     <div className="controlsRow">
