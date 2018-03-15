@@ -31,6 +31,7 @@ class Font extends React.Component {
 
         var left;
         var top;
+        var zValue;
 
         this.props.worksVisible.map(work => {
             if (work.name == 'font') {
@@ -39,8 +40,14 @@ class Font extends React.Component {
             }
         })
 
+        this.props.allZIndex.map(work => {
+            if (work.name == 'font') {
+                zValue = work.zIndex;
+            }
+        })
+
         return (
-            <div style={{left: left + 'px', top: top + 'px'}}
+            <div style={{left: left + 'px', top: top + 'px', zIndex: zValue}}
                  onMouseMove={(e) => this.props.handleDrag(e, 'font')}
                  onMouseUp={(e) => this.props.handleMouseUp(e)}
                  onMouseDown={(e) => {this.startBringingToFront('font'); this.props.handleMouseDown(e, 'font')}}

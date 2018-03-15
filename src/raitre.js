@@ -32,14 +32,6 @@ class Raitre extends React.Component {
         this.props.resetVid('raitre');
     }
 
-    componentWillReceiveProps(nextProps) {
-        nextProps.allZIndex.map(component => {
-            if (component.name === 'raitre') {
-                this.refs.raitre.style.zIndex = component.zIndex
-            }
-        });
-    }
-
     startBringingToFront(component) {
         if (this.refs.raitre.style.zIndex != this.props.topZIndex) {
             this.props.bringWindowToFront(component);
@@ -93,6 +85,7 @@ class Raitre extends React.Component {
 
         var left;
         var top;
+        var zValue;
 
         this.props.worksVisible.map(work => {
             if (work.name == 'raitre') {
@@ -101,8 +94,14 @@ class Raitre extends React.Component {
             }
         })
 
+        this.props.allZIndex.map(work => {
+            if (work.name == 'raitre') {
+                zValue = work.zIndex;
+            }
+        })
+
         return (
-            <div style={{left: left + 'px', top: top + 'px'}}
+            <div style={{left: left + 'px', top: top + 'px', zIndex: zValue}}
                  onMouseMove={(e) => this.props.handleDrag(e, 'raitre')}
                  onMouseUp={(e) => this.props.handleMouseUp(e)}
                  onMouseDown={(e) => {this.startBringingToFront('raitre'); this.props.handleMouseDown(e, 'raitre')}}

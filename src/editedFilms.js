@@ -42,14 +42,6 @@ class EditedFilms extends React.Component {
         this.props.resetVid('editedFilms');
     }
 
-    componentWillReceiveProps(nextProps) {
-        nextProps.allZIndex.map(component => {
-            if (component.name === 'editedFilms') {
-                this.refs.editedFilms.style.zIndex = component.zIndex
-            }
-        });
-    }
-
     startBringingToFront(component) {
         if (this.refs.editedFilms.style.zIndex != this.props.topZIndex) {
             this.props.bringWindowToFront(component);
@@ -160,6 +152,7 @@ class EditedFilms extends React.Component {
 
         var left;
         var top;
+        var zValue;
 
         this.props.worksVisible.map(work => {
             if (work.name == 'editedFilms') {
@@ -168,10 +161,16 @@ class EditedFilms extends React.Component {
             }
         })
 
+        this.props.allZIndex.map(work => {
+            if (work.name == 'editedFilms') {
+                zValue = work.zIndex;
+            }
+        })
+
         var videoPath = `/videos/ef${this.state.filmCounter}.mp4`
 
         return (
-            <div style={{left: left + 'px', top: top + 'px'}}
+            <div style={{left: left + 'px', top: top + 'px', zIndex: zValue}}
                  onMouseMove={(e) => this.props.handleDrag(e, 'editedFilms')}
                  onMouseUp={(e) => this.props.handleMouseUp(e)}
                  onMouseDown={(e) => {this.startBringingToFront('editedFilms'); this.props.handleMouseDown(e, 'editedFilms')}}

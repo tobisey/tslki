@@ -33,14 +33,6 @@ class Rhythm2 extends React.Component {
         this.props.resetVid('rhythm2');
     }
 
-    componentWillReceiveProps(nextProps) {
-        nextProps.allZIndex.map(component => {
-            if (component.name === 'rhythm2') {
-                this.refs.rhythm2.style.zIndex = component.zIndex
-            }
-        });
-    }
-
     startBringingToFront(component) {
         if (this.refs.rhythm2.style.zIndex != this.props.topZIndex) {
             this.props.bringWindowToFront(component);
@@ -94,6 +86,7 @@ class Rhythm2 extends React.Component {
 
         var left;
         var top;
+        var zValue;
 
         this.props.worksVisible.map(work => {
             if (work.name == 'rhythm2') {
@@ -102,8 +95,14 @@ class Rhythm2 extends React.Component {
             }
         })
 
+        this.props.allZIndex.map(work => {
+            if (work.name == 'rhythm2') {
+                zValue = work.zIndex;
+            }
+        })
+
         return (
-            <div style={{left: left + 'px', top: top + 'px'}}
+            <div style={{left: left + 'px', top: top + 'px', zIndex: zValue}}
                  onMouseMove={(e) => this.props.handleDrag(e, 'rhythm2')}
                  onMouseUp={(e) => this.props.handleMouseUp(e)}
                  onMouseDown={(e) => {this.startBringingToFront('rhythm2'); this.props.handleMouseDown(e, 'rhythm2')}}

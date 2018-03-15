@@ -29,6 +29,7 @@ class Pillows extends React.Component {
 
         var left;
         var top;
+        var zValue;
 
         this.props.worksVisible.map(work => {
             if (work.name == 'pillows') {
@@ -37,8 +38,14 @@ class Pillows extends React.Component {
             }
         })
 
+        this.props.allZIndex.map(work => {
+            if (work.name == 'pillows') {
+                zValue = work.zIndex;
+            }
+        })
+
         return (
-            <div style={{left: left + 'px', top: top + 'px'}}
+            <div style={{left: left + 'px', top: top + 'px', zIndex: zValue}}
                  onMouseMove={(e) => this.props.handleDrag(e, 'pillows')}
                  onMouseUp={(e) => this.props.handleMouseUp(e)}
                  onMouseDown={(e) => {this.startBringingToFront('pillows'); this.props.handleMouseDown(e, 'pillows')}}

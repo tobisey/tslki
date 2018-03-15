@@ -33,14 +33,6 @@ class Pink extends React.Component {
         this.props.resetVid('pink');
     }
 
-    componentWillReceiveProps(nextProps) {
-        nextProps.allZIndex.map(component => {
-            if (component.name === 'pink') {
-                this.refs.pink.style.zIndex = component.zIndex
-            }
-        });
-    }
-
     startBringingToFront(component) {
         if (this.refs.pink.style.zIndex != this.props.topZIndex) {
             this.props.bringWindowToFront(component);
@@ -94,6 +86,7 @@ class Pink extends React.Component {
 
         var left;
         var top;
+        var zValue;
 
         this.props.worksVisible.map(work => {
             if (work.name == 'pink') {
@@ -102,8 +95,14 @@ class Pink extends React.Component {
             }
         })
 
+        this.props.allZIndex.map(work => {
+            if (work.name == 'pink') {
+                zValue = work.zIndex;
+            }
+        })
+
         return (
-            <div style={{left: left + 'px', top: top + 'px'}}
+            <div style={{left: left + 'px', top: top + 'px', zIndex: zValue}}
                  onMouseMove={(e) => this.props.handleDrag(e, 'pink')}
                  onMouseUp={(e) => this.props.handleMouseUp(e)}
                  onMouseDown={(e) => {this.startBringingToFront('pink'); this.props.handleMouseDown(e, 'pink')}}
@@ -204,7 +203,7 @@ class Pink extends React.Component {
 const mapStateToProps = (state) => {
     return {
         topZIndex: state.topZIndex,
-        allZIndex: state. allZIndex,
+        allZIndex: state.allZIndex,
         worksVisible: state.worksVisible
     }
 }

@@ -28,14 +28,6 @@ class Works extends React.Component {
         this.props.worksLED();
     }
 
-    componentWillReceiveProps(nextProps) {
-        nextProps.allZIndex.map(component => {
-            if (component.name === 'works') {
-                this.refs.works.style.zIndex = component.zIndex
-            }
-        });
-    }
-
     worksHandleKeyDown(e) {
         if (e.keyCode === 40) {
             if (this.state.current >= this.state.scrollCountDown) {
@@ -142,6 +134,7 @@ class Works extends React.Component {
 
         var left;
         var top;
+        var zValue;
 
         this.props.worksVisible.map(work => {
             if (work.name == 'works') {
@@ -150,8 +143,14 @@ class Works extends React.Component {
             }
         })
 
+        this.props.allZIndex.map(work => {
+            if (work.name == 'works') {
+                zValue = work.zIndex;
+            }
+        })
+
         return (
-            <div style={{left: left + 'px', top: top + 'px'}}
+            <div style={{left: left + 'px', top: top + 'px', zIndex: zValue}}
                  onMouseDown={(e) => this.startBringingToFront('works')}
                  ref="works" className="works">
 

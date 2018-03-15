@@ -32,14 +32,6 @@ class Twelve extends React.Component {
         this.props.resetVid('twelve');
     }
 
-    componentWillReceiveProps(nextProps) {
-        nextProps.allZIndex.map(component => {
-            if (component.name === 'twelve') {
-                this.refs.twelve.style.zIndex = component.zIndex
-            }
-        });
-    }
-
     startBringingToFront(component) {
         if (this.refs.twelve.style.zIndex != this.props.topZIndex) {
             this.props.bringWindowToFront(component);
@@ -93,6 +85,7 @@ class Twelve extends React.Component {
 
         var left;
         var top;
+        var zValue;
 
         this.props.worksVisible.map(work => {
             if (work.name == 'twelve') {
@@ -101,8 +94,14 @@ class Twelve extends React.Component {
             }
         })
 
+        this.props.allZIndex.map(work => {
+            if (work.name == 'twelve') {
+                zValue = work.zIndex;
+            }
+        })
+
         return (
-            <div style={{left: left + 'px', top: top + 'px'}}
+            <div style={{left: left + 'px', top: top + 'px', zIndex: zValue}}
                  onMouseMove={(e) => this.props.handleDrag(e, 'twelve')}
                  onMouseUp={(e) => this.props.handleMouseUp(e)}
                  onMouseDown={(e) => {this.startBringingToFront('twelve'); this.props.handleMouseDown(e, 'twelve')}}

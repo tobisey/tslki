@@ -32,14 +32,6 @@ class Carmonica extends React.Component {
         this.props.resetVid('carmonica');
     }
 
-    componentWillReceiveProps(nextProps) {
-        nextProps.allZIndex.map(component => {
-            if (component.name === 'carmonica') {
-                this.refs.carmonica.style.zIndex = component.zIndex
-            }
-        });
-    }
-
     startBringingToFront(component) {
         if (this.refs.carmonica.style.zIndex != this.props.topZIndex) {
             this.props.bringWindowToFront(component);
@@ -93,6 +85,7 @@ class Carmonica extends React.Component {
 
         var left;
         var top;
+        var zValue;
 
         this.props.worksVisible.map(work => {
             if (work.name == 'carmonica') {
@@ -101,8 +94,14 @@ class Carmonica extends React.Component {
             }
         })
 
+        this.props.allZIndex.map(work => {
+            if (work.name == 'carmonica') {
+                zValue = work.zIndex;
+            }
+        })
+
         return (
-            <div style={{left: left + 'px', top: top + 'px'}}
+            <div style={{left: left + 'px', top: top + 'px', zIndex: zValue}}
                  onMouseMove={(e) => this.props.handleDrag(e, 'carmonica')}
                  onMouseUp={(e) => this.props.handleMouseUp(e)}
                  onMouseDown={(e) => {this.startBringingToFront('carmonica'); this.props.handleMouseDown(e, 'carmonica')}}

@@ -20,14 +20,6 @@ class Parallels extends React.Component {
         this.props.resetVid('parallels');
     }
 
-    componentWillReceiveProps(nextProps) {
-        nextProps.allZIndex.map(component => {
-            if (component.name === 'parallels') {
-                this.refs.parallels.style.zIndex = component.zIndex
-            }
-        });
-    }
-
     startBringingToFront(component) {
         if (this.refs.parallels.style.zIndex != this.props.topZIndex) {
             this.props.bringWindowToFront(component);
@@ -83,6 +75,7 @@ class Parallels extends React.Component {
 
         var left;
         var top;
+        var zValue;
 
         this.props.worksVisible.map(work => {
             if (work.name == 'parallels') {
@@ -91,8 +84,14 @@ class Parallels extends React.Component {
             }
         })
 
+        this.props.allZIndex.map(work => {
+            if (work.name == 'parallels') {
+                zValue = work.zIndex;
+            }
+        })
+
         return (
-            <div style={{left: left + 'px', top: top + 'px'}}
+            <div style={{left: left + 'px', top: top + 'px', zIndex: zValue}}
                  onMouseMove={(e) => this.props.handleDrag(e, 'parallels')}
                  onMouseUp={(e) => this.props.handleMouseUp(e)}
                  onMouseDown={(e) => {this.startBringingToFront('parallels'); this.props.handleMouseDown(e, 'parallels')}}
