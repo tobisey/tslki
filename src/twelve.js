@@ -34,6 +34,7 @@ class Twelve extends React.Component {
     startBringingToFront(component) {
         if (this.refs.twelve.style.zIndex != this.props.topZIndex) {
             this.props.bringWindowToFront(component);
+            this.props.logInTerminal(`work > twelve are stolen ~ selected`);
         }
     }
 
@@ -42,6 +43,7 @@ class Twelve extends React.Component {
             if (work.name == 'twelve') {
                 if (work.playing || work.paused) {
                     this.refs.twelveVid.currentTime -= 5;
+                    this.props.logInTerminal(`work > twelve are stolen ~ video rewind`);
                     setTimeout(() => {
                         this.props.stopRr('twelve');
                     }, 200)
@@ -52,19 +54,18 @@ class Twelve extends React.Component {
 
     playVids() {
         this.refs.twelveVid.play();
-        this.refs.twelveVid.play();
+        this.props.logInTerminal(`work > twelve are stolen ~ video play`);
     }
 
     pauseVids() {
         this.refs.twelveVid.pause();
-        this.refs.twelveVid.pause();
+        this.props.logInTerminal(`work > twelve are stolen ~ video pause`);
     }
 
     stopVids() {
         this.refs.twelveVid.currentTime = 0;
-        this.refs.twelveVid.currentTime = 0;
         this.refs.twelveVid.pause();
-        this.refs.twelveVid.pause();
+        this.props.logInTerminal(`work > twelve are stolen ~ video stop`);
     }
 
     ffVids() {
@@ -72,6 +73,7 @@ class Twelve extends React.Component {
             if (work.name == 'twelve') {
                 if (work.playing || work.paused) {
                     this.refs.twelveVid.currentTime += 5;
+                    this.props.logInTerminal(`work > twelve are stolen ~ video fast-forward`);
                     setTimeout(() => {
                         this.props.stopRr('twelve');
                     }, 200)

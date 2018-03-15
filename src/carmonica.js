@@ -34,6 +34,7 @@ class Carmonica extends React.Component {
     startBringingToFront(component) {
         if (this.refs.carmonica.style.zIndex != this.props.topZIndex) {
             this.props.bringWindowToFront(component);
+            this.props.logInTerminal(`work > carmonica harmonicar ~ selected`);
         }
     }
 
@@ -42,6 +43,7 @@ class Carmonica extends React.Component {
             if (work.name == 'carmonica') {
                 if (work.playing || work.paused) {
                     this.refs.carmVid.currentTime -= 5;
+                    this.props.logInTerminal(`work > carmonica harmonicar ~ video rewind`);
                     setTimeout(() => {
                         this.props.stopRr('carmonica');
                     }, 200)
@@ -52,19 +54,18 @@ class Carmonica extends React.Component {
 
     playVids() {
         this.refs.carmVid.play();
-        this.refs.carmVid.play();
+        this.props.logInTerminal(`work > carmonica harmonicar ~ video play`);
     }
 
     pauseVids() {
         this.refs.carmVid.pause();
-        this.refs.carmVid.pause();
+        this.props.logInTerminal(`work > carmonica harmonicar ~ video pause`);
     }
 
     stopVids() {
         this.refs.carmVid.currentTime = 0;
-        this.refs.carmVid.currentTime = 0;
         this.refs.carmVid.pause();
-        this.refs.carmVid.pause();
+        this.props.logInTerminal(`work > carmonica harmonicar ~ video stop`);
     }
 
     ffVids() {
@@ -72,6 +73,7 @@ class Carmonica extends React.Component {
             if (work.name == 'carmonica') {
                 if (work.playing || work.paused) {
                     this.refs.carmVid.currentTime += 5;
+                    this.props.logInTerminal(`work > carmonica harmonicar ~ video fast-forward`);
                     setTimeout(() => {
                         this.props.stopRr('carmonica');
                     }, 200)

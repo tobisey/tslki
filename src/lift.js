@@ -21,6 +21,7 @@ class Lift extends React.Component {
     startBringingToFront(component) {
         if (this.refs.lift.style.zIndex != this.props.topZIndex) {
             this.props.bringWindowToFront(component);
+            this.props.logInTerminal(`work > are we saying the lift is or isn't art? ~ selected`);
         }
     }
 

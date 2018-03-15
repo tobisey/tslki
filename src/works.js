@@ -129,6 +129,7 @@ class Works extends React.Component {
     startBringingToFront() {
         if (this.refs.works.style.zIndex !== this.props.topZIndex) {
             this.props.bringWindowToFront('works');
+            this.props.logInTerminal(`menu > list of works ~ selected`);
         }
     }
 

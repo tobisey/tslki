@@ -22,6 +22,7 @@ class Parallels extends React.Component {
     startBringingToFront(component) {
         if (this.refs.parallels.style.zIndex != this.props.topZIndex) {
             this.props.bringWindowToFront(component);
+            this.props.logInTerminal(`work > parallels ~ selected`);
         }
     }
 
@@ -31,6 +32,7 @@ class Parallels extends React.Component {
                 if (work.playing || work.paused) {
                     this.refs.paraVidOne.currentTime -= 5;
                     this.refs.paraVidTwo.currentTime -= 5;
+                    this.props.logInTerminal(`work > parallels ~ video rewind`);
                     setTimeout(() => {
                         this.props.stopRr('parallels');
                     }, 200)
@@ -42,11 +44,13 @@ class Parallels extends React.Component {
     playVids() {
         this.refs.paraVidOne.play();
         this.refs.paraVidTwo.play();
+        this.props.logInTerminal(`work > parallels ~ video play`);
     }
 
     pauseVids() {
         this.refs.paraVidOne.pause();
         this.refs.paraVidTwo.pause();
+        this.props.logInTerminal(`work > parallels ~ video pause`);
     }
 
     stopVids() {
@@ -54,6 +58,7 @@ class Parallels extends React.Component {
         this.refs.paraVidTwo.currentTime = 0;
         this.refs.paraVidOne.pause();
         this.refs.paraVidTwo.pause();
+        this.props.logInTerminal(`work > parallels ~ video stop`);
     }
 
     ffVids() {
@@ -62,6 +67,7 @@ class Parallels extends React.Component {
                 if (work.playing || work.paused) {
                     this.refs.paraVidOne.currentTime += 5;
                     this.refs.paraVidTwo.currentTime += 5;
+                    this.props.logInTerminal(`work > parallels ~ video fast-forward`);
                     setTimeout(() => {
                         this.props.stopRr('parallels');
                     }, 200)

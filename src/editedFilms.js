@@ -47,6 +47,7 @@ class EditedFilms extends React.Component {
     startBringingToFront(component) {
         if (this.refs.editedFilms.style.zIndex != this.props.topZIndex) {
             this.props.bringWindowToFront(component);
+            this.props.logInTerminal(`work > edited films ~ selected`);
         }
     }
 
@@ -55,6 +56,7 @@ class EditedFilms extends React.Component {
             if (work.name == 'editedFilms') {
                 if (work.playing || work.paused) {
                     this.refs.editedVid.currentTime -= 5;
+                    this.props.logInTerminal(`work > edited films ~ video [${this.state.filmCounter}] rewind`);
                     setTimeout(() => {
                         this.props.stopRr('editedFilms');
                     }, 200)
@@ -65,7 +67,7 @@ class EditedFilms extends React.Component {
 
     playVids() {
         this.refs.editedVid.play();
-        this.refs.editedVid.play();
+        this.props.logInTerminal(`work > edited films ~ video [${this.state.filmCounter}] play`);
         this.setState({
             durationUp: true
         })
@@ -73,14 +75,13 @@ class EditedFilms extends React.Component {
 
     pauseVids() {
         this.refs.editedVid.pause();
-        this.refs.editedVid.pause();
+        this.props.logInTerminal(`work > edited films ~ video [${this.state.filmCounter}] pause`);
     }
 
     stopVids() {
         this.refs.editedVid.currentTime = 0;
-        this.refs.editedVid.currentTime = 0;
         this.refs.editedVid.pause();
-        this.refs.editedVid.pause();
+        this.props.logInTerminal(`work > edited films ~ video [${this.state.filmCounter}] stop`);
     }
 
     ffVids() {
@@ -88,6 +89,7 @@ class EditedFilms extends React.Component {
             if (work.name == 'editedFilms') {
                 if (work.playing || work.paused) {
                     this.refs.editedVid.currentTime += 5;
+                    this.props.logInTerminal(`work > edited films ~ video [${this.state.filmCounter}] fast-forward`);
                     setTimeout(() => {
                         this.props.stopRr('editedFilms');
                     }, 200)
@@ -106,6 +108,7 @@ class EditedFilms extends React.Component {
                 }, () => {
                     this.props.resetVid('editedFilms')
                     this.changeVidTime();
+                    this.props.logInTerminal(`work > edited films ~ selected video [${this.state.filmCounter}]`);
             })
             } else if ((this.state.filmCounter + val) > this.state.filmTotal) {
                 this.setState({
@@ -113,6 +116,7 @@ class EditedFilms extends React.Component {
                 }, () => {
                     this.props.resetVid('editedFilms')
                     this.changeVidTime();
+                    this.props.logInTerminal(`work > edited films ~ selected video [${this.state.filmCounter}]`);
             })
             } else {
                 this.setState({
@@ -120,6 +124,7 @@ class EditedFilms extends React.Component {
                 }, () => {
                     this.props.resetVid('editedFilms')
                     this.changeVidTime();
+                    this.props.logInTerminal(`work > edited films ~ selected video [${this.state.filmCounter}]`);
                 })
             }
         })

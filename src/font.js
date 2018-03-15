@@ -13,6 +13,7 @@ class Font extends React.Component {
         this.props.logInTerminal(`work > the font (24 hours of non work) ~ active`);
         var audio = document.getElementsByClassName('fontAudio')[0];
         audio.play();
+        this.props.logInTerminal(`work > the font (24 hours of non work) ~ audio play`);
     }
 
     componentWillUnmount() {
@@ -23,6 +24,7 @@ class Font extends React.Component {
     startBringingToFront(component) {
         if (this.refs.font.style.zIndex != this.props.topZIndex) {
             this.props.bringWindowToFront(component);
+            this.props.logInTerminal(`work > the font (24 hours of non work) ~ selected`);
         }
     }
 

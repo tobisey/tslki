@@ -21,6 +21,7 @@ class Pillows extends React.Component {
     startBringingToFront(component) {
         if (this.refs.pillows.style.zIndex != this.props.topZIndex) {
             this.props.bringWindowToFront(component);
+            this.props.logInTerminal(`work > pillows ~ selected`);
         }
     }
 

@@ -35,6 +35,7 @@ class Pink extends React.Component {
     startBringingToFront(component) {
         if (this.refs.pink.style.zIndex != this.props.topZIndex) {
             this.props.bringWindowToFront(component);
+            this.props.logInTerminal(`work > pink ~ selected`);
         }
     }
 
@@ -43,6 +44,7 @@ class Pink extends React.Component {
             if (work.name == 'pink') {
                 if (work.playing || work.paused) {
                     this.refs.pinkVid.currentTime -= 5;
+                    this.props.logInTerminal(`work > pink ~ video rewind`);
                     setTimeout(() => {
                         this.props.stopRr('pink');
                     }, 200)
@@ -53,19 +55,18 @@ class Pink extends React.Component {
 
     playVids() {
         this.refs.pinkVid.play();
-        this.refs.pinkVid.play();
+        this.props.logInTerminal(`work > pink ~ video play`);
     }
 
     pauseVids() {
         this.refs.pinkVid.pause();
-        this.refs.pinkVid.pause();
+        this.props.logInTerminal(`work > pink ~ video pause`);
     }
 
     stopVids() {
         this.refs.pinkVid.currentTime = 0;
-        this.refs.pinkVid.currentTime = 0;
         this.refs.pinkVid.pause();
-        this.refs.pinkVid.pause();
+        this.props.logInTerminal(`work > pink ~ video stop`);
     }
 
     ffVids() {
@@ -73,6 +74,7 @@ class Pink extends React.Component {
             if (work.name == 'pink') {
                 if (work.playing || work.paused) {
                     this.refs.pinkVid.currentTime += 5;
+                    this.props.logInTerminal(`work > pink ~ video fast-forward`);
                     setTimeout(() => {
                         this.props.stopRr('pink');
                     }, 200)

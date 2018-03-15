@@ -34,6 +34,7 @@ class Bruce extends React.Component {
         if (this.refs.bruce.style.zIndex != this.props.topZIndex) {
             console.log('fucking melt');
             this.props.bringWindowToFront('bruce');
+            this.props.logInTerminal(`work > bruce ~ selected`);
         }
     }
 
@@ -44,6 +45,7 @@ class Bruce extends React.Component {
                 backwards: true
             }, () => {
                 this.prevImageFrame()
+                this.props.logInTerminal(`work > the worst bruce nauman in scotland ~ previous frame selected`);
             })
         }
     }
@@ -74,6 +76,7 @@ class Bruce extends React.Component {
                 forward: true
             }, () => {
                 this.nextImageFrame()
+                this.props.logInTerminal(`work > the worst bruce nauman in scotland ~ next frame selected`);
             })
         }
     }

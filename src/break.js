@@ -23,6 +23,7 @@ class Break extends React.Component {
     startBringingToFront(component) {
         if (this.refs.breakWork.style.zIndex != this.props.topZIndex) {
             this.props.bringWindowToFront(component);
+            this.props.logInTerminal(`work > break ~ selected`);
         }
     }
 

@@ -35,6 +35,7 @@ class Rhythm2 extends React.Component {
     startBringingToFront(component) {
         if (this.refs.rhythm2.style.zIndex != this.props.topZIndex) {
             this.props.bringWindowToFront(component);
+            this.props.logInTerminal(`work > rhythm 2 ~ selected`);
         }
     }
 
@@ -43,6 +44,7 @@ class Rhythm2 extends React.Component {
             if (work.name == 'rhythm2') {
                 if (work.playing || work.paused) {
                     this.refs.rhythm2Vid.currentTime -= 5;
+                    this.props.logInTerminal(`work > rhythm 2 ~ video rewind`);
                     setTimeout(() => {
                         this.props.stopRr('rhythm2');
                     }, 200)
@@ -53,19 +55,18 @@ class Rhythm2 extends React.Component {
 
     playVids() {
         this.refs.rhythm2Vid.play();
-        this.refs.rhythm2Vid.play();
+        this.props.logInTerminal(`work > rhythm 2 ~ video play`);
     }
 
     pauseVids() {
         this.refs.rhythm2Vid.pause();
-        this.refs.rhythm2Vid.pause();
+        this.props.logInTerminal(`work > rhythm 2 ~ video pause`);
     }
 
     stopVids() {
         this.refs.rhythm2Vid.currentTime = 0;
-        this.refs.rhythm2Vid.currentTime = 0;
         this.refs.rhythm2Vid.pause();
-        this.refs.rhythm2Vid.pause();
+        this.props.logInTerminal(`work > rhythm 2 ~ video stop`);
     }
 
     ffVids() {
@@ -73,6 +74,7 @@ class Rhythm2 extends React.Component {
             if (work.name == 'rhythm2') {
                 if (work.playing || work.paused) {
                     this.refs.rhythm2Vid.currentTime += 5;
+                    this.props.logInTerminal(`work > rhythm 2 ~ video fast-forward`);
                     setTimeout(() => {
                         this.props.stopRr('rhythm2');
                     }, 200)

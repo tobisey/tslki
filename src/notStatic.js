@@ -33,6 +33,7 @@ class NotStatic extends React.Component {
     startBringingToFront(component) {
         if (this.refs.notStatic.style.zIndex != this.props.topZIndex) {
             this.props.bringWindowToFront(component);
+            this.props.logInTerminal(`work > not static ~ selected`);
         }
     }
 
@@ -43,6 +44,7 @@ class NotStatic extends React.Component {
                 backwards: true
             }, () => {
                 this.prevImageFrame()
+                this.props.logInTerminal(`work > not static ~ previous frame selected`);
             })
         }
     }
@@ -54,7 +56,7 @@ class NotStatic extends React.Component {
                 pos: this.state.pos += 5,
                 counter: this.state.counter += 5
             }, () => {
-                window.requestAnimationFrame(this.prevImageFrame)
+                window.requestAnimationFrame(this.prevImageFrame);
             })
         } else {
             this.setState({
@@ -73,6 +75,7 @@ class NotStatic extends React.Component {
                 forward: true
             }, () => {
                 this.nextImageFrame()
+                this.props.logInTerminal(`work > not static ~ next frame selected`);
             })
         }
     }

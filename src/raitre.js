@@ -34,6 +34,7 @@ class Raitre extends React.Component {
     startBringingToFront(component) {
         if (this.refs.raitre.style.zIndex != this.props.topZIndex) {
             this.props.bringWindowToFront(component);
+            this.props.logInTerminal(`work > raitre ~ selected`);
         }
     }
 
@@ -42,6 +43,7 @@ class Raitre extends React.Component {
             if (work.name == 'raitre') {
                 if (work.playing || work.paused) {
                     this.refs.raitreVid.currentTime -= 5;
+                    this.props.logInTerminal(`work > raitre ~ video rewind`);
                     setTimeout(() => {
                         this.props.stopRr('raitre');
                     }, 200)
@@ -52,19 +54,18 @@ class Raitre extends React.Component {
 
     playVids() {
         this.refs.raitreVid.play();
-        this.refs.raitreVid.play();
+        this.props.logInTerminal(`work > raitre ~ video play`);
     }
 
     pauseVids() {
         this.refs.raitreVid.pause();
-        this.refs.raitreVid.pause();
+        this.props.logInTerminal(`work > raitre ~ video pause`);
     }
 
     stopVids() {
         this.refs.raitreVid.currentTime = 0;
-        this.refs.raitreVid.currentTime = 0;
         this.refs.raitreVid.pause();
-        this.refs.raitreVid.pause();
+        this.props.logInTerminal(`work > raitre ~ video stop`);
     }
 
     ffVids() {
@@ -72,6 +73,7 @@ class Raitre extends React.Component {
             if (work.name == 'raitre') {
                 if (work.playing || work.paused) {
                     this.refs.raitreVid.currentTime += 5;
+                    this.props.logInTerminal(`work > raitre ~ video fast-forward`);
                     setTimeout(() => {
                         this.props.stopRr('raitre');
                     }, 200)
