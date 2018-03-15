@@ -10,7 +10,7 @@ class Font extends React.Component {
 
     componentDidMount() {
         this.props.windowMounted('font');
-        this.props.logInTerminal(`work > the font (24 hours of non work) ~ active`);
+        this.props.logInTerminal(`work > the font (24 hours of non work) ~ activated`);
         var audio = document.getElementsByClassName('fontAudio')[0];
         audio.play();
         this.props.logInTerminal(`work > the font (24 hours of non work) ~ audio play`);
@@ -18,7 +18,7 @@ class Font extends React.Component {
 
     componentWillUnmount() {
         this.props.windowUnmounted('font');
-        this.props.logInTerminal(`work > the font (24 hours of non work) ~ inactive`);
+        this.props.logInTerminal(`work > the font (24 hours of non work) ~ terminated`);
     }
 
     startBringingToFront(component) {

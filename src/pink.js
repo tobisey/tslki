@@ -11,7 +11,7 @@ class Pink extends React.Component {
 
     componentDidMount() {
         this.props.windowMounted('pink');
-        this.props.logInTerminal(`work > pink ~ active`);
+        this.props.logInTerminal(`work > pink ~ activated`);
         var vid = document.getElementsByClassName('pinkVid')[0];
         vid.ontimeupdate = () => {
             if (this.refs.time) {
@@ -29,7 +29,7 @@ class Pink extends React.Component {
     componentWillUnmount() {
         this.props.windowUnmounted('pink');
         this.props.resetVid('pink');
-        this.props.logInTerminal(`work > pink ~ inactive`);
+        this.props.logInTerminal(`work > pink ~ terminated`);
     }
 
     startBringingToFront(component) {

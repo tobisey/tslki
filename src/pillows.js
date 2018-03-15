@@ -10,12 +10,12 @@ class Pillows extends React.Component {
 
     componentDidMount() {
         this.props.windowMounted('pillows');
-        this.props.logInTerminal(`work > pillows ~ active`);
+        this.props.logInTerminal(`work > pillows ~ activated`);
     }
 
     componentWillUnmount() {
         this.props.windowUnmounted('pillows');
-        this.props.logInTerminal(`work > pillows ~ inactive`);
+        this.props.logInTerminal(`work > pillows ~ terminated`);
     }
 
     startBringingToFront(component) {

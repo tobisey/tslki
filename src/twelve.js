@@ -10,7 +10,7 @@ class Twelve extends React.Component {
 
     componentDidMount() {
         this.props.windowMounted('twelve');
-        this.props.logInTerminal(`work > twelve are stolen ~ active`);
+        this.props.logInTerminal(`work > twelve are stolen ~ activated`);
         var vid = document.getElementsByClassName('twelveVid')[0];
         vid.ontimeupdate = () => {
             if (this.refs.time) {
@@ -28,7 +28,7 @@ class Twelve extends React.Component {
     componentWillUnmount() {
         this.props.windowUnmounted('twelve');
         this.props.resetVid('twelve');
-        this.props.logInTerminal(`work > twelve are stolen ~ inactive`);
+        this.props.logInTerminal(`work > twelve are stolen ~ terminated`);
     }
 
     startBringingToFront(component) {

@@ -16,7 +16,7 @@ class EditedFilms extends React.Component {
 
     componentDidMount() {
         this.props.windowMounted('editedFilms');
-        this.props.logInTerminal(`work > edited films ~ active`);
+        this.props.logInTerminal(`work > edited films ~ activated`);
         this.props.worksVisible.map(work => {
             if (work.name == 'editedFilms') {
                 this.setState({
@@ -41,7 +41,7 @@ class EditedFilms extends React.Component {
     componentWillUnmount() {
         this.props.windowUnmounted('editedFilms');
         this.props.resetVid('editedFilms');
-        this.props.logInTerminal(`work > edited films ~ inactive`);
+        this.props.logInTerminal(`work > edited films ~ terminated`);
     }
 
     startBringingToFront(component) {

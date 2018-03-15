@@ -10,7 +10,7 @@ class Carmonica extends React.Component {
 
     componentDidMount() {
         this.props.windowMounted('carmonica');
-        this.props.logInTerminal(`work > carmonica harmonicar ~ active`);
+        this.props.logInTerminal(`work > carmonica harmonicar ~ activated`);
         var vid = document.getElementsByClassName('carmVid')[0];
         vid.ontimeupdate = () => {
             if (this.refs.time) {
@@ -28,7 +28,7 @@ class Carmonica extends React.Component {
     componentWillUnmount() {
         this.props.windowUnmounted('carmonica');
         this.props.resetVid('carmonica');
-        this.props.logInTerminal(`work > carmonica harmonicar ~ inactive`);
+        this.props.logInTerminal(`work > carmonica harmonicar ~ terminated`);
     }
 
     startBringingToFront(component) {

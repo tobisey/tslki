@@ -10,7 +10,7 @@ class Raitre extends React.Component {
 
     componentDidMount() {
         this.props.windowMounted('raitre');
-        this.props.logInTerminal(`work > raitre ~ active`);
+        this.props.logInTerminal(`work > raitre ~ activated`);
         var vid = document.getElementsByClassName('raitreVid')[0];
         vid.ontimeupdate = () => {
             if (this.refs.time) {
@@ -28,7 +28,7 @@ class Raitre extends React.Component {
     componentWillUnmount() {
         this.props.windowUnmounted('raitre');
         this.props.resetVid('raitre');
-        this.props.logInTerminal(`work > raitre ~ inactive`);
+        this.props.logInTerminal(`work > raitre ~ terminated`);
     }
 
     startBringingToFront(component) {

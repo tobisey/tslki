@@ -10,13 +10,13 @@ class Parallels extends React.Component {
 
     componentDidMount() {
         this.props.windowMounted('parallels');
-        this.props.logInTerminal(`work > parallels ~ active`);
+        this.props.logInTerminal(`work > parallels ~ activated`);
     }
 
     componentWillUnmount() {
         this.props.windowUnmounted('parallels');
         this.props.resetVid('parallels');
-        this.props.logInTerminal(`work > parallels ~ inactive`);
+        this.props.logInTerminal(`work > parallels ~ terminated`);
     }
 
     startBringingToFront(component) {

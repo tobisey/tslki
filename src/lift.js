@@ -10,12 +10,12 @@ class Lift extends React.Component {
 
     componentDidMount() {
         this.props.windowMounted('lift');
-        this.props.logInTerminal(`work > are we saying the lift is or isn't art? ~ active`);
+        this.props.logInTerminal(`work > are we saying the lift is or isn't art? ~ activated`);
     }
 
     componentWillUnmount() {
         this.props.windowUnmounted('lift');
-        this.props.logInTerminal(`work > are we saying the lift is or isn't art? ~ inactive`);
+        this.props.logInTerminal(`work > are we saying the lift is or isn't art? ~ terminated`);
     }
 
     startBringingToFront(component) {

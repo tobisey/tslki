@@ -22,12 +22,12 @@ class Bruce extends React.Component {
 
     componentDidMount() {
         this.props.windowMounted('bruce');
-        this.props.logInTerminal(`work > the worst bruce nauman in scotland ~ active`);
+        this.props.logInTerminal(`work > the worst bruce nauman in scotland ~ activated`);
     }
 
     componentWillUnmount() {
         this.props.windowUnmounted('bruce');
-        this.props.logInTerminal(`work > the worst bruce nauman in scotland ~ inactive`);
+        this.props.logInTerminal(`work > the worst bruce nauman in scotland ~ terminated`);
     }
 
     startBringingToFront() {

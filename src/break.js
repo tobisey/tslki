@@ -12,12 +12,12 @@ class Break extends React.Component {
         this.props.windowMounted('breakWork');
         var vid = document.getElementsByClassName('breakVid')[0];
         vid.play();
-        this.props.logInTerminal(`work > break ~ active`);
+        this.props.logInTerminal(`work > break ~ activated`);
     }
 
     componentWillUnmount() {
         this.props.windowUnmounted('breakWork');
-        this.props.logInTerminal(`work > break ~ inactive`);
+        this.props.logInTerminal(`work > break ~ terminated`);
     }
 
     startBringingToFront(component) {

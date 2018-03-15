@@ -11,7 +11,7 @@ class Rhythm2 extends React.Component {
 
     componentDidMount() {
         this.props.windowMounted('rhythm2');
-        this.props.logInTerminal(`work > rhythm 2 ~ active`);
+        this.props.logInTerminal(`work > rhythm 2 ~ activated`);
         var vid = document.getElementsByClassName('rhythm2Vid')[0];
         vid.ontimeupdate = () => {
             if (this.refs.time) {
@@ -29,7 +29,7 @@ class Rhythm2 extends React.Component {
     componentWillUnmount() {
         this.props.windowUnmounted('rhythm2');
         this.props.resetVid('rhythm2');
-        this.props.logInTerminal(`work > rhythm 2 ~ inactive`);
+        this.props.logInTerminal(`work > rhythm 2 ~ terminated`);
     }
 
     startBringingToFront(component) {

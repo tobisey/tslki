@@ -17,7 +17,7 @@ class Works extends React.Component {
 
     componentDidMount() {
         window.addEventListener("keydown", this.worksHandleKeyDown);
-        this.props.logInTerminal(`menu > list of works ~ active`);
+        this.props.logInTerminal(`menu > list of works ~ activated`);
         this.setState({current: 1});
         this.props.windowMounted('works');
         this.props.worksLED();
@@ -25,7 +25,7 @@ class Works extends React.Component {
 
     componentWillUnmount() {
         window.removeEventListener("keydown", this.worksHandleKeyDown);
-        this.props.logInTerminal(`menu > list of works ~ inactive`);
+        this.props.logInTerminal(`menu > list of works ~ terminated`);
         this.props.windowUnmounted('works');
         this.props.worksLED();
     }
@@ -127,7 +127,7 @@ class Works extends React.Component {
     }
 
     startBringingToFront() {
-        if (this.refs.works.style.zIndex !== this.props.topZIndex) {
+        if (this.refs.works.style.zIndex != this.props.topZIndex) {
             this.props.bringWindowToFront('works');
             this.props.logInTerminal(`menu > list of works ~ selected`);
         }

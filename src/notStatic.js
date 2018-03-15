@@ -22,12 +22,12 @@ class NotStatic extends React.Component {
 
     componentDidMount() {
         this.props.windowMounted('notStatic');
-        this.props.logInTerminal(`work > not static ~ active`);
+        this.props.logInTerminal(`work > not static ~ activated`);
     }
 
     componentWillUnmount() {
         this.props.windowUnmounted('notStatic');
-        this.props.logInTerminal(`work > not static ~ inactive`);
+        this.props.logInTerminal(`work > not static ~ terminated`);
     }
 
     startBringingToFront(component) {
