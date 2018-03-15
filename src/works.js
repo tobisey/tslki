@@ -411,7 +411,7 @@ const mapStateToProps = (state) => {
         worksMenuVisible: state.worksMenuVisible,
         worksVisible: state.worksVisible,
         topZIndex: state.topZIndex,
-        allZIndex: state. allZIndex
+        allZIndex: state.allZIndex
     }
 }
 

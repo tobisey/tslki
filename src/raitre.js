@@ -202,7 +202,7 @@ class Raitre extends React.Component {
 const mapStateToProps = (state) => {
     return {
         topZIndex: state.topZIndex,
-        allZIndex: state. allZIndex,
+        allZIndex: state.allZIndex,
         worksVisible: state.worksVisible
     }
 }

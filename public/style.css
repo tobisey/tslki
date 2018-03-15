@@ -817,3 +817,37 @@ a:hover {
 #previous {
     transform: rotate(180deg);
 }
+
+/* EP MODE 8============================================D ~~~ */
+
+/* EP SWITCH */
+
+#epSwitchWrap {
+    position: absolute;
+    right: 50px;
+    top: 30px;
+    width: 95px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 5px solid #B4B5B2;
+    border-left: 5px solid #838581;
+    border-right: 5px solid #2B2E2C;
+    border-bottom: 5px solid #252624;
+    background-color: #000;
+}
+
+#epSwitchLeft {
+    background-color: rgb(232, 42, 42);
+    width: 45px;
+    height: 40px;
+    perspective: 20px;
+}
+
+#epSwitchRight {
+    background-color: rgb(201, 38, 38);
+    width: 45px;
+    height: 40px;
+    perspective: 20px;
+}

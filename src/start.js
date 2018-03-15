@@ -9,7 +9,7 @@ import reducer from './reducer.js'
 import App from './app.js'
 export const store = createStore(reducer, composeWithDevTools(applyMiddleware(reduxPromise)));
 
-let router = (
+var router = (
     <Provider store={store}>
         <Router history={browserHistory}>
             <Route path="/" component={App}>
@@ -17,6 +17,5 @@ let router = (
         </Router>
     </Provider>
 );
-
 
 ReactDOM.render(router, document.querySelector('main'));

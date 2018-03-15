@@ -57,7 +57,6 @@ class App extends React.Component {
     // DRAGGING FUNCTIONALITY >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
     handleMouseDown(e, component) {
-
         var elem = document.getElementsByClassName(component);
 
         if (component == 'works') {
@@ -82,7 +81,6 @@ class App extends React.Component {
     }
 
     handleDrag(e, component) {
-
         if (!this.props.dragging) {
             return
         }
@@ -109,18 +107,15 @@ class App extends React.Component {
     }
 
     handleMouseUp(e) {
-
         if (this.props.dragging) {
             this.props.toggleDragging(false);
 
             e.stopPropagation();
             e.preventDefault();
         }
-
     }
 
     handleMouseLeave(e) {
-
         if (this.props.dragging) {
             this.props.toggleDragging(false);
 
@@ -133,20 +128,27 @@ class App extends React.Component {
 
         return (
             <div>
-            <div className="nav">
-                <div className="corpseWrapper">
-                    <img className="corpse" src="/images/corpse.png" alt="corpse"/>
+
+                <div className="nav">
+                    <div className="corpseWrapper">
+                        <img className="corpse" src="/images/corpse.png" alt="corpse"/>
+                    </div>
+                    <div className="title">
+                        <p>Tobias Seymour &</p>
+                        <p>Lachlan KosaniukInnes</p>
+                    </div>
+                    <div className="navLinks">
+                        <div className="linkWrapper"><div className="dot" ref="worksDot"><div className="smallerDot" ref="worksSmallerDot"></div></div><a onClick={() => this.props.toggleWorksMenu(this.props.worksMenuVisible)}>Works</a></div>
+                        <div className="linkWrapper"><div className="dot" ref="cvDot"><div className="smallerDot" ref="cvSmallerDot"></div></div><a onClick={() => this.cvHandleClick()}>CV</a></div>
+                        <div className="linkWrapper"><div className="dot" ref="emailDot"><div className="smallerDot" ref="emailSmallerDot"></div></div><a onClick={() => this.emailHandleClick()}>mail@tslki.com</a></div>
+                    </div>
                 </div>
-                <div className="title">
-                    <p>Tobias Seymour &</p>
-                    <p>Lachlan KosaniukInnes</p>
+
+                <div id="epSwitchWrap">
+                    <div id="epSwitchLeft"></div>
+                    <div id="epSwitchRight"></div>
                 </div>
-                <div className="navLinks">
-                    <div className="linkWrapper"><div className="dot" ref="worksDot"><div className="smallerDot" ref="worksSmallerDot"></div></div><a onClick={() => this.props.toggleWorksMenu(this.props.worksMenuVisible)}>Works</a></div>
-                    <div className="linkWrapper"><div className="dot" ref="cvDot"><div className="smallerDot" ref="cvSmallerDot"></div></div><a onClick={() => this.cvHandleClick()}>CV</a></div>
-                    <div className="linkWrapper"><div className="dot" ref="emailDot"><div className="smallerDot" ref="emailSmallerDot"></div></div><a onClick={() => this.emailHandleClick()}>mail@tslki.com</a></div>
-                </div>
-            </div>
+
                 <Outfits />
                 {this.props.worksMenuVisible && <Works
                     worksLED ={this.worksLED}
@@ -155,6 +157,9 @@ class App extends React.Component {
                     handleDrag = {this.handleDrag}
                     handleMouseLeave = {this.handleMouseLeave}
                 />}
+
+
+
                 {this.props.worksVisible && this.props.worksVisible.map((work) => {
                     if (work.name === 'bruce' && work.visible) {
                         return <Bruce ref="bruce"
