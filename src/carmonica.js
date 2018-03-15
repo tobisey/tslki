@@ -10,9 +10,6 @@ class Carmonica extends React.Component {
 
     componentDidMount() {
         this.props.windowMounted('carmonica');
-        setTimeout(() => {
-            this.refs.carmonica.style.zIndex = this.props.topZIndex;
-        }, 1)
         var vid = document.getElementsByClassName('carmVid')[0];
         vid.ontimeupdate = () => {
             if (this.refs.time) {

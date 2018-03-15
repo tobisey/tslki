@@ -10,9 +10,6 @@ class Parallels extends React.Component {
 
     componentDidMount() {
         this.props.windowMounted('parallels');
-        setTimeout(() => {
-            this.refs.parallels.style.zIndex = this.props.topZIndex;
-        }, 1);
     }
 
     componentWillUnmount() {

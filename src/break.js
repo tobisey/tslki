@@ -10,9 +10,6 @@ class Break extends React.Component {
 
     componentDidMount() {
         this.props.windowMounted('breakWork');
-        setTimeout(() => {
-            this.refs.breakWork.style.zIndex = this.props.topZIndex;
-        }, 1)
         var vid = document.getElementsByClassName('breakVid')[0];
         vid.play();
     }

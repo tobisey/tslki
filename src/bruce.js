@@ -22,9 +22,6 @@ class Bruce extends React.Component {
 
     componentDidMount() {
         this.props.windowMounted('bruce');
-        setTimeout(() => {
-            this.refs.bruce.style.zIndex = this.props.topZIndex;
-        }, 1)
     }
 
     componentWillUnmount() {

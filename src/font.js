@@ -10,9 +10,6 @@ class Font extends React.Component {
 
     componentDidMount() {
         this.props.windowMounted('font');
-        setTimeout(() => {
-            this.refs.font.style.zIndex = this.props.topZIndex;
-        }, 1)
         var audio = document.getElementsByClassName('fontAudio')[0];
         audio.play();
     }

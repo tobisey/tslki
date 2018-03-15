@@ -22,9 +22,6 @@ class NotStatic extends React.Component {
 
     componentDidMount() {
         this.props.windowMounted('notStatic');
-        setTimeout(() => {
-            this.refs.notStatic.style.zIndex = this.props.topZIndex;
-        }, 1)
     }
 
     componentWillUnmount() {

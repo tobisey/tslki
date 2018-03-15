@@ -10,9 +10,6 @@ class Raitre extends React.Component {
 
     componentDidMount() {
         this.props.windowMounted('raitre');
-        setTimeout(() => {
-            this.refs.raitre.style.zIndex = this.props.topZIndex;
-        }, 1)
         var vid = document.getElementsByClassName('raitreVid')[0];
         vid.ontimeupdate = () => {
             if (this.refs.time) {

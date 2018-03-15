@@ -10,9 +10,6 @@ class Twelve extends React.Component {
 
     componentDidMount() {
         this.props.windowMounted('twelve');
-        setTimeout(() => {
-            this.refs.twelve.style.zIndex = this.props.topZIndex;
-        }, 1)
         var vid = document.getElementsByClassName('twelveVid')[0];
         vid.ontimeupdate = () => {
             if (this.refs.time) {

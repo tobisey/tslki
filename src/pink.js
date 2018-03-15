@@ -11,9 +11,6 @@ class Pink extends React.Component {
 
     componentDidMount() {
         this.props.windowMounted('pink');
-        setTimeout(() => {
-            this.refs.pink.style.zIndex = this.props.topZIndex;
-        }, 1)
         var vid = document.getElementsByClassName('pinkVid')[0];
         vid.ontimeupdate = () => {
             if (this.refs.time) {

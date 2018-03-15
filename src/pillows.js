@@ -10,9 +10,6 @@ class Pillows extends React.Component {
 
     componentDidMount() {
         this.props.windowMounted('pillows');
-        setTimeout(() => {
-            this.refs.pillows.style.zIndex = this.props.topZIndex;
-        }, 1)
     }
 
     componentWillUnmount() {

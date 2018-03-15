@@ -11,9 +11,6 @@ class Rhythm2 extends React.Component {
 
     componentDidMount() {
         this.props.windowMounted('rhythm2');
-        setTimeout(() => {
-            this.refs.rhythm2.style.zIndex = this.props.topZIndex;
-        }, 1)
         var vid = document.getElementsByClassName('rhythm2Vid')[0];
         vid.ontimeupdate = () => {
             if (this.refs.time) {

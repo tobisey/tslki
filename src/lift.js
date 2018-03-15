@@ -10,9 +10,6 @@ class Lift extends React.Component {
 
     componentDidMount() {
         this.props.windowMounted('lift');
-        setTimeout(() => {
-            this.refs.lift.style.zIndex = this.props.topZIndex;
-        }, 1)
     }
 
     componentWillUnmount() {
