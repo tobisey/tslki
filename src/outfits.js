@@ -61,7 +61,7 @@ class Outfits extends React.Component {
         if (who == 'one') {
             this.props.logInTerminal(`artist > tobi - aka boaby`);
         } else {
-            this.props.logInTerminal(`artist > lachlan - aka sacklan`);
+            this.props.logInTerminal(`artist > lachlan - aka sack`);
         }
     }
 

@@ -342,9 +342,19 @@ export default function reducer (state = {}, action) {
     }
 
     if (action.type == 'LOG_IN_TERMINAL') {
-        state = Object.assign({}, state, {
+        console.log(state.messageArray);
+        if (state.messageArray.length < 26) {
+            console.log('less than 26');
+            state = Object.assign({}, state, {
                 messageArray: state.messageArray.concat(action.message)
-        })
+            })
+        } else {
+            console.log('over 26');
+            var slicedMessages = state.messageArray.slice(1);
+            state = Object.assign({}, state, {
+                messageArray: slicedMessages.concat(action.message)
+            })
+        }
     }
 
     return state
