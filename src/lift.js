@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { windowMounted, windowUnmounted, bringWindowToFront, toggleWork } from './actions.js';
+import { windowMounted, windowUnmounted, bringWindowToFront, toggleWork, logInTerminal } from './actions.js';
 
 class Lift extends React.Component {
     constructor(props) {
@@ -10,10 +10,12 @@ class Lift extends React.Component {
 
     componentDidMount() {
         this.props.windowMounted('lift');
+        this.props.logInTerminal(`work > are we saying the lift is or isn't art? ~ active`);
     }
 
     componentWillUnmount() {
         this.props.windowUnmounted('lift');
+        this.props.logInTerminal(`work > are we saying the lift is or isn't art? ~ inactive`);
     }
 
     startBringingToFront(component) {
@@ -89,6 +91,10 @@ const mapDispatchToProps = (dispatch) => {
 
         toggleWork(work) {
             dispatch(toggleWork(work))
+        },
+
+        logInTerminal(message) {
+            dispatch(logInTerminal(message))
         }
     }
 }

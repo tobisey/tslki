@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { windowMounted, windowUnmounted, bringWindowToFront, toggleWork } from './actions.js';
+import { windowMounted, windowUnmounted, bringWindowToFront, toggleWork, logInTerminal } from './actions.js';
 
 class Font extends React.Component {
     constructor(props) {
@@ -10,12 +10,14 @@ class Font extends React.Component {
 
     componentDidMount() {
         this.props.windowMounted('font');
+        this.props.logInTerminal(`work > the font (24 hours of non work) ~ active`);
         var audio = document.getElementsByClassName('fontAudio')[0];
         audio.play();
     }
 
     componentWillUnmount() {
         this.props.windowUnmounted('font');
+        this.props.logInTerminal(`work > the font (24 hours of non work) ~ inactive`);
     }
 
     startBringingToFront(component) {
@@ -88,6 +90,10 @@ const mapDispatchToProps = (dispatch) => {
 
         toggleWork(work) {
             dispatch(toggleWork(work))
+        },
+
+        logInTerminal(message) {
+            dispatch(logInTerminal(message))
         }
     }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { windowMounted, windowUnmounted, bringWindowToFront, toggleWork, rr, stopRr, playing, paused, stopped, ff, stopFf, resetVid } from './actions.js';
+import { windowMounted, windowUnmounted, bringWindowToFront, toggleWork, rr, stopRr, playing, paused, stopped, ff, stopFf, resetVid, logInTerminal } from './actions.js';
 
 class Twelve extends React.Component {
     constructor(props) {
@@ -10,6 +10,7 @@ class Twelve extends React.Component {
 
     componentDidMount() {
         this.props.windowMounted('twelve');
+        this.props.logInTerminal(`work > twelve are stolen ~ active`);
         var vid = document.getElementsByClassName('twelveVid')[0];
         vid.ontimeupdate = () => {
             if (this.refs.time) {
@@ -27,6 +28,7 @@ class Twelve extends React.Component {
     componentWillUnmount() {
         this.props.windowUnmounted('twelve');
         this.props.resetVid('twelve');
+        this.props.logInTerminal(`work > twelve are stolen ~ inactive`);
     }
 
     startBringingToFront(component) {
@@ -252,6 +254,10 @@ const mapDispatchToProps = (dispatch) => {
 
         resetVid(component) {
             dispatch(resetVid(component))
+        },
+
+        logInTerminal(message) {
+            dispatch(logInTerminal(message))
         }
     }
 }

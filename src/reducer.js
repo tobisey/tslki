@@ -8,6 +8,7 @@ export default function reducer (state = {}, action) {
             topZIndex: action.topZIndex,
             allZIndex: action.allZIndex,
             dragging: action.dragging,
+            messageArray: action.messageArray
         })
     }
 
@@ -337,6 +338,12 @@ export default function reducer (state = {}, action) {
                 }
                 return work
             })
+        })
+    }
+
+    if (action.type == 'LOG_IN_TERMINAL') {
+        state = Object.assign({}, state, {
+                messageArray: state.messageArray.concat(action.message)
         })
     }
 

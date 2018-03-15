@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { windowMounted, windowUnmounted, bringWindowToFront, toggleWork, rr, stopRr, playing, paused, stopped, ff, stopFf, resetVid } from './actions.js';
+import { windowMounted, windowUnmounted, bringWindowToFront, toggleWork, rr, stopRr, playing, paused, stopped, ff, stopFf, resetVid, logInTerminal } from './actions.js';
 
 
 class Pink extends React.Component {
@@ -11,6 +11,7 @@ class Pink extends React.Component {
 
     componentDidMount() {
         this.props.windowMounted('pink');
+        this.props.logInTerminal(`work > pink ~ active`);
         var vid = document.getElementsByClassName('pinkVid')[0];
         vid.ontimeupdate = () => {
             if (this.refs.time) {
@@ -28,6 +29,7 @@ class Pink extends React.Component {
     componentWillUnmount() {
         this.props.windowUnmounted('pink');
         this.props.resetVid('pink');
+        this.props.logInTerminal(`work > pink ~ inactive`);
     }
 
     startBringingToFront(component) {
@@ -253,6 +255,10 @@ const mapDispatchToProps = (dispatch) => {
 
         resetVid(component) {
             dispatch(resetVid(component))
+        },
+
+        logInTerminal(message) {
+            dispatch(logInTerminal(message))
         }
     }
 }

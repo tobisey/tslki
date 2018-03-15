@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { windowMounted, windowUnmounted, bringWindowToFront, toggleWork, rr, stopRr, playing, paused, stopped, ff, stopFf, resetVid } from './actions.js';
+import { windowMounted, windowUnmounted, bringWindowToFront, toggleWork, rr, stopRr, playing, paused, stopped, ff, stopFf, resetVid, logInTerminal } from './actions.js';
 
 class Raitre extends React.Component {
     constructor(props) {
@@ -10,6 +10,7 @@ class Raitre extends React.Component {
 
     componentDidMount() {
         this.props.windowMounted('raitre');
+        this.props.logInTerminal(`work > raitre ~ active`);
         var vid = document.getElementsByClassName('raitreVid')[0];
         vid.ontimeupdate = () => {
             if (this.refs.time) {
@@ -27,6 +28,7 @@ class Raitre extends React.Component {
     componentWillUnmount() {
         this.props.windowUnmounted('raitre');
         this.props.resetVid('raitre');
+        this.props.logInTerminal(`work > raitre ~ inactive`);
     }
 
     startBringingToFront(component) {
@@ -252,6 +254,10 @@ const mapDispatchToProps = (dispatch) => {
 
         resetVid(component) {
             dispatch(resetVid(component))
+        },
+
+        logInTerminal(message) {
+            dispatch(logInTerminal(message))
         }
     }
 }

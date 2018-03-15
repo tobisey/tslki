@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { changeSelectedOutfit } from './actions.js'
+import { changeSelectedOutfit, logInTerminal } from './actions.js'
 
 class Outfits extends React.Component {
     constructor(props) {
@@ -54,6 +54,7 @@ class Outfits extends React.Component {
             }
             this.refs[outfit].classList.add('on');
         }
+        this.props.logInTerminal(`outfits > ${outfit} ~ selected`);
     }
 
     render() {
@@ -95,6 +96,10 @@ const mapDispatchToProps = (dispatch) => {
     return {
         changeSelectedOutfit(outfit) {
             dispatch(changeSelectedOutfit(outfit))
+        },
+
+        logInTerminal(message) {
+            dispatch(logInTerminal(message))
         }
     }
 }

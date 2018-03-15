@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { windowMounted, windowUnmounted, bringWindowToFront, toggleWork, rr, stopRr, playing, paused, stopped, ff, stopFf, resetVid } from './actions.js';
+import { windowMounted, windowUnmounted, bringWindowToFront, toggleWork, rr, stopRr, playing, paused, stopped, ff, stopFf, resetVid, logInTerminal } from './actions.js';
 
 class EditedFilms extends React.Component {
     constructor(props) {
@@ -16,6 +16,7 @@ class EditedFilms extends React.Component {
 
     componentDidMount() {
         this.props.windowMounted('editedFilms');
+        this.props.logInTerminal(`work > edited films ~ active`);
         this.props.worksVisible.map(work => {
             if (work.name == 'editedFilms') {
                 this.setState({
@@ -40,6 +41,7 @@ class EditedFilms extends React.Component {
     componentWillUnmount() {
         this.props.windowUnmounted('editedFilms');
         this.props.resetVid('editedFilms');
+        this.props.logInTerminal(`work > edited films ~ inactive`);
     }
 
     startBringingToFront(component) {
@@ -357,6 +359,10 @@ const mapDispatchToProps = (dispatch) => {
 
         resetVid(component) {
             dispatch(resetVid(component))
+        },
+
+        logInTerminal(message) {
+            dispatch(logInTerminal(message))
         }
     }
 }

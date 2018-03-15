@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { windowMounted, windowUnmounted, bringWindowToFront, toggleWork } from './actions.js';
+import { windowMounted, windowUnmounted, bringWindowToFront, toggleWork, logInTerminal } from './actions.js';
 
 class NotStatic extends React.Component {
     constructor(props) {
@@ -22,10 +22,12 @@ class NotStatic extends React.Component {
 
     componentDidMount() {
         this.props.windowMounted('notStatic');
+        this.props.logInTerminal(`work > not static ~ active`);
     }
 
     componentWillUnmount() {
         this.props.windowUnmounted('notStatic');
+        this.props.logInTerminal(`work > not static ~ inactive`);
     }
 
     startBringingToFront(component) {
@@ -200,6 +202,10 @@ const mapDispatchToProps = (dispatch) => {
 
         toggleWork(work) {
             dispatch(toggleWork(work))
+        },
+
+        logInTerminal(message) {
+            dispatch(logInTerminal(message))
         }
     }
 }

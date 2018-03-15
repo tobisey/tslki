@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { defaults, toggleWorksMenu, closeTopWindow, toggleMouseDown, toggleDragging, setInitialCoords, setDragCoords } from './actions.js';
+import { defaults, toggleWorksMenu, closeTopWindow, toggleMouseDown, toggleDragging, setInitialCoords, setDragCoords, logInTerminal } from './actions.js';
 import Outfits from './outfits.js'
 import Works from './works.js'
 import Bruce from './bruce.js'
@@ -32,6 +32,14 @@ class App extends React.Component {
     componentDidMount() {
         this.props.defaults();
         window.addEventListener("keydown", this.navHandleKeyDown);
+        var d = new Date();
+        var time = d.getHours() + ":" ;
+        var mins = d.getMinutes();
+        if (mins < 10) {
+            mins = "0" + mins
+        }
+        time = time += mins
+        this.props.logInTerminal(d.toDateString() + " " + time + " > welcome user no " + Math.floor(Math.random()*90000) + "...")
     }
 
     navHandleKeyDown(e) {
@@ -125,7 +133,6 @@ class App extends React.Component {
     }
 
     render() {
-
         return (
             <div>
 
@@ -145,8 +152,20 @@ class App extends React.Component {
                 </div>
 
                 <div id="epSwitchWrap">
-                    <div id="epSwitchLeft"></div>
-                    <div id="epSwitchRight"></div>
+                    <div id="epSwitchLeftWrap">
+                        <div id="epSwitchLeft">
+                            <p>CUNT</p>
+                        </div>
+                    </div>
+                    <div id="epSwitchRightWrap">
+                        <div id="epSwitchRight"></div>
+                    </div>
+                </div>
+
+                <div id="terminalWrap">
+                    <div id="terminal">
+                        {this.props.messageArray && this.props.messageArray.map(message => <p className="terminalMessage">{message}</p>)}
+                    </div>
                 </div>
 
                 <Outfits />
@@ -302,6 +321,7 @@ const mapStateToProps = (state) => {
         topZIndex: state.topZIndex,
         allZIndex: state.allZIndex,
         dragging: state.dragging && state.dragging,
+        messageArray: state.messageArray && state.messageArray
     }
 }
 
@@ -329,6 +349,9 @@ const mapDispatchToProps = (dispatch) => {
 
         setDragCoords(coords, component) {
             dispatch(setDragCoords(coords, component))
+        },
+        logInTerminal(message) {
+            dispatch(logInTerminal(message))
         }
     }
 }

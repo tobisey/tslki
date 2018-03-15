@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { toggleWorksMenu, toggleWork, windowMounted, windowUnmounted, bringWindowToFront } from './actions.js';
+import { toggleWorksMenu, toggleWork, windowMounted, windowUnmounted, bringWindowToFront, logInTerminal } from './actions.js';
 
 class Works extends React.Component {
     constructor(props) {
@@ -17,6 +17,7 @@ class Works extends React.Component {
 
     componentDidMount() {
         window.addEventListener("keydown", this.worksHandleKeyDown);
+        this.props.logInTerminal(`menu > list of works ~ active`);
         this.setState({current: 1});
         this.props.windowMounted('works');
         this.props.worksLED();
@@ -24,6 +25,7 @@ class Works extends React.Component {
 
     componentWillUnmount() {
         window.removeEventListener("keydown", this.worksHandleKeyDown);
+        this.props.logInTerminal(`menu > list of works ~ inactive`);
         this.props.windowUnmounted('works');
         this.props.worksLED();
     }
@@ -435,6 +437,10 @@ const mapDispatchToProps = (dispatch) => {
 
         bringWindowToFront(component) {
             dispatch(bringWindowToFront(component))
+        },
+
+        logInTerminal(message) {
+            dispatch(logInTerminal(message))
         }
     }
 }

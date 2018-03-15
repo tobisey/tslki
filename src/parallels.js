@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { windowMounted, windowUnmounted, bringWindowToFront, toggleWork, rr, stopRr, playing, paused, stopped, ff, stopFf, resetVid } from './actions.js';
+import { windowMounted, windowUnmounted, bringWindowToFront, toggleWork, rr, stopRr, playing, paused, stopped, ff, stopFf, resetVid, logInTerminal } from './actions.js';
 
 class Parallels extends React.Component {
     constructor(props) {
@@ -10,11 +10,13 @@ class Parallels extends React.Component {
 
     componentDidMount() {
         this.props.windowMounted('parallels');
+        this.props.logInTerminal(`work > parallels ~ active`);
     }
 
     componentWillUnmount() {
         this.props.windowUnmounted('parallels');
         this.props.resetVid('parallels');
+        this.props.logInTerminal(`work > parallels ~ inactive`);
     }
 
     startBringingToFront(component) {
@@ -248,6 +250,10 @@ const mapDispatchToProps = (dispatch) => {
 
         resetVid(component) {
             dispatch(resetVid(component))
+        },
+
+        logInTerminal(message) {
+            dispatch(logInTerminal(message))
         }
      }
 }
