@@ -14,47 +14,58 @@ class Outfits extends React.Component {
     }
 
     outfitsHandleKeyDown(e) {
-        if (e.keyCode === 71) {
-            this.props.changeSelectedOutfit('shades');
-            this.highlightSelectedOutfitButton('shades');
+        if (e.keyCode === 71 && this.props.selectedOutfit != 'glasses') {
+            this.props.changeSelectedOutfit('glasses');
+            this.highlightSelectedOutfitButton('glasses');
         }
 
-        if (e.keyCode === 83) {
+        if (e.keyCode === 83 && this.props.selectedOutfit != 'speedo') {
             this.props.changeSelectedOutfit('speedo');
             this.highlightSelectedOutfitButton('speedo');
         }
 
-        if (e.keyCode === 76) {
+        if (e.keyCode === 76 && this.props.selectedOutfit != 'lowEnd') {
             this.props.changeSelectedOutfit('lowEnd');
             this.highlightSelectedOutfitButton('lowEnd');
         }
 
-        if (e.keyCode === 72) {
+        if (e.keyCode === 72 && this.props.selectedOutfit != 'hats') {
             this.props.changeSelectedOutfit('hats');
             this.highlightSelectedOutfitButton('hats');
         }
 
-        if (e.keyCode === 68) {
+        if (e.keyCode === 68 && this.props.selectedOutfit != 'driving') {
             this.props.changeSelectedOutfit('driving');
             this.highlightSelectedOutfitButton('driving');
         }
 
-        if (e.keyCode === 66) {
+        if (e.keyCode === 66 && this.props.selectedOutfit != 'busta') {
             this.props.changeSelectedOutfit('busta');
             this.highlightSelectedOutfitButton('busta');
         }
     }
 
     highlightSelectedOutfitButton(outfit) {
-        for (var val in this.refs) {
-            if (val === 'shades' || val === 'speedo' || val === 'lowEnd' || val === 'hats' || val === 'driving' || val === 'busta') {
-                if (this.refs[val].classList.contains('on')) {
-                    this.refs[val].classList.remove('on')
+
+            for (var val in this.refs) {
+                if (val === 'glasses' || val === 'speedo' || val === 'lowEnd' || val === 'hats' || val === 'driving' || val === 'busta') {
+                    if (this.refs[val].classList.contains('on')) {
+                        this.refs[val].classList.remove('on')
+                    }
                 }
+                this.refs[outfit].classList.add('on');
             }
-            this.refs[outfit].classList.add('on');
+            this.props.logInTerminal(`outfits > ${outfit} ~ selected`);
+
+    }
+
+    clickedToSelect(outfit) {
+        if (this.props.selectedOutfit == outfit) {
+            return;
+        } else {
+            this.props.changeSelectedOutfit(outfit);
+            this.highlightSelectedOutfitButton(outfit);
         }
-        this.props.logInTerminal(`outfits > ${outfit} ~ selected`);
     }
 
     outfitClick(who) {
@@ -79,14 +90,14 @@ class Outfits extends React.Component {
 
                 <div className="controls">
                     <div className="controlsRow">
-                        <div className="controlsOption" ref="shades"><a onClick={() => {this.props.changeSelectedOutfit('shades'); this.highlightSelectedOutfitButton('shades')}}>Glasses</a></div>
-                        <div className="controlsOption" ref="speedo"><a onClick={() => {this.props.changeSelectedOutfit('speedo'); this.highlightSelectedOutfitButton('speedo')}}>Speedo</a></div>
-                        <div className="controlsOption on" ref="lowEnd"><a onClick={() => {this.props.changeSelectedOutfit('lowEnd'); this.highlightSelectedOutfitButton('lowEnd')}}>LowEnd</a></div>
+                        <div className="controlsOption" ref="glasses"><a onClick={() => this.clickedToSelect('glasses')}>Glasses</a></div>
+                        <div className="controlsOption" ref="speedo"><a onClick={() => this.clickedToSelect('speedo')}>Speedo</a></div>
+                        <div className="controlsOption on" ref="lowEnd"><a onClick={() => this.clickedToSelect('lowEnd')}>LowEnd</a></div>
                     </div>
                     <div className="controlsRow">
-                        <div className="controlsOption" ref="hats"><a onClick={() => {this.props.changeSelectedOutfit('hats'); this.highlightSelectedOutfitButton('hats')}}>Hats</a></div>
-                        <div className="controlsOption" ref="driving"><a onClick={() => {this.props.changeSelectedOutfit('driving'); this.highlightSelectedOutfitButton('driving')}}>Driving</a></div>
-                        <div className="controlsOption" ref="busta"><a onClick={() => {this.props.changeSelectedOutfit('busta'); this.highlightSelectedOutfitButton('busta')}}>Busta</a></div>
+                        <div className="controlsOption" ref="hats"><a onClick={() => this.clickedToSelect('hats')}>Hats</a></div>
+                        <div className="controlsOption" ref="driving"><a onClick={() => this.clickedToSelect('driving')}>Driving</a></div>
+                        <div className="controlsOption" ref="busta"><a onClick={() => this.clickedToSelect('busta')}>Busta</a></div>
                     </div>
                 </div>
             </div>

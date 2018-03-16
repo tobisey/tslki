@@ -12,7 +12,9 @@ class NotStatic extends React.Component {
             counter: 0,
             sliding: false,
             forward: false,
-            backwards: false
+            backwards: false,
+            noPrev: true,
+            noNext: false
         };
         this.prevImage = this.prevImage.bind(this)
         this.prevImageFrame = this.prevImageFrame.bind(this)
@@ -38,10 +40,11 @@ class NotStatic extends React.Component {
     }
 
     prevImage() {
-        if (!this.state.sliding) {
+        if (!this.state.sliding && !this.state.noPrev) {
             this.setState({
                 sliding: true,
-                backwards: true
+                backwards: true,
+                noNext: false
             }, () => {
                 this.prevImageFrame()
                 this.props.logInTerminal(`work > not static ~ previous frame selected`);
@@ -51,7 +54,6 @@ class NotStatic extends React.Component {
 
     prevImageFrame() {
         if (this.state.counter < 690 && this.state.pos <= -5) {
-            console.log(this.state.pos, this.state.counter);
             this.setState({
                 pos: this.state.pos += 5,
                 counter: this.state.counter += 5
@@ -59,6 +61,11 @@ class NotStatic extends React.Component {
                 window.requestAnimationFrame(this.prevImageFrame);
             })
         } else {
+            if (this.state.pos > -5) {
+                this.setState({
+                    noPrev: true
+                })
+            }
             this.setState({
                 counter: 0,
                 sliding: false,
@@ -69,10 +76,11 @@ class NotStatic extends React.Component {
     }
 
     nextImage() {
-        if (!this.state.sliding) {
+        if (!this.state.sliding && !this.state.noNext) {
             this.setState({
                 sliding: true,
-                forward: true
+                forward: true,
+                noPrev: false
             }, () => {
                 this.nextImageFrame()
                 this.props.logInTerminal(`work > not static ~ next frame selected`);
@@ -82,7 +90,6 @@ class NotStatic extends React.Component {
 
     nextImageFrame() {
         if (this.state.counter < 690 && this.state.pos >= -2065) {
-            console.log(this.state.pos, this.state.counter);
             this.setState({
                 pos: this.state.pos -= 5,
                 counter: this.state.counter += 5
@@ -90,6 +97,11 @@ class NotStatic extends React.Component {
                 window.requestAnimationFrame(this.nextImageFrame)
             })
         } else {
+            if (this.state.pos < -2065) {
+                this.setState({
+                    noNext: true
+                })
+            }
             this.setState({
                 counter: 0,
                 sliding: false,
