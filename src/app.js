@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { defaults, toggleWorksMenu, closeTopWindow, toggleMouseDown, toggleDragging, setInitialCoords, setDragCoords, logInTerminal } from './actions.js';
+import { defaults, toggleWorksMenu, closeTopWindow, toggleMouseDown, toggleDragging, setInitialCoords, setDragCoords, logInTerminal, epModeToggle } from './actions.js';
 import Outfits from './outfits.js'
 import Works from './works.js'
 import Bruce from './bruce.js'
@@ -303,7 +303,7 @@ class App extends React.Component {
         this.props.logInTerminal(`no more bagels > dec 16 > buckingham road, los angeles, usa__________`)
         this.props.logInTerminal(`colourspace > aug 16 > edwardian cloakroom, bristol, uk______________`)
         this.props.logInTerminal(`chelsea degree show > jun 16 > chelse college of art, london, uk_____`)
-        this.props.logInTerminal(`goldsmiths degree show > jun 16 > goldsmiths univeristy, london, uk _`)
+        this.props.logInTerminal(`goldsmiths degree show > jun 16 > goldsmiths univeristy, london, uk__`)
         this.props.logInTerminal(`space > aug 15 > testbed1, london, uk________________________________`)
         this.props.logInTerminal(`kino at spike island > may 15 > spike island, bristol, uk____________`)
         this.props.logInTerminal(`slippers > may 15 > maverick projects, london, uk____________________`)
@@ -317,7 +317,26 @@ class App extends React.Component {
         this.props.logInTerminal(`---------------------------------------------------------------------`)
     }
 
+    epMode() {
+        if (this.refs.ep.classList.contains('epModeOn')) {
+            this.refs.ep.classList.remove('epModeOn');
+            this.refs.epText.style.color = "black";
+        } else {
+            this.refs.ep.classList.add('epModeOn')
+            this.refs.epText.style.color = "rgb(27, 241, 255)";
+        }
+    }
+
     render() {
+
+        if (this.refs.terminal && !this.props.epMode) {
+            this.refs.terminal.classList.remove('epGreen');
+            this.refs.title.classList.remove('epYellow');
+        } else if (this.refs.terminal && this.props.epMode) {
+            this.refs.terminal.classList.add('epGreen');
+            this.refs.title.classList.add('epYellow');
+        }
+
         return (
             <div>
 
@@ -326,7 +345,7 @@ class App extends React.Component {
                 </div>
 
                 <div className="nav">
-                    <div className="title">
+                    <div className="title" ref="title">
                         <p>Tobias Seymour &</p>
                         <p>Lachlan KosaniukInnes</p>
                     </div>
@@ -338,13 +357,13 @@ class App extends React.Component {
                 </div>
 
                 <div id="terminalWrap">
-                    <div id="terminal">
+                    <div id="terminal" ref="terminal">
                         {this.props.messageArray && this.props.messageArray.map(message => <p className="terminalMessage">{message}</p>)}
                     </div>
                 </div>
 
-                <div id="ep">
-                    <div id="epText">EP</div>
+                <div className="ep" ref="ep" onClick={() => {this.epMode(); this.props.epModeToggle()}}>
+                    <div id="epText" ref="epText">EP</div>
                 </div>
 
                 <Outfits />
@@ -500,7 +519,8 @@ const mapStateToProps = (state) => {
         topZIndex: state.topZIndex,
         allZIndex: state.allZIndex,
         dragging: state.dragging && state.dragging,
-        messageArray: state.messageArray && state.messageArray
+        messageArray: state.messageArray && state.messageArray,
+        epMode: state.epMode
     }
 }
 
@@ -529,8 +549,13 @@ const mapDispatchToProps = (dispatch) => {
         setDragCoords(coords, component) {
             dispatch(setDragCoords(coords, component))
         },
+
         logInTerminal(message) {
             dispatch(logInTerminal(message))
+        },
+
+        epModeToggle() {
+            dispatch(epModeToggle())
         }
     }
 }

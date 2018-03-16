@@ -38,7 +38,8 @@ export function defaults() {
             {name: 'rhythm2', zIndex: null},
             {name: 'breakWork', zIndex: null}
         ],
-        messageArray: []
+        messageArray: [],
+        epMode: false
     };
 }
 
@@ -175,5 +176,11 @@ export function logInTerminal(message) {
     return {
         type: 'LOG_IN_TERMINAL',
         message: message
+    }
+}
+
+export function epModeToggle() {
+    return {
+        type: 'EP_MODE_TOGGLE'
     }
 }
