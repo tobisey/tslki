@@ -112,6 +112,7 @@ a:hover {
     border-left: 5px solid #2B2E2C;
     border-top: 5px solid #252624;
     margin-bottom: 20px;
+    transition: all 6s;
 }
 
 .linkWrapper {
@@ -198,6 +199,7 @@ a:hover {
     flex-direction: column;
     justify-content: flex-end;
     overflow: hidden;
+    transition: all 6s;
 }
 
 #terminal p {
@@ -901,7 +903,7 @@ a:hover {
 
 /* EP MODE 8============================================D ~~~ */
 
-#ep {
+.ep {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -924,6 +926,27 @@ a:hover {
     font-size: 44px;
 }
 
+.epModeOn {
+    background-color: #464944;
+    border-bottom: 3px solid #B4B5B2;
+    border-right: 3px solid #838581;
+    border-left: 3px solid #2B2E2C;
+    border-top: 3px solid #252624;
+}
+
+.epGreen {
+    background-color: blue;
+    color: rgb(27, 241, 255);
+}
+
+.epYellow {
+    background-color: violet;
+}
+
+.epBodyBackground {
+    background: linear-gradient(to bottom right, red, yellow);
+}
+
 
 @media screen and (max-height: 870px), screen and (max-width: 990px) {
 
@@ -934,7 +957,7 @@ a:hover {
         /* right: 60px; */
     }
 
-    #ep {
+    .ep {
         transform: scale(0.9);
         top: 150px;
         left: 330px;

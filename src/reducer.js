@@ -8,7 +8,8 @@ export default function reducer (state = {}, action) {
             topZIndex: action.topZIndex,
             allZIndex: action.allZIndex,
             dragging: action.dragging,
-            messageArray: action.messageArray
+            messageArray: action.messageArray,
+            epMode: action.epMode
         })
     }
 
@@ -352,6 +353,13 @@ export default function reducer (state = {}, action) {
                 messageArray: slicedMessages.concat(action.message)
             })
         }
+    }
+
+    if (action.type == 'EP_MODE_TOGGLE') {
+        state = Object.assign({}, state, {
+            epMode: !state.epMode
+        })
+
     }
 
     return state
