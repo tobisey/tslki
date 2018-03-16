@@ -6,7 +6,7 @@ export function defaults() {
         dragging: false,
         dragCoords: null,
         worksVisible: [
-            {name: 'works', x: 800, y: 40, x2: 800, y2: 40},
+            {name: 'works', x: 400, y: 40, x2: 400, y2: 40},
             {id: 1, name: 'bruce', visible: false, x: 60, y:380, x2: 60, y2: 380},
             {id: 2, name: 'lift', visible: false, x: 100, y:80, x2: 100, y2: 80},
             {id: 3, name: 'carmonica', visible: false, x: 200, y:170, x2: 200, y2: 170, rr: false, playing: false, paused: false, stopped: false, ff: false},
