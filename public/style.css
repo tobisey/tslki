@@ -1,9 +1,56 @@
+@keyframes flash {
+    0%   {opacity: 0}
+    50%  {opacity: 1}
+    100% {opacity: 0}
+}
+
+@keyframes ep {
+    0%   {color: #B4B5B2}
+    50%  {color: gold}
+    100% {color: #B4B5B2}
+}
+
 
 * {
     margin: 0;
     font-family: 'VT323', monospace;
     font-size: 28px;
     color: black;
+}
+
+#dontBeADickWrap {
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: #545653;
+}
+
+#dontBeADick {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    background-color: black;
+    border-bottom: 5px solid #B4B5B2;
+    border-right: 5px solid #838581;
+    border-left: 5px solid #2B2E2C;
+    border-top: 5px solid #252624;
+    padding-top: 4px;
+}
+
+#dontBeADick p {
+    font-family: 'menlo', monospace;
+    font-size: 12px;
+    color: green;
+    animation: flash 0.5s infinite;
+}
+
+#seriously {
+    display: none;
 }
 
 html {
@@ -28,10 +75,25 @@ a:hover {
 
 /* NAV 8============================================D ~~~ */
 
+.corpseWrapper {
+    position: absolute;
+    top: 40px;
+    left: 400px;
+}
+
+.corpse {
+    width: 90px;
+    height: 90px;
+    border-bottom: 5px solid #B4B5B2;
+    border-right: 5px solid #838581;
+    border-left: 5px solid #2B2E2C;
+    border-top: 5px solid #252624;
+}
+
 .nav {
     position: absolute;
     z-index: -1;
-    top: 200px;
+    top: 40px;
     left: 50px;
     height: 250px;
     padding: 20px;
@@ -42,23 +104,6 @@ a:hover {
     border-bottom: 5px solid #252624;
 }
 
-.corpseWrapper {
-    position: absolute;
-    top: -150px;
-    perspective: 150px;
-}
-
-.corpse {
-    width: 90px;
-    height: 90px;
-    border-bottom: 5px solid #B4B5B2;
-    border-right: 5px solid #838581;
-    border-left: 5px solid #2B2E2C;
-    border-top: 5px solid #252624;
-    /* padding: 5px;
-    border: 1px solid black; */
-    /* animation: spin 8s linear infinite; */
-}
 
 .title {
     background-color: #D7D245;
@@ -124,6 +169,10 @@ a:hover {
     background-color: lightgreen;
 }
 
+#email {
+    font-size: 24px;
+}
+
 /* TERMINAL 8============================================D ~~~ */
 
 #terminalWrap {
@@ -133,7 +182,7 @@ a:hover {
     bottom: 40px;
     left: 40px;
     background-color: #000;
-    width: 500px;
+    width: 510px;
     height: 350px;
     border-bottom: 5px solid #B4B5B2;
     border-right: 5px solid #838581;
@@ -144,7 +193,7 @@ a:hover {
 
 #terminal {
     height: 350px;
-    width: 500px;
+    width: 510px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -852,56 +901,113 @@ a:hover {
 
 /* EP MODE 8============================================D ~~~ */
 
-/* EP SWITCH */
-
-#epSwitchWrap {
+#ep {
     position: absolute;
-    right: 50px;
-    top: 30px;
-    width: 96px;
-    height: 45px;
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    /* border-bottom: 5px solid #B4B5B2;
-    border-right: 5px solid #838581;
-    border-left: 5px solid #2B2E2C;
-    border-top: 5px solid #252624; */
-    border: 2px solid black;
-    background-color: black;
-}
-
-#epSwitchLeftWrap {
-    perspective: 200px;
-}
-
-#epSwitchLeft {
-    /* background-color: rgb(182, 0, 0); */
-    background: linear-gradient(to bottom left, rgb(140, 0, 0), rgb(255, 0, 0));
-    width: 82px;
-    height: 42px;
-    transform: rotateY(-20deg);
-    display: flex;
-    align-items: center;
     justify-content: center;
-    border: 1px solid rgb(140, 0, 0);
+    align-items: center;
+    width: 70px;
+    height: 40px;
+    border-radius: 5px;
+    left: 400px;
+    top: 170px;
+    border-top: 3px solid #B4B5B2;
+    border-left: 3px solid #838581;
+    border-right: 3px solid #2B2E2C;
+    border-bottom: 3px solid #252624;
 }
 
-#epSwitchLeft p {
-    font-family: "menlo", monospace;
-    font-size: 20px;
-    color: rgb(220, 220, 220);
+#epText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 44px;
 }
 
-#epSwitchRightWrap {
-    perspective: 100px;
+
+@media screen and (max-height: 870px), screen and (max-width: 990px) {
+
+    .corpseWrapper {
+        transform: scale(0.9);
+        top: 30px;
+        left: 330px;
+        /* right: 60px; */
+    }
+
+    #ep {
+        transform: scale(0.9);
+        top: 150px;
+        left: 330px;
+    }
+
+    .nav {
+        transform: scale(0.8);
+        top: 5px;
+        left: 20px;
+    }
+
+    #terminalWrap {
+        transform: scale(0.8);
+        left: -20px;
+        bottom: -10px;
+    }
+
+    .outfits {
+        transform: scale(0.8);
+        right: 10px;
+        bottom: 10px;
+    }
+
+    .works {
+        transform: scale(0.8);
+    }
+
+    .window {
+        transform: scale(0.8);
+    }
+
+    .parallels {
+        transform: scale(0.8);
+    }
+
 }
 
-#epSwitchRight {
-    /* background-color: rgb(88, 1, 1); */
-    background: linear-gradient(to bottom left, rgb(91, 0, 0), rgb(108, 1, 1));
-    width: 15px;
-    height: 43px;
-    transform: rotateY(30deg);
-    border: 1px solid rgb(88, 1, 1);
+@media screen and (max-height: 610px), screen and (max-width: 800px) {
+
+    #dontBeADickWrap {
+        display: flex;
+    }
+
+    main {
+        display: none;
+    }
+
+}
+
+@media screen and (max-height: 315px) {
+
+    #dontBeADickWrap {
+        display: flex;
+    }
+
+    #dontBeADick {
+        height: 100px;
+    }
+
+    #finger {
+        display: none;
+    }
+
+    #resizeYourScreen {
+        display: none;
+    }
+
+    #seriously {
+        display: block;
+    }
+
+    main {
+        display: none;
+    }
+
 }
