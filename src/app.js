@@ -332,9 +332,11 @@ class App extends React.Component {
         if (this.refs.terminal && !this.props.epMode) {
             this.refs.terminal.classList.remove('epGreen');
             this.refs.title.classList.remove('epYellow');
+            document.body.classList.remove('epBody')
         } else if (this.refs.terminal && this.props.epMode) {
             this.refs.terminal.classList.add('epGreen');
             this.refs.title.classList.add('epYellow');
+            document.body.classList.add('epBody')
         }
 
         return (

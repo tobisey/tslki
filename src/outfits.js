@@ -70,7 +70,7 @@ class Outfits extends React.Component {
 
     outfitClick(who) {
         if (who == 'one') {
-            this.props.logInTerminal(`artist > tobi - aka boaby`);
+            this.props.logInTerminal(`artist > tobi - aka boaby aka the real mark hamill`);
         } else {
             this.props.logInTerminal(`artist > lachlan - aka sack aka yak aka fife dog aka fìobha cù`);
         }

@@ -60,6 +60,8 @@ html {
 body {
     overflow: hidden;
     background-color: #545653;
+    transition: all 6s;
+    height: 100vh;
 }
 
 a {
@@ -1001,8 +1003,14 @@ a:hover {
     background-color: violet;
 }
 
-.epBodyBackground {
-    background: linear-gradient(to bottom right, red, yellow);
+@keyframes epGradient {
+    0% {background: linear-gradient(to bottom right, gold, deeppink)}
+    100% {background: linear-gradient(to bottom right, deeppink, gold)}
+}
+
+.epBody {
+    /* animation: epGradient 6s linear; */
+    background-image: repeating-radial-gradient(deeppink, deeppink 1px, gold 1px, gold 2px);
 }
 
 
