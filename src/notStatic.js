@@ -120,7 +120,7 @@ class NotStatic extends React.Component {
         }
     }
 
-    scrollDown(x) {
+    scrollDown() {
         if (!this.state.scrollAtBottom) {
             this.setState({
                 scrollAtTop: false,
