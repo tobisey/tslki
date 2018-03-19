@@ -204,6 +204,8 @@ a:hover {
 
 #terminal p {
     color: green;
+    text-shadow: 0 0 2px rgb(0, 179, 7);
+    filter: blur(0.4px);
     font-size: 12px;
     margin-left: 6px;
     font-family: "menlo", monospace;
@@ -899,6 +901,62 @@ a:hover {
 
 #previous {
     transform: rotate(180deg);
+}
+
+.notStaticTextWrap {
+    height: 564px;
+    width: 400px;
+    left: 726px;
+    bottom: 124px;
+    overflow: hidden;
+    position: absolute;
+    background-color: #545653;
+    border-top: 3px solid #B4B5B2;
+    border-left: 3px solid #838581;
+    border-right: 3px solid #2B2E2C;
+    border-bottom: 3px solid #252624;
+    padding: 10px;
+}
+
+#notStaticText {
+    height: 500px;
+    background-color: black;
+    border-bottom: 3px solid #B4B5B2;
+    border-right: 3px solid #838581;
+    border-left: 3px solid #2B2E2C;
+    border-top: 3px solid #252624;
+    overflow: hidden;
+    text-align: center;
+}
+
+#notStaticText div {
+    position: relative;
+}
+
+#notStaticText p {
+    color: green;
+    text-shadow: 0 0 2px rgb(0, 179, 7);
+    filter: blur(0.4px);
+    font-family: 'menlo', monospace;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+#notStaticTextControlWrap {
+    display: flex;
+    margin-top: 7px;
+}
+
+#notStaticTextControlWrap div:first-child div {
+    transform: rotate(-90deg);
+}
+
+#notStaticTextControlWrap div:last-child div {
+    transform: rotate(90deg);
+}
+
+.notStaticTextButton {
+    margin-right: 30px;
 }
 
 /* EP MODE 8============================================D ~~~ */

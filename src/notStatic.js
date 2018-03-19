@@ -14,12 +14,21 @@ class NotStatic extends React.Component {
             forward: false,
             backwards: false,
             noPrev: true,
-            noNext: false
+            noNext: false,
+            scrollPos: 0,
+            scrollAtTop: true,
+            scrollAtBottom: false,
+            scrollingAllowed: false
         };
         this.prevImage = this.prevImage.bind(this)
         this.prevImageFrame = this.prevImageFrame.bind(this)
         this.nextImage = this.nextImage.bind(this)
         this.nextImageFrame = this.nextImageFrame.bind(this)
+        this.scrollDown = this.scrollDown.bind(this)
+        this.scrollUp = this.scrollUp.bind(this)
+        this.scrollingDown = this.scrollingDown.bind(this)
+        this.scrollingUp = this.scrollingUp.bind(this)
+        this.scrollStop = this.scrollStop.bind(this)
     }
 
     componentDidMount() {
@@ -111,6 +120,80 @@ class NotStatic extends React.Component {
         }
     }
 
+    scrollDown(x) {
+        if (!this.state.scrollAtBottom) {
+            this.setState({
+                scrollAtTop: false,
+                scrollingAllowed: true
+            }, () => {
+                this.scrollingDown()
+                this.props.logInTerminal(`work > not static ~ screenplay scrolling down`);
+                this.refs.downButton.classList.add('videoControlSelected');
+                this.refs.downArrow.classList.add('playing');
+            })
+        }
+    }
+
+    scrollingDown() {
+        if (this.state.scrollingAllowed && this.state.scrollPos < 1750) {
+            this.setState({
+                scrollPos: this.state.scrollPos += 1
+            }, () => {
+                window.requestAnimationFrame(this.scrollingDown)
+            })
+        } else {
+            if (this.state.scrollPos == 1750) {
+                this.setState({
+                    scrollingAllowed: false,
+                    scrollAtBottom: true
+                }, () => {
+                    return;
+                })
+            }
+        }
+    }
+
+    scrollUp() {
+        if (!this.state.scrollAtTop) {
+            this.setState({
+                scrollAtBottom: false,
+                scrollingAllowed: true
+            }, () => {
+                this.scrollingUp()
+                this.props.logInTerminal(`work > not static ~ screenplay scrolling up`);
+                this.refs.upButton.classList.add('videoControlSelected')
+                this.refs.upArrow.classList.add('playing')
+            })
+        }
+    }
+
+    scrollingUp() {
+        if (this.state.scrollingAllowed && this.state.scrollPos > 0) {
+            this.setState({
+                scrollPos: this.state.scrollPos -= 1
+            }, () => {
+                window.requestAnimationFrame(this.scrollingUp)
+            })
+        } else {
+            if (this.state.scrollPos == 0) {
+                this.setState({
+                    scrollingAllowed: false,
+                    scrollAtTop: true
+                }, () => {
+                    return;
+                })
+            }
+        }
+    }
+
+    scrollStop(x) {
+        this.setState({
+            scrollingAllowed: false
+        }, () => {
+            this.refs[`${x}Button`].classList.remove('videoControlSelected')
+            this.refs[`${x}Arrow`].classList.remove('playing')
+        })
+    }
 
     render() {
 
@@ -161,6 +244,119 @@ class NotStatic extends React.Component {
                     </div>
                 </div>
 
+                <div className="notStaticTextWrap">
+                    <div ref="scroll" id="notStaticText">
+                        <div style={{bottom: this.state.scrollPos + 'px'}}>
+                            <br/>
+                            <p>Scene 1</p>
+                            <br/>
+                            <p>INT. BADLY LIT ROOM</p>
+                            <p>Room contains wooden table. A whiskey glass is the only object on it.</p>
+                            <p>overhead shot of whiskey glass on the table</p>
+                            <p>side shot of whiskey glass, hand picks glass up (takes glass out of frame) drinks and then puts the glass back down</p>
+                            <br/>
+                            <p>Character (C) - The personified concept of Untitled 67 (Not Static).</p>
+                            <br/>
+                            <p>C: It’s a strange thing, beauty. Something that is aesthetically pleasing. Easy on the eye. To achieve beauty requires a lot of time. I need to build myself up, I need to remove excess and I need to be clean.</p>
+                            <br/>
+                            <p>takes a drink</p>
+                            <br/>
+                            <p>C: I am a particular space that compliments my figure.</p>
+                            <br/>
+                            <p>EXT. RAILWAY ARCH - DAY (SUNNY)</p>
+                            <p>An uninhabited railway arch</p>
+                            <p>far away shot, slowly moving towards</p>
+                            <br/>
+                            <p>CLOSE UP</p>
+                            <p>cathode ray tube, text appears on screen, text reads <br/> > 185.4 miles</p>
+                            <br/>
+                            <br/>
+                            <p>Scene 2</p>
+                            <br/>
+                            <p>EXT. OBSCENE GREEN WALL - DAY (SUNNY)</p>
+                            <p>Wall is at the end of a street.</p>
+                            <p>shot of green wall from the road</p>
+                            <p>POV shot of C walking along the pavement with the wall on the left</p>
+                            <br/>
+                            <p>C: People say that beauty is in the eye of the beholder. But that’s rubbish, everyone knows when something is truly exquisite. It’s undeniable.</p>
+                            <br/>
+                            <p>INT. BADLY LIT ROOM</p>
+                            <p>Whiskey glass is sat on the wooden table.</p>
+                            <p>overhead whiskey shot</p>
+                            <br/>
+                            <p>C: Now that is beauty.</p>
+                            <br/>
+                            <p>EXT. RAILWAY ARCH - DAY (SUNNY)</p>
+                            <p>An uninhabited railway arch</p>
+                            <p>middle distance shot, slowly moving towards</p>
+                            <br/>
+                            <p>CLOSE UP</p>
+                            <p>cathode ray tube, text appears on screen, text reads <br/> > 316kg</p>
+                            <p>text removed</p>
+                            <br/>
+                            <br/>
+                            <p>Scene 3</p>
+                            <br/>
+                            <p>INT. BADLY LIT ROOM</p>
+                            <p>cut to shot of a hand drawing a circle in a notebook with pencil</p>
+                            <br/>
+                            <p>C: It’s a labour of love.</p>
+                            <br/>
+                            <p>keep showing clips of new circles being drawn</p>
+                            <p>splice in close ups of cathode ray tubes but reduce throughout</p>
+                            <p>circle clips keep repeating, getting faster and faster and building to a climax</p>
+                            <br/>
+                            <p>EXT. RAILWAY ARCH - DAY (OVERCAST)</p>
+                            <p>An uninhabited railway arch</p>
+                            <p>close shot, slowly moving towards</p>
+                            <p>suddenly cuts to black</p>
+                            <br/>
+                            <br/>
+                            <p>Scene 4</p>
+                            <br/>
+                            <p>SCREEN IS BLACK</p>
+                            <br/>
+                            <p>C: I can’t reach this. I’m moving towards a horizon that keeps on moving away from me. If there is a horizon then I am it. Am I just everything that I can see? Or am I more?</p>
+                            <br/>
+                            <p>CLOSE UP</p>
+                            <p>cathode ray tube, text appears on screen, text reads <br/> > 60 days</p>
+                            <br/>
+                            <br/>
+                            <p>Scene 5</p>
+                            <br/>
+                            <p>EXT. OBSCENE GREEN WALL - DAY (OVERCAST)</p>
+                            <p>Wall is at the end of a street.</p>
+                            <p>POV shot of C walking along the pavement with the wall on the left, camera turns to look at the wall</p>
+                            <p>cut to shot of whole wall</p>
+                            <p>back to POV, looks away from the wall</p>
+                            <br/>
+                            <p>EXT. OBSCENE GREEN WALL - DAY (SUNNY)</p>
+                            <p>cut to shot of whole wall again</p>
+                            <br/>
+                            <br/>
+                            <p>End.</p>
+                            <br/>
+                            <br/>
+                        </div>
+                    </div>
+                    <div id="notStaticTextControlWrap">
+
+                        <div ref="upButton" className="videoControlsOption"
+                             onMouseDown={() => this.scrollUp()}
+                             onMouseUp={() => this.scrollStop('up')}
+                        >
+                            <div ref="upArrow" className="playIcon"></div>
+                        </div>
+
+                        <div ref="downButton" className="videoControlsOption"
+                             onMouseDown={() => this.scrollDown()}
+                             onMouseUp={() => this.scrollStop('down')}
+                        >
+                            <div ref="downArrow" className="playIcon"></div>
+                        </div>
+
+                    </div>
+                </div>
 
                 <div className="notStaticControlWrap">
                     {!this.state.backwards &&
