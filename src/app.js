@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { defaults, toggleWorksMenu, closeTopWindow, toggleMouseDown, toggleDragging, setInitialCoords, setDragCoords, logInTerminal, epModeToggle } from './actions.js';
+import { defaults, toggleWorksMenu, closeTopWindow, toggleMouseDown, toggleDragging, setInitialCoords, setDragCoords, logInTerminal, epModeToggle, windowUnmounted, toggleWork } from './actions.js';
 import Outfits from './outfits.js'
 import Works from './works.js'
+import EpWorks from './epWorks.js'
 import Bruce from './bruce.js'
 import Lift from './lift.js'
 import Carmonica from './carmonica.js'
@@ -29,6 +30,7 @@ class App extends React.Component {
         this.handleMouseUp = this.handleMouseUp.bind(this)
         this.handleDrag = this.handleDrag.bind(this)
         this.handleMouseLeave = this.handleMouseLeave.bind(this)
+        this.epMode = this.epMode.bind(this)
     }
 
     componentDidMount() {
@@ -69,7 +71,7 @@ class App extends React.Component {
     handleMouseDown(e, component) {
         var elem = document.getElementsByClassName(component);
 
-        if (component == 'works') {
+        if (component == 'works' || component == 'epWorks') {
             var posY = elem[0].offsetTop - 100;
         } else {
             var posY = elem[0].offsetTop;
@@ -325,6 +327,37 @@ class App extends React.Component {
             this.refs.ep.classList.add('epModeOn')
             this.refs.epText.style.color = "rgb(27, 241, 255)";
         }
+
+        if (!this.props.epMode) {
+            console.log('ep mode on');
+            this.refs.gradientBoi.classList.add('activate');
+            this.refs.palmTreesBoi.classList.add('activate');
+            this.props.worksVisible.map(work => {
+                if (work.visible) {
+                    this.props.toggleWork(work.name);
+                    this.props.windowUnmounted(work.name);
+                }
+            })
+            if (this.props.worksMenuVisible) {
+                this.props.toggleWorksMenu(this.props.worksMenuVisible);
+                this.props.windowUnmounted('works');
+            }
+        } else {
+            console.log('ep mode off');
+            this.refs.gradientBoi.classList.remove('activate');
+            this.refs.palmTreesBoi.classList.remove('activate');
+            this.props.worksVisible.map(work => {
+                if (work.visible) {
+                    this.props.toggleWork(work.name);
+                    this.props.windowUnmounted(work.name)
+                }
+            })
+            if (this.props.worksMenuVisible) {
+                this.props.toggleWorksMenu(this.props.worksMenuVisible);
+                this.props.windowUnmounted('epWorks')
+            }
+        }
+
     }
 
     render() {
@@ -336,21 +369,31 @@ class App extends React.Component {
         } else if (this.refs.terminal && this.props.epMode) {
             this.refs.terminal.classList.add('epGreen');
             this.refs.title.classList.add('epYellow');
-            document.body.classList.add('epBody')
+            document.body.classList.add('epBody');
         }
 
         return (
             <div>
+
+                <div ref="gradientBoi" className="gradientBoi"></div>
+                <div ref="palmTreesBoi" className="palmTreesBoi"></div>
 
                 <div className="corpseWrapper">
                     <img onClick={() => this.corpseClick()} className="corpse" src="/images/corpse.png" alt="corpse"/>
                 </div>
 
                 <div className="nav">
-                    <div className="title" ref="title">
-                        <p>Tobias Seymour &</p>
-                        <p>Lachlan KosaniukInnes</p>
-                    </div>
+                    {!this.props.epMode &&
+                        <div className="title" ref="title">
+                            <p>Tobias Seymour &</p>
+                            <p>Lachlan KosaniukInnes</p>
+                        </div>
+                    }
+                    {this.props.epMode &&
+                        <div className="title" ref="title">
+                            <p>Edwyn Parker</p>
+                        </div>
+                    }
                     <div className="navLinks">
                         <div className="linkWrapper" onClick={() => this.props.toggleWorksMenu(this.props.worksMenuVisible)}><div className="dot" ref="worksDot"><div className="smallerDot" ref="worksSmallerDot"></div></div><a>Works</a></div>
                         <div className="linkWrapper" onClick={() => this.cvClick()}><div className="dot" ref="cvDot"><div className="smallerDot" ref="cvSmallerDot"></div></div><a>CV</a></div>
@@ -369,7 +412,8 @@ class App extends React.Component {
                 </div>
 
                 <Outfits />
-                {this.props.worksMenuVisible && <Works
+
+                {this.props.worksMenuVisible && !this.props.epMode && <Works
                     worksLED ={this.worksLED}
                     handleMouseDown = {this.handleMouseDown}
                     handleMouseUp = {this.handleMouseUp}
@@ -377,7 +421,13 @@ class App extends React.Component {
                     handleMouseLeave = {this.handleMouseLeave}
                 />}
 
-
+                {this.props.worksMenuVisible && this.props.epMode && <EpWorks
+                    worksLED ={this.worksLED}
+                    handleMouseDown = {this.handleMouseDown}
+                    handleMouseUp = {this.handleMouseUp}
+                    handleDrag = {this.handleDrag}
+                    handleMouseLeave = {this.handleMouseLeave}
+                />}
 
                 {this.props.worksVisible && this.props.worksVisible.map((work) => {
                     if (work.name === 'bruce' && work.visible) {
@@ -558,6 +608,14 @@ const mapDispatchToProps = (dispatch) => {
 
         epModeToggle() {
             dispatch(epModeToggle())
+        },
+
+        windowUnmounted(work) {
+            dispatch(windowUnmounted(work))
+        },
+
+        toggleWork(work) {
+            dispatch(toggleWork(work))
         }
     }
 }

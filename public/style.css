@@ -49,6 +49,34 @@
     animation: flash 0.5s infinite;
 }
 
+.gradientBoi {
+    height: 100vh;
+    width: 100vw;
+    opacity: 0;
+    position: fixed;
+    pointer-events: none;
+    z-index: -10;
+    transition: opacity 6s;
+    background: linear-gradient(to bottom right, deeppink, yellow);
+}
+
+.palmTreesBoi {
+    height: 100vh;
+    width: 100vw;
+    opacity: 0;
+    position: fixed;
+    pointer-events: none;
+    z-index: -9;
+    transition: opacity 6s;
+    background-image: url("palmTrees.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.activate {
+    opacity: 1;
+}
+
 #seriously {
     display: none;
 }
@@ -61,7 +89,7 @@ body {
     overflow: hidden;
     background-color: #545653;
     transition: all 6s;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 a {
@@ -104,6 +132,7 @@ a:hover {
     border-left: 5px solid #838581;
     border-right: 5px solid #2B2E2C;
     border-bottom: 5px solid #252624;
+    background-color: rgb(255, 147, 199);
 }
 
 
@@ -115,6 +144,7 @@ a:hover {
     border-top: 5px solid #252624;
     margin-bottom: 20px;
     transition: all 6s;
+    height: 57px;
 }
 
 .linkWrapper {
@@ -321,6 +351,99 @@ a:hover {
 }
 
 .scrollable::-webkit-scrollbar {
+    display: none;
+}
+
+.open {
+    background-color: #D7D245;
+}
+
+.open a {
+    color: black;
+}
+
+.highlighted {
+    background-color: green;
+}
+
+.highlighted a {
+    color: black;
+}
+
+.escWorksWrapper {
+    width: 510px;
+    height: 57px;
+    /* background-color: deeppink; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.esc {
+    text-decoration: none;
+    font-style: normal;
+    width: 40px;
+    height: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 0 5px;
+    background-color: #545653;
+    border-top: 3px solid #B4B5B2;
+    border-left: 3px solid #838581;
+    border-right: 3px solid #2B2E2C;
+    border-bottom: 3px solid #252624;
+    border-radius: 3px;
+}
+
+.escDown {
+    border-bottom: 3px solid #B4B5B2;
+    border-right: 3px solid #838581;
+    border-left: 3px solid #2B2E2C;
+    border-top: 3px solid #252624;
+}
+
+.esc a {
+    height: 30px;
+    width: 40px;
+}
+
+/* EP WORKS 8============================================D ~~~ */
+
+.epWorks {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    width: 620px;
+    height: 260px;
+    margin-top: 100px;
+    margin-right: 150px;
+    padding: 0 20px 0 10px;
+    background-color: #545653;
+    border-top: 5px solid #B4B5B2;
+    border-left: 5px solid #838581;
+    border-right: 5px solid #2B2E2C;
+    border-bottom: 5px solid #252624;
+    filter: blur(0.5px);
+    box-shadow: 8px 8px 50px black;
+}
+
+.epScrollable {
+    overflow: scroll;
+    width: 100%;
+    height: 132px;
+    background-color: black;
+    border-bottom: 5px solid #B4B5B2;
+    border-right: 5px solid #838581;
+    border-left: 5px solid #2B2E2C;
+    border-top: 5px solid #252624;
+}
+
+.epScrollable a {
+    color: green;
+    margin-left: 10px;
+}
+
+.epScrollable::-webkit-scrollbar {
     display: none;
 }
 
@@ -1003,14 +1126,10 @@ a:hover {
     background-color: violet;
 }
 
-@keyframes epGradient {
-    0% {background: linear-gradient(to bottom right, gold, deeppink)}
-    100% {background: linear-gradient(to bottom right, deeppink, gold)}
-}
-
 .epBody {
+    background-color: none;
     /* animation: epGradient 6s linear; */
-    background-image: repeating-radial-gradient(deeppink, deeppink 1px, gold 1px, gold 2px);
+    /* background-image: repeating-radial-gradient(deeppink, deeppink 1px, gold 1px, gold 2px); */
 }
 
 
