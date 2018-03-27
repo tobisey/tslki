@@ -127,7 +127,7 @@ a:hover {
     left: 50px;
     height: 250px;
     padding: 20px;
-    filter: blur(0.5px);
+    /* filter: blur(0.5px); */
     border-top: 5px solid #B4B5B2;
     border-left: 5px solid #838581;
     border-right: 5px solid #2B2E2C;
@@ -177,7 +177,7 @@ a:hover {
     border-top: 5px solid #252624;
     border-radius: 20px;
     transform: rotate(-25deg);
-    filter: blur(0.5px);
+    /* filter: blur(0.5px); */
 }
 
 .smallerDot {
@@ -237,7 +237,7 @@ a:hover {
 #terminal p {
     color: green;
     text-shadow: 0 0 2px rgb(0, 179, 7);
-    filter: blur(0.4px);
+    /* filter: blur(0.4px); */
     font-size: 12px;
     margin-left: 6px;
     font-family: "menlo", monospace;
@@ -250,7 +250,7 @@ a:hover {
     /* background-color: hotpink; */
     right: 60px;
     bottom: 60px;
-    filter: blur(0.5px);
+    /* filter: blur(0.5px); */
 }
 
 .outfitsImageWrap {
@@ -330,7 +330,7 @@ a:hover {
     border-left: 5px solid #838581;
     border-right: 5px solid #2B2E2C;
     border-bottom: 5px solid #252624;
-    filter: blur(0.5px);
+    /* filter: blur(0.5px); */
     box-shadow: 8px 8px 50px black;
 }
 
@@ -423,7 +423,7 @@ a:hover {
     border-left: 5px solid #838581;
     border-right: 5px solid #2B2E2C;
     border-bottom: 5px solid #252624;
-    filter: blur(0.5px);
+    /* filter: blur(0.5px); */
     box-shadow: 8px 8px 50px black;
 }
 
@@ -1061,7 +1061,7 @@ a:hover {
 #notStaticText p {
     color: green;
     text-shadow: 0 0 2px rgb(0, 179, 7);
-    filter: blur(0.4px);
+    /* filter: blur(0.4px); */
     font-family: 'menlo', monospace;
     font-size: 12px;
     margin-bottom: 4px;
