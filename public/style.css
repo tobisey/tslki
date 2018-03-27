@@ -88,7 +88,7 @@ html {
 body {
     overflow: hidden;
     background-color: #545653;
-    transition: all 6s;
+    /* transition: all 6s; */
     /* height: 100vh; */
 }
 
@@ -132,7 +132,7 @@ a:hover {
     border-left: 5px solid #838581;
     border-right: 5px solid #2B2E2C;
     border-bottom: 5px solid #252624;
-    background-color: rgb(255, 147, 199);
+    /* background-color: rgb(255, 147, 199); */
 }
 
 
