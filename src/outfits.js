@@ -82,10 +82,12 @@ class Outfits extends React.Component {
 
         console.log(selectedOutfit);
 
-        if (selectedOutfit) {
+        if (selectedOutfit != undefined) {
+          console.log('yep');
           var outfitBackgroundOne = 'images/' + selectedOutfit + '1.gif';
           var outfitBackgroundTwo = 'images/' + selectedOutfit + '2.gif';
         } else {
+          console.log('nope');
           var outfitBackgroundOne = 'images/lowEnd1.gif';
           var outfitBackgroundTwo = 'images/lowEnd2.gif';
         }
