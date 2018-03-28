@@ -80,13 +80,20 @@ class Outfits extends React.Component {
 
         const { selectedOutfit } = this.props
 
-        var outfitBackgroundOne = 'images/' + selectedOutfit + '1.gif';
-        var outfitBackgroundTwo = 'images/' + selectedOutfit + '2.gif';
+        console.log(selectedOutfit);
+
+        if (selectedOutfit) {
+          var outfitBackgroundOne = 'images/' + selectedOutfit + '1.gif';
+          var outfitBackgroundTwo = 'images/' + selectedOutfit + '2.gif';
+        } else {
+          var outfitBackgroundOne = 'images/lowEnd1.gif';
+          var outfitBackgroundTwo = 'images/lowEnd2.gif';
+        }
 
         return (
             <div className="outfits">
-                <div onClick={() => this.outfitClick('one')} className="outfitsImageWrap" ref="outfitOne" style={selectedOutfit ? {backgroundImage: "url(" + outfitBackgroundOne + ")"} : {backgroundImage: "url('images/lowEnd1.gif')"}}></div>
-                <div onClick={() => this.outfitClick('two')} className="outfitsImageWrap" ref="outfitTwo" style={selectedOutfit ? {backgroundImage: "url(" + outfitBackgroundTwo + ")"} : {backgroundImage: "url('images/lowEnd2.gif')"}}></div>
+                <div onClick={() => this.outfitClick('one')} className="outfitsImageWrap" ref="outfitOne" style={{backgroundImage: "url(" + outfitBackgroundOne + ")"}}></div>
+                <div onClick={() => this.outfitClick('two')} className="outfitsImageWrap" ref="outfitTwo" style={{backgroundImage: "url(" + outfitBackgroundTwo + ")"}}></div>
 
                 <div className="controls">
                     <div className="controlsRow">
