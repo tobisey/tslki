@@ -2,7 +2,7 @@ export function defaults() {
     return {
         type: 'DEFAULTS',
         worksMenuVisible: false,
-        selectedOutfit: 'LowEnd',
+        selectedOutfit: 'lowEnd',
         dragging: false,
         dragCoords: null,
         worksVisible: [
