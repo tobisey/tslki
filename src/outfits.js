@@ -81,20 +81,9 @@ class Outfits extends React.Component {
         const { selectedOutfit } = this.props
 
         console.log(selectedOutfit);
-        var outfitBackgroundOne;
-        var outfitBackgroundTwo;
 
-        // if (selectedOutfit != undefined) {
-        //   console.log('yep');
-          outfitBackgroundOne = 'images/' + selectedOutfit + '1.gif';
-          outfitBackgroundTwo = 'images/' + selectedOutfit + '2.gif';
-          // console.log(outfitBackgroundOne, outfitBackgroundTwo);
-        // } else {
-        //   console.log('nope');
-        //   outfitBackgroundOne = 'images/lowEnd1.gif';
-        //   outfitBackgroundTwo = 'images/lowEnd2.gif';
-        //   console.log(outfitBackgroundOne, outfitBackgroundTwo);
-        // }
+        var outfitBackgroundOne = 'images/' + selectedOutfit + '1.gif';
+        var outfitBackgroundTwo = 'images/' + selectedOutfit + '2.gif';      
 
         return (
             <div className="outfits">
