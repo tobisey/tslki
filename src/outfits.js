@@ -80,8 +80,8 @@ class Outfits extends React.Component {
 
         const { selectedOutfit } = this.props
 
-        var outfitBackgroundOne = 'images/' + selectedOutfit + '1.gif';
-        var outfitBackgroundTwo = 'images/' + selectedOutfit + '2.gif';
+        var outfitBackgroundOne = require('images/' + selectedOutfit + '1.gif');
+        var outfitBackgroundTwo = require('images/' + selectedOutfit + '2.gif');
 
         return (
             <div className="outfits">
