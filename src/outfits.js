@@ -85,8 +85,8 @@ class Outfits extends React.Component {
 
         return (
             <div className="outfits">
-                <div onClick={() => this.outfitClick('one')} className="outfitsImageWrap" ref="outfitOne"><img className="outfitImage" src={outfitBackgroundOne || 'images/lowEnd1.gif'}/></div>
-                <div onClick={() => this.outfitClick('two')} className="outfitsImageWrap" ref="outfitTwo"><img className="outfitImage" src={outfitBackgroundTwo || 'images/lowEnd2.gif'}/></div>
+                <div onClick={() => this.outfitClick('one')} className="outfitsImageWrap" ref="outfitOne" style={selectedOutfit ? {backgroundImage: "url(" + outfitBackgroundOne + ")"} : {backgroundImage: "url('images/lowEnd1.gif')"}}></div>
+                <div onClick={() => this.outfitClick('two')} className="outfitsImageWrap" ref="outfitTwo" style={selectedOutfit ? {backgroundImage: "url(" + outfitBackgroundTwo + ")"} : {backgroundImage: "url('images/lowEnd2.gif')"}}></div>
 
                 <div className="controls">
                     <div className="controlsRow">
