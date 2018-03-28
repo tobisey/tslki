@@ -274,6 +274,11 @@ a:hover {
     background-size: cover;
 }
 
+.outfitImage {
+  min-width: 100%;
+  height: 100%;
+}
+
 .controls {
     padding: 5px;
     border-top: 5px solid #B4B5B2;
