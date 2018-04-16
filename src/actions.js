@@ -20,7 +20,9 @@ export function defaults() {
             {id: 10, name: 'breakWork', visible: false, x: 320, y: 90, x2: 320, y2: 90},
             {id: 11, name: 'twelve', visible: false, x: 600, y: 500, x2: 600, y2: 500, rr: false, playing: false, paused: false, stopped: false, ff: false},
             {id: 12, name: 'rhythm2', visible: false, x: 130, y: 310, x2: 130, y2: 310, rr: false, playing: false, paused: false, stopped: false, ff: false},
-            {id: 13, name: 'raitre', visible: false, x: 100, y: 380, x2: 100, y2: 380, rr: false, playing: false, paused: false, stopped: false, ff: false}
+            {id: 13, name: 'raitre', visible: false, x: 100, y: 380, x2: 100, y2: 380, rr: false, playing: false, paused: false, stopped: false, ff: false},
+            {id: 14, name: 'EP', visible: false, x: 100, y: 380, x2: 100, y2: 380},
+            {id: 15, name: 'poolTable', visible: false, x: 200, y: 230, x2: 200, y2: 230, rr: false, playing: false, paused: false, stopped: false, ff: false}
         ],
         topZIndex: 10,
         allZIndex: [
@@ -38,7 +40,9 @@ export function defaults() {
             {name: 'twelve', zIndex: null},
             {name: 'raitre', zIndex: null},
             {name: 'rhythm2', zIndex: null},
-            {name: 'breakWork', zIndex: null}
+            {name: 'breakWork', zIndex: null},
+            {name: 'EP', zIndex: null},
+            {name: 'poolTable', zIndex: null}
         ],
         messageArray: [],
         epMode: false

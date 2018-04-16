@@ -173,19 +173,19 @@ class EpWorks extends React.Component {
                 <div className="epScrollable" ref="scrollable" onMouseLeave={() => this.worksResumeCurrent()}>
 
                     {this.props.worksVisible && this.props.worksVisible.map(work => {
-                        if (work.name === 'bruce' && work.visible === false) {
-                            return <div className="linkWrapper" ref="1"
-                                        onMouseEnter={() => this.worksHandleMouseEnter(1)}
-                                        onMouseLeave={() => this.worksHandleMouseLeave(1)}
-                                        onClick={() => {this.props.toggleWork('bruce'); this.worksCheckToHighlight(1)}}>
-                                        <a>The Worst Bruce Nauman in Scotland</a>
+                        if (work.name === 'EP' && work.visible === false) {
+                            return <div className="linkWrapper" ref="14"
+                                        onMouseEnter={() => this.worksHandleMouseEnter(14)}
+                                        onMouseLeave={() => this.worksHandleMouseLeave(14)}
+                                        onClick={() => {this.props.toggleWork('EP'); this.worksCheckToHighlight(14)}}>
+                                        <a>EP</a>
                                     </div>
-                        } else if (work.name === 'bruce' && work.visible) {
-                            return <div className="linkWrapper open" ref="1"
-                                        onMouseEnter={() => this.worksHandleMouseEnter(1)}
-                                        onMouseLeave={() => this.worksHandleMouseLeave(1)}
-                                        onClick={() => {this.props.toggleWork('bruce'); this.worksCheckToHighlight(1)}}>
-                                        <a>The Worst Bruce Nauman in Scotland</a>
+                        } else if (work.name === 'EP' && work.visible) {
+                            return <div className="linkWrapper open" ref="14"
+                                        onMouseEnter={() => this.worksHandleMouseEnter(14)}
+                                        onMouseLeave={() => this.worksHandleMouseLeave(14)}
+                                        onClick={() => {this.props.toggleWork('EP'); this.worksCheckToHighlight(14)}}>
+                                        <a>EP</a>
                                     </div>
                         }
                     })}
@@ -209,19 +209,19 @@ class EpWorks extends React.Component {
                     })}
 
                     {this.props.worksVisible && this.props.worksVisible.map(work => {
-                        if (work.name === 'carmonica' && work.visible === false) {
-                            return <div className="linkWrapper" ref="3"
-                                        onMouseEnter={() => this.worksHandleMouseEnter(3)}
-                                        onMouseLeave={() => this.worksHandleMouseLeave(3)}
-                                        onClick={() => {this.props.toggleWork('carmonica'); this.worksCheckToHighlight(3)}}>
-                                        <a>Carmonica Harmonicar</a>
+                        if (work.name === 'poolTable' && work.visible === false) {
+                            return <div className="linkWrapper" ref="15"
+                                        onMouseEnter={() => this.worksHandleMouseEnter(15)}
+                                        onMouseLeave={() => this.worksHandleMouseLeave(15)}
+                                        onClick={() => {this.props.toggleWork('poolTable'); this.worksCheckToHighlight(15)}}>
+                                        <a>Pool Table</a>
                                     </div>
-                        } else if (work.name === 'carmonica' && work.visible) {
-                            return <div className="linkWrapper open" ref="3"
-                                        onMouseEnter={() => this.worksHandleMouseEnter(3)}
-                                        onMouseLeave={() => this.worksHandleMouseLeave(3)}
-                                        onClick={() => {this.props.toggleWork('carmonica'); this.worksCheckToHighlight(3)}}>
-                                        <a>Carmonica Harmonicar</a>
+                        } else if (work.name === 'poolTable' && work.visible) {
+                            return <div className="linkWrapper open" ref="15"
+                                        onMouseEnter={() => this.worksHandleMouseEnter(15)}
+                                        onMouseLeave={() => this.worksHandleMouseLeave(15)}
+                                        onClick={() => {this.props.toggleWork('poolTable'); this.worksCheckToHighlight(15)}}>
+                                        <a>Pool Table</a>
                                     </div>
                         }
                     })}

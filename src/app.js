@@ -17,6 +17,8 @@ import Rhythm2 from './rhythm2.js'
 import Raitre from './raitre.js'
 import EditedFilms from './editedFilms.js'
 import Pillows from './pillows.js'
+import EP from './EP.js'
+import PoolTable from './poolTable.js'
 
 class App extends React.Component {
     constructor(props) {
@@ -552,6 +554,26 @@ class App extends React.Component {
                 {this.props.worksVisible && this.props.worksVisible.map((work) => {
                     if (work.name === 'raitre' && work.visible) {
                         return <Raitre ref="raitre"
+                            handleMouseDown = {this.handleMouseDown}
+                            handleMouseUp = {this.handleMouseUp}
+                            handleDrag = {this.handleDrag}
+                            handleMouseLeave = {this.handleMouseLeave}
+                        />
+                    }
+                })}
+                {this.props.worksVisible && this.props.worksVisible.map((work) => {
+                    if (work.name === 'EP' && work.visible) {
+                        return <EP ref="EP"
+                            handleMouseDown = {this.handleMouseDown}
+                            handleMouseUp = {this.handleMouseUp}
+                            handleDrag = {this.handleDrag}
+                            handleMouseLeave = {this.handleMouseLeave}
+                        />
+                    }
+                })}
+                {this.props.worksVisible && this.props.worksVisible.map((work) => {
+                    if (work.name === 'poolTable' && work.visible) {
+                        return <PoolTable ref="poolTable"
                             handleMouseDown = {this.handleMouseDown}
                             handleMouseUp = {this.handleMouseUp}
                             handleDrag = {this.handleDrag}
