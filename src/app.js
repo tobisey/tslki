@@ -19,6 +19,7 @@ import EditedFilms from './editedFilms.js'
 import Pillows from './pillows.js'
 import EP from './EP.js'
 import PoolTable from './poolTable.js'
+import ThatKilledMe from './thatKilledMe.js'
 
 class App extends React.Component {
     constructor(props) {
@@ -574,6 +575,16 @@ class App extends React.Component {
                 {this.props.worksVisible && this.props.worksVisible.map((work) => {
                     if (work.name === 'poolTable' && work.visible) {
                         return <PoolTable ref="poolTable"
+                            handleMouseDown = {this.handleMouseDown}
+                            handleMouseUp = {this.handleMouseUp}
+                            handleDrag = {this.handleDrag}
+                            handleMouseLeave = {this.handleMouseLeave}
+                        />
+                    }
+                })}
+                {this.props.worksVisible && this.props.worksVisible.map((work) => {
+                    if (work.name === 'thatKilledMe' && work.visible) {
+                        return <ThatKilledMe ref="thatKilledMe"
                             handleMouseDown = {this.handleMouseDown}
                             handleMouseUp = {this.handleMouseUp}
                             handleDrag = {this.handleDrag}

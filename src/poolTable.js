@@ -14,11 +14,7 @@ class PoolTable extends React.Component {
             forward: false,
             backwards: false,
             noPrev: true,
-            noNext: false,
-            scrollPos: 0,
-            scrollAtTop: true,
-            scrollAtBottom: false,
-            scrollingAllowed: false
+            noNext: false
         };
         this.prevImage = this.prevImage.bind(this)
         this.prevImageFrame = this.prevImageFrame.bind(this)

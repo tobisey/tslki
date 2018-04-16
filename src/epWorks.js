@@ -191,19 +191,19 @@ class EpWorks extends React.Component {
                     })}
 
                     {this.props.worksVisible && this.props.worksVisible.map(work => {
-                        if (work.name === 'lift' && work.visible === false) {
-                            return <div className="linkWrapper" ref="2"
-                                        onMouseEnter={() => this.worksHandleMouseEnter(2)}
-                                        onMouseLeave={() => this.worksHandleMouseLeave(2)}
-                                        onClick={() => {this.props.toggleWork('lift'); this.worksCheckToHighlight(2)}}>
-                                        <a>Are We Saying The Lift Is Or Isn't Art?</a>
+                        if (work.name === 'thatKilledMe' && work.visible === false) {
+                            return <div className="linkWrapper" ref="16"
+                                        onMouseEnter={() => this.worksHandleMouseEnter(16)}
+                                        onMouseLeave={() => this.worksHandleMouseLeave(16)}
+                                        onClick={() => {this.props.toggleWork('thatKilledMe'); this.worksCheckToHighlight(16)}}>
+                                        <a>That Killed Me</a>
                                     </div>
-                        } else if (work.name === 'lift' && work.visible) {
-                            return <div className="linkWrapper open" ref="2"
-                                        onMouseEnter={() => this.worksHandleMouseEnter(2)}
-                                        onMouseLeave={() => this.worksHandleMouseLeave(2)}
-                                        onClick={() => {this.props.toggleWork('lift'); this.worksCheckToHighlight(2)}}>
-                                        <a>Are We Saying The Lift Is Or Isn't Art?</a>
+                        } else if (work.name === 'thatKilledMe' && work.visible) {
+                            return <div className="linkWrapper open" ref="16"
+                                        onMouseEnter={() => this.worksHandleMouseEnter(16)}
+                                        onMouseLeave={() => this.worksHandleMouseLeave(16)}
+                                        onClick={() => {this.props.toggleWork('thatKilledMe'); this.worksCheckToHighlight(16)}}>
+                                        <a>That Killed Me</a>
                                     </div>
                         }
                     })}
