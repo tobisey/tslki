@@ -1,5 +1,8 @@
 const express = require('express');
 const app = express();
+
+const device = require('express-device');
+app.use(device.capture());
 // const bodyParser = require('body-parser')
 
 const compression = require('compression');
@@ -17,11 +20,21 @@ if (process.env.NODE_ENV != 'production') {
 }
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
+    console.log('DEVICE: ', req.device.type);
+    if (req.device.type == 'phone' || req.device.type == 'tablet') {
+        res.sendFile(__dirname + '/mobile.html');
+    } else {
+        res.sendFile(__dirname + '/index.html');
+    }
 })
 
 app.get('*', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
-});
+    console.log('DEVICE: ', req.device.type);
+    if (req.device.type == 'phone' || req.device.type == 'tablet') {
+        res.sendFile(__dirname + '/mobile.html');
+    } else {
+        res.sendFile(__dirname + '/index.html');
+    }
+})
 
 app.listen(process.env.PORT || 8080, () => console.log(`listening on 8080...`));

@@ -1,0 +1,66 @@
+@font-face {
+  font-family: 'digital';
+  src: url('digital-7.ttf');
+}
+
+* {
+    margin: 0;
+}
+
+body {
+  background-color: black;
+  overflow: hidden;
+  height: 80vh;
+  width: 100vw;
+  position: fixed;
+}
+
+h1 {
+  color: rgb(0, 156, 255);
+  font-family: 'digital';
+  font-size: 90px;
+}
+
+.perspective {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    perspective: 90px;
+    /* background-color: red; */
+}
+
+.track {
+    overflow: scroll;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-items: center; */
+    border: 10px solid rgb(0, 156, 255);
+    width: 30vw;
+    height: 100%;
+    transform: rotateX(24.6deg);
+}
+
+.work {
+    display: flex;
+    /* flex-direction: column; */
+    /* align-items: center; */
+    justify-content: center;
+    border: 10px solid rgb(0, 156, 255);
+    width: 80%;
+    height: 15%;
+    margin: 0 auto 30px auto;
+    /* margin-bottom: 30px; */
+    perspective: 80px;
+    overflow: hidden;
+}
+
+img {
+    position: relative;
+    top: 90px;
+    width: 90%;
+    height: 100%;
+    transform: rotateX(-30deg);
+}
