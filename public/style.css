@@ -49,32 +49,12 @@
     animation: flash 0.5s infinite;
 }
 
-.gradientBoi {
-    height: 100vh;
-    width: 100vw;
-    opacity: 0;
-    position: fixed;
-    pointer-events: none;
-    z-index: -10;
-    transition: opacity 6s;
-    background: linear-gradient(to bottom right, deeppink, yellow);
+#dontBeADick.epOnBoi p {
+    color: rgb(59, 255, 237);
 }
 
-.palmTreesBoi {
-    height: 100vh;
-    width: 100vw;
-    opacity: 0;
-    position: fixed;
-    pointer-events: none;
-    z-index: -9;
-    transition: opacity 6s;
-    background-image: url("palmTrees.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.activate {
-    opacity: 1;
+#finger.epOnBoi p {
+    color: rgb(59, 255, 237);
 }
 
 #seriously {
@@ -88,8 +68,6 @@ html {
 body {
     overflow: hidden;
     background-color: #545653;
-    /* transition: all 6s; */
-    /* height: 100vh; */
 }
 
 a {
@@ -113,7 +91,7 @@ a:hover {
 
 .corpse {
     width: 90px;
-    height: 114px;
+    height: 90px;
     border-bottom: 5px solid #B4B5B2;
     border-right: 5px solid #838581;
     border-left: 5px solid #2B2E2C;
@@ -127,12 +105,10 @@ a:hover {
     left: 50px;
     height: 250px;
     padding: 20px;
-    /* filter: blur(0.5px); */
     border-top: 5px solid #B4B5B2;
     border-left: 5px solid #838581;
     border-right: 5px solid #2B2E2C;
     border-bottom: 5px solid #252624;
-    /* background-color: rgb(255, 147, 199); */
 }
 
 
@@ -143,7 +119,6 @@ a:hover {
     border-left: 5px solid #2B2E2C;
     border-top: 5px solid #252624;
     margin-bottom: 20px;
-    transition: all 6s;
     height: 57px;
 }
 
@@ -159,10 +134,6 @@ a:hover {
 
 .linkWrapper:hover .smallerDot {
     background-color: lightgreen;
-    border-top: 3px solid #B4B5B2;
-    border-left: 3px solid #838581;
-    border-right: 3px solid #2B2E2C;
-    border-bottom: 3px solid #252624;
 }
 
 .dot {
@@ -177,7 +148,6 @@ a:hover {
     border-top: 5px solid #252624;
     border-radius: 20px;
     transform: rotate(-25deg);
-    /* filter: blur(0.5px); */
 }
 
 .smallerDot {
@@ -231,13 +201,11 @@ a:hover {
     flex-direction: column;
     justify-content: flex-end;
     overflow: hidden;
-    transition: all 6s;
 }
 
 #terminal p {
     color: green;
     text-shadow: 0 0 2px rgb(0, 179, 7);
-    /* filter: blur(0.4px); */
     font-size: 12px;
     margin-left: 6px;
     font-family: "menlo", monospace;
@@ -247,10 +215,8 @@ a:hover {
 
 .outfits {
     position: absolute;
-    /* background-color: hotpink; */
     right: 60px;
     bottom: 60px;
-    /* filter: blur(0.5px); */
 }
 
 .outfitsImageWrap {
@@ -423,12 +389,11 @@ a:hover {
     margin-top: 100px;
     margin-right: 150px;
     padding: 0 20px 0 10px;
-    background-color: #545653;
-    border-top: 5px solid #B4B5B2;
-    border-left: 5px solid #838581;
-    border-right: 5px solid #2B2E2C;
-    border-bottom: 5px solid #252624;
-    /* filter: blur(0.5px); */
+    border-top: 5px solid rgb(253, 120, 190);
+    border-left: 5px solid rgb(253, 110, 180);
+    border-right: 5px solid rgb(201, 55, 155);
+    border-bottom: 5px solid rgb(163, 44, 144);
+    background-color: rgb(254, 80, 174);
     box-shadow: 8px 8px 50px black;
 }
 
@@ -436,15 +401,15 @@ a:hover {
     overflow: scroll;
     width: 100%;
     height: 132px;
-    background-color: black;
-    border-bottom: 5px solid #B4B5B2;
-    border-right: 5px solid #838581;
-    border-left: 5px solid #2B2E2C;
-    border-top: 5px solid #252624;
+    border-bottom: 5px solid rgb(253, 120, 190);
+    border-right: 5px solid rgb(253, 110, 180);
+    border-left: 5px solid rgb(201, 55, 155);
+    border-top: 5px solid rgb(163, 44, 144);
+    background-color: blue;
 }
 
 .epScrollable a {
-    color: green;
+    color: cyan;
     margin-left: 10px;
 }
 
@@ -452,32 +417,31 @@ a:hover {
     display: none;
 }
 
-.open {
-    background-color: #D7D245;
+.epScrollable .open {
+    background-color: rgb(255, 0, 161);
 }
 
-.open a {
-    color: black;
+.epScrollable .open a {
+    color: white;
 }
 
-.highlighted {
-    background-color: green;
+.epScrollable .highlighted {
+    background-color: rgb(24, 255, 255);
 }
 
-.highlighted a {
-    color: black;
+.epScrollable .highlighted a {
+    color: white;
 }
 
 .escWorksWrapper {
     width: 510px;
     height: 57px;
-    /* background-color: deeppink; */
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
 
-.esc {
+.epWorks .esc {
     text-decoration: none;
     font-style: normal;
     width: 40px;
@@ -485,19 +449,12 @@ a:hover {
     margin-top: 15px;
     margin-bottom: 15px;
     padding: 0 5px;
-    background-color: #545653;
-    border-top: 3px solid #B4B5B2;
-    border-left: 3px solid #838581;
-    border-right: 3px solid #2B2E2C;
-    border-bottom: 3px solid #252624;
+    border-top: 3px solid rgb(253, 120, 190);
+    border-left: 3px solid rgb(253, 110, 180);
+    border-right: 3px solid rgb(201, 55, 155);
+    border-bottom: 3px solid rgb(163, 44, 144);
+    background-color: rgb(254, 80, 174);
     border-radius: 3px;
-}
-
-.escDown {
-    border-bottom: 3px solid #B4B5B2;
-    border-right: 3px solid #838581;
-    border-left: 3px solid #2B2E2C;
-    border-top: 3px solid #252624;
 }
 
 .esc a {
@@ -582,7 +539,6 @@ a:hover {
     display: flex;
     width: 1816px;
     overflow: hidden;
-    /* transition: all 2s; */
 }
 
 .toiletWrapper {
@@ -617,16 +573,22 @@ a:hover {
 .thatKilledMe {
     width: 610px;
     height: 550px;
+    border-top: 5px solid rgb(253, 120, 190);
+    border-left: 5px solid rgb(253, 110, 180);
+    border-right: 5px solid rgb(201, 55, 155);
+    border-bottom: 5px solid rgb(163, 44, 144);
+    background-color: rgb(254, 80, 174);
 }
 
 .thatKilledMeScrollWrap {
     height: 400px;
     width: 600px;
     overflow: hidden;
-    border-bottom: 5px solid #B4B5B2;
-    border-right: 5px solid #838581;
-    border-left: 5px solid #2B2E2C;
-    border-top: 5px solid #252624;
+    border-bottom: 5px solid rgb(253, 120, 190);
+    border-right: 5px solid rgb(253, 110, 180);
+    border-left: 5px solid rgb(201, 55, 155);
+    border-top: 5px solid rgb(163, 44, 144);
+    background-color: rgb(219, 71, 151);
 }
 
 .thatKilledMeImageWrapper {
@@ -673,11 +635,11 @@ a:hover {
     justify-content: space-between;
     align-items: flex-end;
     position: absolute;
-    background-color: #545653;
-    border-top: 5px solid #B4B5B2;
-    border-left: 5px solid #838581;
-    border-right: 5px solid #2B2E2C;
-    border-bottom: 5px solid #252624;
+    border-top: 5px solid rgb(253, 120, 190);
+    border-left: 5px solid rgb(253, 110, 180);
+    border-right: 5px solid rgb(201, 55, 155);
+    border-bottom: 5px solid rgb(163, 44, 144);
+    background-color: rgb(254, 80, 174);
     box-shadow: 8px 8px 50px black;
     height: 426px;
     padding: 10px 10px;
@@ -686,10 +648,11 @@ a:hover {
 }
 
 .thatKilledMeVid {
-    border-bottom: 5px solid #B4B5B2;
-    border-right: 5px solid #838581;
-    border-left: 5px solid #2B2E2C;
-    border-top: 5px solid #252624;
+    border-bottom: 5px solid rgb(253, 120, 190);
+    border-right: 5px solid rgb(253, 110, 180);
+    border-left: 5px solid rgb(201, 55, 155);
+    border-top: 5px solid rgb(163, 44, 144);
+    background-color: rgb(219, 71, 151);
 }
 
 .slideShowWrap {
@@ -698,23 +661,108 @@ a:hover {
     justify-content: space-between;
     align-items: flex-end;
     position: absolute;
-    background-color: #545653;
-    border-top: 5px solid #B4B5B2;
-    border-left: 5px solid #838581;
-    border-right: 5px solid #2B2E2C;
-    border-bottom: 5px solid #252624;
-    box-shadow: 8px 8px 50px black;
-    height: 238px;
+    border-top: 5px solid rgb(253, 120, 190);
+    border-left: 5px solid rgb(253, 110, 180);
+    border-right: 5px solid rgb(201, 55, 155);
+    border-bottom: 5px solid rgb(163, 44, 144);
+    background-color: rgb(254, 80, 174);
+    height: 315px;
     padding: 10px 10px;
     top: 367px;
     left: 635px;
 }
 
 .slideShow {
-    border-bottom: 5px solid #B4B5B2;
-    border-right: 5px solid #838581;
-    border-left: 5px solid #2B2E2C;
-    border-top: 5px solid #252624;
+    border-bottom: 5px solid rgb(253, 120, 190);
+    border-right: 5px solid rgb(253, 110, 180);
+    border-left: 5px solid rgb(201, 55, 155);
+    border-top: 5px solid rgb(163, 44, 144);
+    background-color: rgb(254, 80, 174);
+}
+
+.thatKilledMe .videoControlsOption {
+    border-top: 5px solid rgb(253, 120, 190);
+    border-left: 5px solid rgb(253, 110, 180);
+    border-right: 5px solid rgb(201, 55, 155);
+    border-bottom: 5px solid rgb(163, 44, 144);
+    background-color: rgb(254, 80, 174);
+}
+
+.thatKilledMe .videoControlsOption.videoControlSelected {
+    border-bottom: 5px solid rgb(253, 120, 190);
+    border-right: 5px solid rgb(253, 110, 180);
+    border-left: 5px solid rgb(201, 55, 155);
+    border-top: 5px solid rgb(163, 44, 144);
+    background-color: rgb(219, 71, 151);
+}
+
+
+.thatKilledMe .videoControlsOption .playIcon {
+    border-left: 20px solid rgb(255, 249, 116);
+}
+
+.thatKilledMe .videoControlsOption.videoControlSelected .playIcon {
+    border-left: 20px solid rgb(255, 0, 161);
+}
+
+.thatKilledMe .videoControlsOption .ffIcon {
+    border-left: 10px solid rgb(255, 249, 116);
+}
+
+.thatKilledMe .videoControlsOption.videoControlSelected .ffIcon {
+    border-left: 10px solid rgb(255, 0, 161);
+}
+
+.thatKilledMe .videoControlsOption .rrIcon {
+    border-right: 10px solid rgb(255, 249, 116);
+}
+
+.thatKilledMe .videoControlsOption.videoControlSelected .rrIcon {
+    border-right: 10px solid rgb(255, 0, 161);
+}
+
+.thatKilledMe .videoControlsOption .pauseIcon {
+    background-color: rgb(255, 249, 116);
+}
+
+.thatKilledMe .videoControlsOption.videoControlSelected .pauseIcon {
+    background-color: rgb(255, 0, 161);
+}
+
+.thatKilledMe .videoControlsOption .stopIcon {
+    background-color: rgb(255, 249, 116);
+}
+
+.thatKilledMe .videoControlsOption.videoControlSelected .stopIcon {
+    background-color: rgb(255, 0, 161);
+}
+
+.thatKilledMe .windowEsc {
+    border-top: 3px solid rgb(253, 120, 190);
+    border-left: 3px solid rgb(253, 110, 180);
+    border-right: 3px solid rgb(201, 55, 155);
+    border-bottom: 3px solid rgb(163, 44, 144);
+    background-color: rgb(254, 80, 174);
+}
+
+.thatKilledMe .timeWrap {
+    border-bottom: 5px solid rgb(253, 120, 190);
+    border-right: 5px solid rgb(253, 110, 180);
+    border-left: 5px solid rgb(201, 55, 155);
+    border-top: 5px solid rgb(163, 44, 144);
+    background-color: blue;
+}
+
+.thatKilledMe .timeWrap p {
+    color: cyan;
+}
+
+.thatKilledMe .windowTitle {
+    border-bottom: 5px solid rgb(253, 120, 190);
+    border-right: 5px solid rgb(253, 110, 180);
+    border-left: 5px solid rgb(201, 55, 155);
+    border-top: 5px solid rgb(163, 44, 144);
+    background-color: rgb(255, 147, 215);
 }
 
 /* LIFT 8============================================D ~~~ */
@@ -773,8 +821,6 @@ a:hover {
 .parallels {
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
-    /* align-items: flex-end; */
     position: absolute;
     background-color: #545653;
     border-top: 5px solid #B4B5B2;
@@ -782,7 +828,6 @@ a:hover {
     border-right: 5px solid #2B2E2C;
     border-bottom: 5px solid #252624;
     box-shadow: 8px 8px 50px black;
-    /* width: 1180px; */
     height: 440px;
     padding: 10px 10px;
     top: 10vh;
@@ -1016,12 +1061,37 @@ a:hover {
 
 /* EP 8============================================D ~~~ */
 
+.EP {
+    border-top: 5px solid rgb(253, 120, 190);
+    border-left: 5px solid rgb(253, 110, 180);
+    border-right: 5px solid rgb(201, 55, 155);
+    border-bottom: 5px solid rgb(163, 44, 144);
+    background-color: rgb(254, 80, 174);
+}
+
+.EP .windowEsc {
+    border-top: 3px solid rgb(253, 120, 190);
+    border-left: 3px solid rgb(253, 110, 180);
+    border-right: 3px solid rgb(201, 55, 155);
+    border-bottom: 3px solid rgb(163, 44, 144);
+    background-color: rgb(254, 80, 174);
+}
+
+.EP .windowTitle {
+    border-bottom: 5px solid rgb(253, 120, 190);
+    border-right: 5px solid rgb(253, 110, 180);
+    border-left: 5px solid rgb(201, 55, 155);
+    border-top: 5px solid rgb(163, 44, 144);
+    background-color: rgb(255, 147, 215);
+}
+
 .EPImage {
     width: 450px;
-    border-bottom: 5px solid #B4B5B2;
-    border-right: 5px solid #838581;
-    border-left: 5px solid #2B2E2C;
-    border-top: 5px solid #252624;
+    border-bottom: 5px solid rgb(253, 120, 190);
+    border-right: 5px solid rgb(253, 110, 180);
+    border-left: 5px solid rgb(201, 55, 155);
+    border-top: 5px solid rgb(163, 44, 144);
+    background-color: rgb(219, 71, 151);
 }
 
 /* PINK 8============================================D ~~~ */
@@ -1203,15 +1273,104 @@ a:hover {
 .poolTable {
     width: 700px;
     height: 599px;
+    border-top: 5px solid rgb(253, 120, 190);
+    border-left: 5px solid rgb(253, 110, 180);
+    border-right: 5px solid rgb(201, 55, 155);
+    border-bottom: 5px solid rgb(163, 44, 144);
+    background-color: rgb(254, 80, 174);
+}
+
+.poolTable .videoControlsOption {
+    border-top: 5px solid rgb(253, 120, 190);
+    border-left: 5px solid rgb(253, 110, 180);
+    border-right: 5px solid rgb(201, 55, 155);
+    border-bottom: 5px solid rgb(163, 44, 144);
+    background-color: rgb(254, 80, 174);
+}
+
+.poolTable .videoControlsOption.videoControlSelected {
+    border-bottom: 5px solid rgb(253, 120, 190);
+    border-right: 5px solid rgb(253, 110, 180);
+    border-left: 5px solid rgb(201, 55, 155);
+    border-top: 5px solid rgb(163, 44, 144);
+    background-color: rgb(219, 71, 151);
+}
+
+.poolTable .videoControlsOption .playIcon {
+    border-left: 20px solid rgb(255, 249, 116);
+}
+
+.poolTable .videoControlsOption.videoControlSelected .playIcon {
+    border-left: 20px solid rgb(255, 0, 161);
+}
+
+.poolTable .videoControlsOption .ffIcon {
+    border-left: 10px solid rgb(255, 249, 116);
+}
+
+.poolTable .videoControlsOption.videoControlSelected .ffIcon {
+    border-left: 10px solid rgb(255, 0, 161);
+}
+
+.poolTable .videoControlsOption .rrIcon {
+    border-right: 10px solid rgb(255, 249, 116);
+}
+
+.poolTable .videoControlsOption.videoControlSelected .rrIcon {
+    border-right: 10px solid rgb(255, 0, 161);
+}
+
+.poolTable .videoControlsOption .pauseIcon {
+    background-color: rgb(255, 249, 116);
+}
+
+.poolTable .videoControlsOption.videoControlSelected .pauseIcon {
+    background-color: rgb(255, 0, 161);
+}
+
+.poolTable .videoControlsOption .stopIcon {
+    background-color: rgb(255, 249, 116);
+}
+
+.poolTable .videoControlsOption.videoControlSelected .stopIcon {
+    background-color: rgb(255, 0, 161);
+}
+
+.poolTable .windowEsc {
+    border-top: 3px solid rgb(253, 120, 190);
+    border-left: 3px solid rgb(253, 110, 180);
+    border-right: 3px solid rgb(201, 55, 155);
+    border-bottom: 3px solid rgb(163, 44, 144);
+    background-color: rgb(254, 80, 174);
+}
+
+.poolTable .timeWrap {
+    border-bottom: 5px solid rgb(253, 120, 190);
+    border-right: 5px solid rgb(253, 110, 180);
+    border-left: 5px solid rgb(201, 55, 155);
+    border-top: 5px solid rgb(163, 44, 144);
+    background-color: blue;
+}
+
+.poolTable .timeWrap p {
+    color: cyan;
+}
+
+.poolTable .windowTitle {
+    border-bottom: 5px solid rgb(253, 120, 190);
+    border-right: 5px solid rgb(253, 110, 180);
+    border-left: 5px solid rgb(201, 55, 155);
+    border-top: 5px solid rgb(163, 44, 144);
+    background-color: rgb(255, 147, 215);
 }
 
 .poolTableScrollWrap {
     height: 459px;
     overflow: hidden;
-    border-bottom: 5px solid #B4B5B2;
-    border-right: 5px solid #838581;
-    border-left: 5px solid #2B2E2C;
-    border-top: 5px solid #252624;
+    border-bottom: 5px solid rgb(253, 120, 190);
+    border-right: 5px solid rgb(253, 110, 180);
+    border-left: 5px solid rgb(201, 55, 155);
+    border-top: 5px solid rgb(163, 44, 144);
 }
 
 .poolTableImageWrapper {
@@ -1252,10 +1411,10 @@ a:hover {
 
 .poolTableVidWrap {
     height: 240px;
-    border-bottom: 5px solid #B4B5B2;
-    border-right: 5px solid #838581;
-    border-left: 5px solid #2B2E2C;
-    border-top: 5px solid #252624;
+    border-bottom: 5px solid rgb(253, 120, 190);
+    border-right: 5px solid rgb(253, 110, 180);
+    border-left: 5px solid rgb(201, 55, 155);
+    border-top: 5px solid rgb(163, 44, 144);
 }
 
 .poolTableVidWindow {
@@ -1264,11 +1423,11 @@ a:hover {
     justify-content: space-between;
     align-items: flex-end;
     position: absolute;
-    background-color: #545653;
-    border-top: 5px solid #B4B5B2;
-    border-left: 5px solid #838581;
-    border-right: 5px solid #2B2E2C;
-    border-bottom: 5px solid #252624;
+    border-top: 5px solid rgb(253, 120, 190);
+    border-left: 5px solid rgb(253, 110, 180);
+    border-right: 5px solid rgb(201, 55, 155);
+    border-bottom: 5px solid rgb(163, 44, 144);
+    background-color: rgb(254, 80, 174);
     box-shadow: 8px 8px 50px black;
     height: 309px;
     padding: 10px 10px;
@@ -1301,12 +1460,97 @@ a:hover {
     font-size: 44px;
 }
 
-.epModeOn {
-    background-color: #464944;
-    border-bottom: 3px solid #B4B5B2;
-    border-right: 3px solid #838581;
-    border-left: 3px solid #2B2E2C;
-    border-top: 3px solid #252624;
+.epTheme {
+    background-color: rgb(254, 80, 174);
+}
+
+.epThemeOutward {
+    border-top: 3px solid rgb(253, 120, 190);
+    border-left: 3px solid rgb(253, 110, 180);
+    border-right: 3px solid rgb(201, 55, 155);
+    border-bottom: 3px solid rgb(163, 44, 144);
+    background-color: rgb(254, 80, 174);
+}
+
+.epThemeInward {
+    border-bottom: 3px solid rgb(253, 120, 190);
+    border-right: 3px solid rgb(253, 110, 180);
+    border-left: 3px solid rgb(201, 55, 155);
+    border-top: 3px solid rgb(163, 44, 144);
+    background-color: rgb(219, 71, 151);
+}
+
+.epThemeOutwardThick {
+    border-top: 5px solid rgb(253, 120, 190);
+    border-left: 5px solid rgb(253, 110, 180);
+    border-right: 5px solid rgb(201, 55, 155);
+    border-bottom: 5px solid rgb(163, 44, 144);
+    background-color: rgb(254, 80, 174);
+}
+
+.epThemeInwardThick {
+    border-bottom: 5px solid rgb(253, 120, 190);
+    border-right: 5px solid rgb(253, 110, 180);
+    border-left: 5px solid rgb(201, 55, 155);
+    border-top: 5px solid rgb(163, 44, 144);
+    background-color: rgb(219, 71, 151);
+}
+
+#terminalWrap.epThemeInwardThick {
+    border-bottom: 5px solid rgb(253, 120, 190);
+    border-right: 5px solid rgb(253, 110, 180);
+    border-left: 5px solid rgb(201, 55, 155);
+    border-top: 5px solid rgb(163, 44, 144);
+    background-color: blue;
+}
+
+#terminalWrap.epThemeInwardThick #terminal p {
+    color: rgb(59, 255, 237);
+}
+
+.dotHighlighted.epThemeInwardThick {
+    background-color: rgb(60, 186, 171);
+}
+
+.smallerDotHighlighted.epThemeOutward {
+    background-color:  rgb(32, 255, 235);
+}
+
+.nav .title.epThemeInwardThick {
+    background-color: rgb(255, 147, 215);
+}
+
+.epThemeScreen {
+    background-color: rgb(255, 147, 215);
+}
+
+.linkWrapper:hover .dot.epThemeInwardThick {
+    background-color: rgb(60, 186, 171);
+
+}
+
+.linkWrapper:hover .smallerDot.epThemeOutward {
+    background-color: rgb(32, 255, 235);
+
+}
+
+.controls.epThemeOutwardThick .controlsRow .controlsOption {
+    border-top: 3px solid rgb(253, 120, 190);
+    border-left: 3px solid rgb(253, 110, 180);
+    border-right: 3px solid rgb(201, 55, 155);
+    border-bottom: 3px solid rgb(163, 44, 144);
+}
+
+.controls.epThemeOutwardThick .controlsRow .controlsOption.on {
+    border-bottom: 3px solid rgb(253, 120, 190);
+    border-right: 3px solid rgb(253, 110, 180);
+    border-left: 3px solid rgb(201, 55, 155);
+    border-top: 3px solid rgb(163, 44, 144);
+    background-color: rgb(219, 71, 151);
+}
+
+.noEpTheme {
+    background-color: #545653;
 }
 
 .epGreen {
@@ -1320,8 +1564,6 @@ a:hover {
 
 .epBody {
     background-color: none;
-    /* animation: epGradient 6s linear; */
-    /* background-image: repeating-radial-gradient(deeppink, deeppink 1px, gold 1px, gold 2px); */
 }
 
 
@@ -1359,6 +1601,10 @@ a:hover {
     }
 
     .works {
+        transform: scale(0.8);
+    }
+
+    .epWorks {
         transform: scale(0.8);
     }
 

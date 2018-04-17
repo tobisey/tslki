@@ -299,7 +299,7 @@ class App extends React.Component {
         this.props.logInTerminal(`---------------------------------------------------------------------`)
         this.props.logInTerminal(`---------------------------------------------------------------------`)
         this.props.logInTerminal(`___________| ts |__________________________________| lki |___________`)
-        this.props.logInTerminal(`_____ leeds college of art(12/13) | leeds colege of art(12/13) ______`)
+        this.props.logInTerminal(`_____ leeds college of art(12/13) | leeds college of art(12/13) _____`)
         this.props.logInTerminal(`___ chelsea college of art(13/16) | goldsmiths univeristy(13/16) ____`)
         this.props.logInTerminal(`---------------------------------------------------------------------`)
         this.props.logInTerminal(`---------------------------------------------------------------------`)
@@ -323,18 +323,54 @@ class App extends React.Component {
     }
 
     epMode() {
-        if (this.refs.ep.classList.contains('epModeOn')) {
-            this.refs.ep.classList.remove('epModeOn');
-            this.refs.epText.style.color = "black";
+
+        // theme
+        if (this.refs.ep.classList.contains('epThemeInward')) {
+            this.refs.ep.classList.remove('epThemeInward');
+            this.refs.epText.style.color = 'black';
+            document.body.classList.remove('epTheme');
+            document.getElementById('dontBeADickWrap').style.backgroundColor = '#545653';
+            document.getElementById('dontBeADick').style.borderTop = '5px solid #252624';
+            document.getElementById('dontBeADick').style.borderLeft = '5px solid #2B2E2C';
+            document.getElementById('dontBeADick').style.borderBottom = '5px solid #B4B5B2';
+            document.getElementById('dontBeADick').style.borderRight = '5px solid #838581';
+            document.getElementById('dontBeADick').style.backgroundColor = 'black';
+            document.getElementById('finger').classList.remove('epOnBoi');
+            document.getElementById('dontBeADick').classList.remove('epOnBoi');
+            this.refs.corpse.classList.remove('epThemeInwardThick');
+            this.refs.nav.classList.remove('epThemeOutwardThick');
+            this.refs.worksDot.classList.remove('epThemeInwardThick');
+            this.refs.cvDot.classList.remove('epThemeInwardThick');
+            this.refs.emailDot.classList.remove('epThemeInwardThick');
+            this.refs.worksSmallerDot.classList.remove('epThemeOutward');
+            this.refs.cvSmallerDot.classList.remove('epThemeOutward');
+            this.refs.emailSmallerDot.classList.remove('epThemeOutward');
+            this.refs.terminalWrap.classList.remove('epThemeInwardThick');
         } else {
-            this.refs.ep.classList.add('epModeOn')
-            this.refs.epText.style.color = "rgb(27, 241, 255)";
+            this.refs.ep.classList.add('epThemeInward')
+            this.refs.epText.style.color = "aquamarine";
+            document.body.classList.add('epTheme');
+            document.getElementById('dontBeADickWrap').style.backgroundColor = 'rgb(254, 80, 174)';
+            document.getElementById('dontBeADick').style.borderTop = '5px solid rgb(163, 44, 144)';
+            document.getElementById('dontBeADick').style.borderLeft = '5px solid rgb(201, 55, 155)';
+            document.getElementById('dontBeADick').style.borderBottom = '5px solid rgb(253, 120, 190)';
+            document.getElementById('dontBeADick').style.borderRight = '5px solid rgb(253, 110, 180)';
+            document.getElementById('dontBeADick').style.backgroundColor = 'blue';
+            document.getElementById('finger').classList.add('epOnBoi');
+            document.getElementById('dontBeADick').classList.add('epOnBoi');
+            this.refs.corpse.classList.add('epThemeInwardThick');
+            this.refs.nav.classList.add('epThemeOutwardThick');
+            this.refs.worksDot.classList.add('epThemeInwardThick');
+            this.refs.cvDot.classList.add('epThemeInwardThick');
+            this.refs.emailDot.classList.add('epThemeInwardThick');
+            this.refs.worksSmallerDot.classList.add('epThemeOutward');
+            this.refs.cvSmallerDot.classList.add('epThemeOutward');
+            this.refs.emailSmallerDot.classList.add('epThemeOutward');
+            this.refs.terminalWrap.classList.add('epThemeInwardThick');
         }
 
+        //functionality
         if (!this.props.epMode) {
-            console.log('ep mode on');
-            this.refs.gradientBoi.classList.add('activate');
-            this.refs.palmTreesBoi.classList.add('activate');
             this.props.worksVisible.map(work => {
                 if (work.visible) {
                     this.props.toggleWork(work.name);
@@ -346,9 +382,6 @@ class App extends React.Component {
                 this.props.windowUnmounted('works');
             }
         } else {
-            console.log('ep mode off');
-            this.refs.gradientBoi.classList.remove('activate');
-            this.refs.palmTreesBoi.classList.remove('activate');
             this.props.worksVisible.map(work => {
                 if (work.visible) {
                     this.props.toggleWork(work.name);
@@ -360,32 +393,18 @@ class App extends React.Component {
                 this.props.windowUnmounted('epWorks')
             }
         }
-
     }
 
     render() {
 
-        if (this.refs.terminal && !this.props.epMode) {
-            this.refs.terminal.classList.remove('epGreen');
-            this.refs.title.classList.remove('epYellow');
-            document.body.classList.remove('epBody')
-        } else if (this.refs.terminal && this.props.epMode) {
-            this.refs.terminal.classList.add('epGreen');
-            this.refs.title.classList.add('epYellow');
-            document.body.classList.add('epBody');
-        }
-
         return (
             <div>
 
-                <div ref="gradientBoi" className="gradientBoi"></div>
-                <div ref="palmTreesBoi" className="palmTreesBoi"></div>
-
                 <div className="corpseWrapper">
-                    <img onClick={() => this.corpseClick()} className="corpse" src="/images/corpse.png" alt="corpse"/>
+                    <img ref="corpse" onClick={() => this.corpseClick()} className="corpse" src="/images/corpse.png" alt="corpse"/>
                 </div>
 
-                <div className="nav">
+                <div ref="nav" className="nav">
                     {!this.props.epMode &&
                         <div className="title" ref="title">
                             <p>Tobias Seymour &</p>
@@ -393,7 +412,7 @@ class App extends React.Component {
                         </div>
                     }
                     {this.props.epMode &&
-                        <div className="title" ref="title">
+                        <div className="title epThemeInwardThick" ref="title">
                             <p>Edwyn Parker</p>
                         </div>
                     }
@@ -404,7 +423,7 @@ class App extends React.Component {
                     </div>
                 </div>
 
-                <div id="terminalWrap">
+                <div id="terminalWrap" ref="terminalWrap">
                     <div id="terminal" ref="terminal">
                         {this.props.messageArray && this.props.messageArray.map(message => <p className="terminalMessage">{message}</p>)}
                     </div>

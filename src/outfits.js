@@ -13,6 +13,18 @@ class Outfits extends React.Component {
         window.addEventListener("keydown", this.outfitsHandleKeyDown);
     }
 
+    componentWillUpdate(x, y) {
+        if (x.epMode) {
+            this.refs.outfitOne.classList.add('epThemeInwardThick');
+            this.refs.outfitTwo.classList.add('epThemeInwardThick');
+            this.refs.controls.classList.add('epThemeOutwardThick');
+        } else {
+            this.refs.outfitOne.classList.remove('epThemeInwardThick');
+            this.refs.outfitTwo.classList.remove('epThemeInwardThick');
+            this.refs.controls.classList.remove('epThemeOutwardThick');
+        }
+    }
+
     outfitsHandleKeyDown(e) {
         if (e.keyCode === 71 && this.props.selectedOutfit != 'glasses') {
             this.props.changeSelectedOutfit('glasses');
@@ -80,17 +92,15 @@ class Outfits extends React.Component {
 
         const { selectedOutfit } = this.props
 
-        console.log(selectedOutfit);
-
         var outfitBackgroundOne = 'images/' + selectedOutfit + '1.gif';
-        var outfitBackgroundTwo = 'images/' + selectedOutfit + '2.gif';      
+        var outfitBackgroundTwo = 'images/' + selectedOutfit + '2.gif';
 
         return (
             <div className="outfits">
                 <div onClick={() => this.outfitClick('one')} className="outfitsImageWrap" ref="outfitOne" style={{backgroundImage: "url(" + outfitBackgroundOne + ")"}}></div>
                 <div onClick={() => this.outfitClick('two')} className="outfitsImageWrap" ref="outfitTwo" style={{backgroundImage: "url(" + outfitBackgroundTwo + ")"}}></div>
 
-                <div className="controls">
+                <div ref="controls" className="controls">
                     <div className="controlsRow">
                         <div className="controlsOption" ref="glasses"><a onClick={() => this.clickedToSelect('glasses')}>Glasses</a></div>
                         <div className="controlsOption" ref="speedo"><a onClick={() => this.clickedToSelect('speedo')}>Speedo</a></div>
@@ -109,7 +119,8 @@ class Outfits extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        selectedOutfit: state.selectedOutfit && state.selectedOutfit
+        selectedOutfit: state.selectedOutfit && state.selectedOutfit,
+        epMode: state.epMode && state.epMode
     }
 }
 

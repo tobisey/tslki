@@ -400,7 +400,7 @@ class ThatKilledMe extends React.Component {
                 </div>
 
                 <div className="slideShowWrap">
-                    <video loop className='slideShow' ref="slideShow" src="/videos/slideshow.mp4" width="400px" height="225px"></video>
+                    <video loop className='slideShow' ref="slideShow" src="/videos/slideshowTSLKI.mp4" width="400px" height="299px"></video>
                 </div>
 
             </div>
