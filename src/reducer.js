@@ -104,7 +104,7 @@ export default function reducer (state = {}, action) {
             }
             return component
         })
-        if (topWindow === 'works') {
+        if (topWindow === 'works' || topWindow === 'epWorks') {
             state = Object.assign({}, state, {
                 worksMenuVisible: action.worksMenuVisible
             })

@@ -5,10 +5,7 @@ import { toggleWorksMenu, toggleWork, windowMounted, windowUnmounted, bringWindo
 class EpWorks extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            scrollCountUp: 2,
-            scrollCountDown: 3
-        };
+        this.state = {};
         this.worksHandleKeyDown = this.worksHandleKeyDown.bind(this);
         this.worksHandleMouseEnter = this.worksHandleMouseEnter.bind(this);
         this.worksHandleMouseLeave = this.worksHandleMouseLeave.bind(this);
@@ -32,18 +29,6 @@ class EpWorks extends React.Component {
 
     worksHandleKeyDown(e) {
         if (e.keyCode === 40) {
-            if (this.state.current == 3) {
-                return;
-            }
-            if (this.state.current >= this.state.scrollCountDown) {
-                this.refs.scrollable.scrollTop += 44;
-                if (this.state.scrollCountDown < 3) {
-                    this.setState({
-                        scrollCountUp: this.state.scrollCountUp += 1,
-                        scrollCountDown: this.state.scrollCountDown += 1,
-                    })
-                }
-            }
             var current = this.refs[this.state.current];
             var newState = this.state.current + 1;
             if (newState > 3) {
@@ -57,15 +42,6 @@ class EpWorks extends React.Component {
         }
 
         if (e.keyCode === 38) {
-            if (this.state.current <= this.state.scrollCountUp) {
-                this.refs.scrollable.scrollTop -= 44;
-                if (this.state.scrollCountUp > 2) {
-                    this.setState({
-                        scrollCountUp: this.state.scrollCountUp -= 1,
-                        scrollCounDown: this.state.scrollCountDown -= 1,
-                    })
-                }
-            }
             var current = this.refs[this.state.current];
             var newState = this.state.current - 1;
             if (newState < 1) {
@@ -79,7 +55,15 @@ class EpWorks extends React.Component {
         }
 
         if (e.keyCode === 13) {
-            this.props.toggleWork(this.state.current, 'keydown');
+            var whatWork;
+            if (this.state.current == 1) {
+                whatWork = 'EP';
+            } else if (this.state.current == 2) {
+                whatWork = 'thatKilledMe';
+            } else if (this.state.current == 3) {
+                whatWork = 'poolTable';
+            }
+            this.props.toggleWork(whatWork);
             for (var val in this.refs) {
                 if (val == this.state.current) {
                     if (!this.refs[val].classList.contains('open')) {
@@ -174,17 +158,17 @@ class EpWorks extends React.Component {
 
                     {this.props.worksVisible && this.props.worksVisible.map(work => {
                         if (work.name === 'EP' && work.visible === false) {
-                            return <div className="linkWrapper" ref="14"
-                                        onMouseEnter={() => this.worksHandleMouseEnter(14)}
-                                        onMouseLeave={() => this.worksHandleMouseLeave(14)}
-                                        onClick={() => {this.props.toggleWork('EP'); this.worksCheckToHighlight(14)}}>
+                            return <div className="linkWrapper highlighted" ref="1"
+                                        onMouseEnter={() => this.worksHandleMouseEnter(1)}
+                                        onMouseLeave={() => this.worksHandleMouseLeave(1)}
+                                        onClick={() => {this.props.toggleWork('EP'); this.worksCheckToHighlight(1)}}>
                                         <a>EP</a>
                                     </div>
                         } else if (work.name === 'EP' && work.visible) {
-                            return <div className="linkWrapper open" ref="14"
-                                        onMouseEnter={() => this.worksHandleMouseEnter(14)}
-                                        onMouseLeave={() => this.worksHandleMouseLeave(14)}
-                                        onClick={() => {this.props.toggleWork('EP'); this.worksCheckToHighlight(14)}}>
+                            return <div className="linkWrapper open" ref="1"
+                                        onMouseEnter={() => this.worksHandleMouseEnter(1)}
+                                        onMouseLeave={() => this.worksHandleMouseLeave(1)}
+                                        onClick={() => {this.props.toggleWork('EP'); this.worksCheckToHighlight(1)}}>
                                         <a>EP</a>
                                     </div>
                         }
@@ -192,17 +176,17 @@ class EpWorks extends React.Component {
 
                     {this.props.worksVisible && this.props.worksVisible.map(work => {
                         if (work.name === 'thatKilledMe' && work.visible === false) {
-                            return <div className="linkWrapper" ref="16"
-                                        onMouseEnter={() => this.worksHandleMouseEnter(16)}
-                                        onMouseLeave={() => this.worksHandleMouseLeave(16)}
-                                        onClick={() => {this.props.toggleWork('thatKilledMe'); this.worksCheckToHighlight(16)}}>
+                            return <div className="linkWrapper" ref="2"
+                                        onMouseEnter={() => this.worksHandleMouseEnter(2)}
+                                        onMouseLeave={() => this.worksHandleMouseLeave(2)}
+                                        onClick={() => {this.props.toggleWork('thatKilledMe'); this.worksCheckToHighlight(2)}}>
                                         <a>That Killed Me</a>
                                     </div>
                         } else if (work.name === 'thatKilledMe' && work.visible) {
-                            return <div className="linkWrapper open" ref="16"
-                                        onMouseEnter={() => this.worksHandleMouseEnter(16)}
-                                        onMouseLeave={() => this.worksHandleMouseLeave(16)}
-                                        onClick={() => {this.props.toggleWork('thatKilledMe'); this.worksCheckToHighlight(16)}}>
+                            return <div className="linkWrapper open" ref="2"
+                                        onMouseEnter={() => this.worksHandleMouseEnter(2)}
+                                        onMouseLeave={() => this.worksHandleMouseLeave(2)}
+                                        onClick={() => {this.props.toggleWork('thatKilledMe'); this.worksCheckToHighlight(2)}}>
                                         <a>That Killed Me</a>
                                     </div>
                         }
@@ -210,17 +194,17 @@ class EpWorks extends React.Component {
 
                     {this.props.worksVisible && this.props.worksVisible.map(work => {
                         if (work.name === 'poolTable' && work.visible === false) {
-                            return <div className="linkWrapper" ref="15"
-                                        onMouseEnter={() => this.worksHandleMouseEnter(15)}
-                                        onMouseLeave={() => this.worksHandleMouseLeave(15)}
-                                        onClick={() => {this.props.toggleWork('poolTable'); this.worksCheckToHighlight(15)}}>
+                            return <div className="linkWrapper" ref="3"
+                                        onMouseEnter={() => this.worksHandleMouseEnter(3)}
+                                        onMouseLeave={() => this.worksHandleMouseLeave(3)}
+                                        onClick={() => {this.props.toggleWork('poolTable'); this.worksCheckToHighlight(3)}}>
                                         <a>Pool Table</a>
                                     </div>
                         } else if (work.name === 'poolTable' && work.visible) {
-                            return <div className="linkWrapper open" ref="15"
-                                        onMouseEnter={() => this.worksHandleMouseEnter(15)}
-                                        onMouseLeave={() => this.worksHandleMouseLeave(15)}
-                                        onClick={() => {this.props.toggleWork('poolTable'); this.worksCheckToHighlight(15)}}>
+                            return <div className="linkWrapper open" ref="3"
+                                        onMouseEnter={() => this.worksHandleMouseEnter(3)}
+                                        onMouseLeave={() => this.worksHandleMouseLeave(3)}
+                                        onClick={() => {this.props.toggleWork('poolTable'); this.worksCheckToHighlight(3)}}>
                                         <a>Pool Table</a>
                                     </div>
                         }
