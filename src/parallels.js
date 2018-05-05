@@ -109,10 +109,10 @@ class Parallels extends React.Component {
                 </div>
                 <div className="paraVids">
                     <div className="paraVidWrap">
-                        <video className="vid" ref='paraVidOne' src="/videos/para-one.mp4" width="571px" height="311px" loop></video>
+                        <video className="vid" ref='paraVidOne' src="/videos/para-one.mp4" width="556px" height="312px" loop></video>
                     </div>
                     <div className="paraVidWrap">
-                        <video ref='paraVidTwo' src="/videos/para-two.mp4" width="571px" height="311px" loop></video>
+                        <video ref='paraVidTwo' src="/videos/para-two.mp4" width="556px" height="312px" loop></video>
                     </div>
                 </div>
                 <div className="videoControls">
