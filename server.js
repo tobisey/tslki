@@ -20,21 +20,21 @@ if (process.env.NODE_ENV != 'production') {
 }
 
 app.get('/', (req, res) => {
-    console.log('DEVICE: ', req.device.type);
-    if (req.device.type == 'phone' || req.device.type == 'tablet') {
-        res.sendFile(__dirname + '/mobile.html');
-    } else {
+    // console.log('DEVICE: ', req.device.type);
+    // if (req.device.type == 'phone' || req.device.type == 'tablet') {
+    //     res.sendFile(__dirname + '/mobile.html');
+    // } else {
         res.sendFile(__dirname + '/index.html');
-    }
+    // }
 })
 
 app.get('*', (req, res) => {
-    console.log('DEVICE: ', req.device.type);
-    if (req.device.type == 'phone' || req.device.type == 'tablet') {
-        res.sendFile(__dirname + '/mobile.html');
-    } else {
+    // console.log('DEVICE: ', req.device.type);
+    // if (req.device.type == 'phone' || req.device.type == 'tablet') {
+    //     res.sendFile(__dirname + '/mobile.html');
+    // } else {
         res.sendFile(__dirname + '/index.html');
-    }
+    // }
 })
 
 app.listen(process.env.PORT || 8080, () => console.log(`listening on 8080...`));
