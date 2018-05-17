@@ -407,8 +407,7 @@ class App extends React.Component {
                 <div ref="nav" className="nav">
                     {!this.props.epMode &&
                         <div className="title" ref="title">
-                            <p>Tobias Seymour &</p>
-                            <p>Lachlan KosaniukInnes</p>
+                            <p>TSLKI</p>
                         </div>
                     }
                     {this.props.epMode &&
@@ -419,7 +418,7 @@ class App extends React.Component {
                     <div className="navLinks">
                         <div className="linkWrapper" onClick={() => this.props.toggleWorksMenu(this.props.worksMenuVisible)}><div className="dot" ref="worksDot"><div className="smallerDot" ref="worksSmallerDot"></div></div><a>Works</a></div>
                         <div className="linkWrapper" onClick={() => this.cvClick()}><div className="dot" ref="cvDot"><div className="smallerDot" ref="cvSmallerDot"></div></div><a>CV</a></div>
-                        <div className="linkWrapper"><div className="dot" ref="emailDot"><div className="smallerDot" ref="emailSmallerDot"></div></div><a id="email" href="mailto:hotpinktrash@gmail.com?Subject=I%20would%20like%20to%20give%20you%20money%20in%20exchange%20for%20goods%20or%20services!" target="_top">hotpinktrash@gmail.com</a></div>
+                        <div className="linkWrapper"><div className="dot" ref="emailDot"><div className="smallerDot" ref="emailSmallerDot"></div></div><a id="email" href="mailto:tslkiglobal@gmail.com?Subject=I%20would%20like%20to%20give%20you%20money%20in%20exchange%20for%20goods%20or%20services!" target="_top">tslkiglobal@gmail.com</a></div>
                     </div>
                 </div>
 

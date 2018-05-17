@@ -122,6 +122,11 @@ a:hover {
     height: 57px;
 }
 
+.title p {
+    font-size: 44px;
+    margin-left: 5px;
+}
+
 .linkWrapper {
     display: flex;
     align-items: center;
