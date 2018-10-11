@@ -28,13 +28,6 @@ app.get('/', (req, res) => {
     // }
 })
 
-app.get('*', (req, res) => {
-    // console.log('DEVICE: ', req.device.type);
-    // if (req.device.type == 'phone' || req.device.type == 'tablet') {
-    //     res.sendFile(__dirname + '/mobile.html');
-    // } else {
-        res.sendFile(__dirname + '/index.html');
-    // }
-})
+app.get('*', (req, res) => res.redirect('/'));
 
 app.listen(process.env.PORT || 8080, () => console.log(`listening on 8080...`));
